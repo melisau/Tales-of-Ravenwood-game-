@@ -1,0 +1,28 @@
+node_modules/
+dist/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Android local and generated files
+.gradle/
+local.properties
+**/build/
+.cxx/
+*.apk
+*.aab

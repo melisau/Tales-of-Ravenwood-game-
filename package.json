@@ -1,0 +1,17 @@
+{
+  "name": "tales-of-ravenwood",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tales of Ravenwood — Cadılar Bayramı temalı co-op FRP (2-12 oyuncu, telefonlarla)",
+  "scripts": {
+    "kur": "npm install --prefix server && npm install --prefix client",
+    "setup": "npm run kur",
+    "basla": "node scripts/dev.mjs",
+    "dev": "node scripts/dev.mjs",
+    "test": "npm test --prefix server"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

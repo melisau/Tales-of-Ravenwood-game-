@@ -1,0 +1,112 @@
+{
+  "node_id": "mahzen_01_karanlik_mahzen",
+  "title": "Karanlık Mahzen",
+  "public_text": "Blackthorne Konağı'nın mutfağındaki kapak, siz dokunmadan gıcırdayarak açılır. Aşağıdan yükselen hava, mezar toprağı ve ekşimiş şarap kokuyor. On üç taş basamak inersiniz; on üçüncüsünde fenerlerinizin alevi aynı anda eğilir, sanki biri üflemiş gibi. Mahzen beklediğinizden geniştir: tavana kadar yığılmış çürük fıçılar, duvar boyunca uzanan şarap rafları ve en dipte, örümcek ağlarıyla örülmüş, üstüne solmuş harfler kazınmış alçak bir taş kemer. Kemerin altındaki demir kapı paslı bir zincirle bağlı, ama zincirin kilidi taze yağ parlıyor. Yerde, tozun içinde küçük çıplak ayak izleri fıçılara doğru gidip kayboluyor. Uzakta bir yerde damlayan suyun ritmi yavaşça bir ninniye dönüşüyor... ve sonra susuyor. Arkanızda, mutfak kapağı tok bir sesle kapanır. Ravenwood'da Cadılar Bayramı gecesi henüz yarılanmadı.",
+  "class_hints": {
+    "Dedektif": "Üçüncü sıradaki döşeme taşının kenarındaki toz diğerlerinden daha ince; yakın zamanda kaldırılmış. Fıçıların arasında, diz hizasında gerili, neredeyse görünmez bir kıl tel var. İkisi de aynı yere, tavandaki sarkık kirişe bağlı. Biri o teli kopartırsa tavan çöker.",
+    "Medyum": "Fıçıların arkasında bir çocuk ağlıyor; adı Elspeth, 1892'den beri burada. Onda kötülük hissetmiyorsun, sadece korku. Ama mahzende ikinci bir varlık daha var — Elspeth'in sesini taklit ederek ninni söyleyen, çok daha yaşlı ve aç bir şey. Ninniyi duyarsan cevap verme.",
+    "Bilgin": "Kemerdeki yazı Latince değil, Eski Ravenwood mühür dilinde: 'Kan kapıyı açar, ateş onu sonsuza dek kapatır.' Harflerin altındaki oyuklar bir avuç içi büyüklüğünde. Mühür, gönüllü verilen tek damla kanla açılır; zorla açılırsa içindekini uyandırır.",
+    "Simyacı": "Fıçılardaki keskin koku şarap değil: adamotu kökü karıştırılmış lamba yağı. Sol duvardaki soluk yeşil mantar tabakası havaya ince spor bırakıyor. Spor ve yağ buharı birleşince tek bir kıvılcım tüm mahzeni ateşe verir. Fenerleri kapalı tutun.",
+    "İzci": "Fenerin alevi rüzgârsız bir mahzende sağa eğiliyor: doğu duvarındaki şarap rafının arkasından ince ama sürekli bir hava akımı geliyor. Raftaki üç şişenin dibinde toz yok. Çıplak ayak izleri fıçılara giriyor ama hiçbiri geri çıkmıyor.",
+    "Avcı": "Demir kapının alt kısmında, diz hizasında dört paralel tırmık izi var; insan tırnağı değil, bir ghoul'un pençesi. Bu yaratıklar ışıktan değil sesten avlanır ve tuz çizgisini geçemez. Çantandaki tuz kesesi kapı eşiği için yeterli.",
+    "Günlükçü": "Ravenwood kayıtlarına göre Blackthorne ailesi bu mahzeni 31 Ekim 1892 gecesi duvarla ördürdü; aynı gece ailenin en küçük kızı Elspeth kayıplara karıştı. Kayıtta bir not düşülmüş: 'Mahzendeki şey ancak adını bilen biri tarafından geri gönderilebilir.' Adın yazıldığı sayfa yırtılmış."
+  },
+  "actions": [
+    {
+      "action_id": "dedektif_tuzagi_etkisizlestir",
+      "required_class": "Dedektif",
+      "button_text": "Kıl teli ve basınç taşını etkisiz hale getir",
+      "dice_dc": 13,
+      "success": {
+        "text": "Parmak uçlarınla teli gevşetip basınç taşının altına bir şarap mantarı sıkıştırıyorsun. Tavandaki kiriş hafifçe inler ama yerinde kalır. Grup, ölüm tuzağının üzerinden sessizce geçerek demir kapıya ulaşır.",
+        "hp_change": 0,
+        "next_node_id": "mahzen_02_muhurlu_kapi"
+      },
+      "fail": {
+        "text": "Tel parmağının altında bir yay gibi kopar. Kiriş çatırdayarak çöker; taş ve çürük tahta yağmuru altında kendinizi kemerin altına zor atarsınız. Toz dağıldığında geri dönüş yolu kapanmıştır.",
+        "hp_change": -2,
+        "next_node_id": "mahzen_02_muhurlu_kapi"
+      }
+    },
+    {
+      "action_id": "medyum_elspeth_ile_konus",
+      "required_class": "Medyum",
+      "button_text": "Fıçıların ardındaki çocuk ruhuyla konuş",
+      "dice_dc": 12,
+      "success": {
+        "text": "Gözlerini kapatıp adını fısıldıyorsun: 'Elspeth.' Ağlama kesilir. Soluk bir el fıçıların arasından uzanır ve şarap rafını işaret eder. Odaya hafif bir sıcaklık yayılır; yaralarınız biraz olsun hafifler.",
+        "hp_change": 1,
+        "next_node_id": "mahzen_03_elspeth_fisiltisi"
+      },
+      "fail": {
+        "text": "Cevap veren ses Elspeth'in değil. Ninni tekrar başlar, bu kez kulağının hemen dibinde. Burnundan sıcak bir damla kan süzülürken fıçıların arasından uzun, ince bir gölge doğrulur.",
+        "hp_change": -1,
+        "next_node_id": "mahzen_03b_sahte_ses"
+      }
+    },
+    {
+      "action_id": "bilgin_muhru_coz",
+      "required_class": "Bilgin",
+      "button_text": "Kemerdeki kadim mührü oku ve kan ritüelini uygula",
+      "dice_dc": 14,
+      "success": {
+        "text": "Mühür sözlerini doğru vurguyla okuyup avucundaki tek damla kanı oyuğa bırakıyorsun. Harfler bir an kor gibi parlar, zincir kendiliğinden çözülür ve demir kapı nazikçe aralanır.",
+        "hp_change": 0,
+        "next_node_id": "mahzen_04_kan_muhru"
+      },
+      "fail": {
+        "text": "Bir hece yanlış çıkar. Harfler kırmızıya döner ve kemerden yükselen soğuk bir dalga hepinizi yere serer. Kapının ardında, çok uzun zamandır uyuyan bir şey derin bir nefes alır.",
+        "hp_change": -2,
+        "next_node_id": "mahzen_04b_uyanan_muhur"
+      }
+    },
+    {
+      "action_id": "izci_gizli_gecidi_bul",
+      "required_class": "İzci",
+      "button_text": "Hava akımını izleyip şarap rafının ardındaki geçidi bul",
+      "dice_dc": 11,
+      "success": {
+        "text": "Tozsuz üç şişeyi sırayla çeviriyorsun. Raf tok bir sesle içe döner ve dar, nemli bir tünel açılır. Taze çıplak ayak izleri karanlığın içine doğru devam ediyor.",
+        "hp_change": 0,
+        "next_node_id": "mahzen_05_gizli_gecit"
+      },
+      "fail": {
+        "text": "Yanlış şişeyi çekiyorsun; raf devrilir ve cam kırıkları her yana saçılır. Gürültü mahzende yankılanırken demir kapının ardından bir şey cevap verir: tırmalama sesi.",
+        "hp_change": -1,
+        "next_node_id": "mahzen_02_muhurlu_kapi"
+      }
+    },
+    {
+      "action_id": "fenerleri_yak_ve_ilerle",
+      "required_class": "ANY",
+      "button_text": "Fenerleri sonuna kadar aç ve kapıya koş",
+      "dice_dc": 15,
+      "success": {
+        "text": "Işığı yükseltip koşuyorsunuz. Mantar duvarının yanından geçerken alev tehlikeli biçimde titrer ama tutuşmaz. Nefes nefese demir kapıya ulaşıyorsunuz.",
+        "hp_change": 0,
+        "next_node_id": "mahzen_02_muhurlu_kapi"
+      },
+      "fail": {
+        "text": "Havadaki sporlar fenerin alevine değer değmez mavi bir alev dalgası duvar boyunca koşar. Yağ fıçıları birer birer patlar; mahzen bir fırına döner.",
+        "hp_change": -3,
+        "next_node_id": "mahzen_06_yanan_mahzen"
+      }
+    },
+    {
+      "action_id": "merdivenden_geri_cekil",
+      "required_class": "ANY",
+      "button_text": "Geri çekil ve mutfak kapağını zorla",
+      "dice_dc": 10,
+      "success": {
+        "text": "Omuz omuza verip kapağa yükleniyorsunuz; menteşeler pes eder. Mutfağın sıcak, tanıdık karanlığına çıkıyorsunuz — ama aşağıdan gelen ninni sizi takip ediyor.",
+        "hp_change": 0,
+        "next_node_id": "konak_02_buyuk_salon"
+      },
+      "fail": {
+        "text": "Kapak kıpırdamaz bile. Basamaktan kayan ayağınız sizi taş zemine yuvarlar. Ninni yeniden başlar; artık geri dönüş yok.",
+        "hp_change": -1,
+        "next_node_id": "mahzen_02_muhurlu_kapi"
+      }
+    }
+  ]
+}

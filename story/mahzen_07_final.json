@@ -1,0 +1,229 @@
+[
+  {
+    "node_id": "konak_02_buyuk_salon",
+    "title": "Büyük Salon",
+    "public_text": "Konağın büyük salonu buz gibi. Ay ışığı kırık vitraylardan süzülüp parke üzerinde kan rengi lekeler bırakıyor. Duvarlar boyunca Blackthorne portreleri sıralanmış; en büyüğü şöminenin üstünde: siyahlar içinde, gülümseyen yaşlı bir kadın, Agatha. Ön kapı birkaç adım ötede, aralık; dışarıda sis ve sabaha birkaç saat. Ama ayaklarınızın altından, döşemelerin arasından ninni yükseliyor; artık bir çocuk sesi değil, yetişkin, aç bir kadın sesi. Agatha'nın portresindeki gülümseme siz bakarken genişliyor.",
+    "class_hints": {
+      "Günlükçü": "Portrenin altındaki pirinç plakete bakmadın: 'Agatha Blackthorne — M. ile, 1892.' Plaketin arkasında katlanmış bir not olmalı; Blackthorne'lar sırlarını hep çerçevelerin arkasına saklardı.",
+      "Falcı": "Kartlar iki son gösteriyor: kapıdan çıkanlar şafağı görür ama Elspeth sonsuza dek aşağıda kalır. Aşağı inenlerin şafağı ise belirsiz. Bu seçim gerçekten sizin.",
+      "Medyum": "Elspeth merdivenin başında duruyor ve bir şey söylemiyor. Sadece bekliyor. Gidip gitmemeniz onun için her şey.",
+      "Dedektif": "Ön kapının eşiğinde ıslak, çıplak ayak izleri: dışarıdan içeriye. Bir şey konağa dışarıdan girmiş ve aşağı inmiş. Kapı göründüğü kadar güvenli değil.",
+      "Gizemci": "Konağın kendisi bağlı. Agatha'nın anlaşması evi korurken içindekileri hapsediyor. Kapıdan çıkmak bir bedel ister."
+    },
+    "actions": [
+      {
+        "action_id": "konaktan_kac",
+        "required_class": "ANY",
+        "button_text": "Ön kapıdan sise doğru koş",
+        "dice_dc": 13,
+        "success": {
+          "text": "Kapıdan geçiyorsunuz ve sis sizi yutuyor. Arkanızda konak sessizleşiyor. Şafak söktüğünde hepiniz hayattasınız, ama her Cadılar Bayramı gecesi rüyanızda bir çocuk sesi bir ninni söylüyor ve hiç bitirmiyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "bittersweet", "title": "Kaçış" }
+        },
+        "fail": { "text": "Kapı önünüzde çarpılarak kapanıyor. Döşemeler çöküyor ve hepiniz aşağıya, mumların arasına düşüyorsunuz.", "hp_change": -2, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "gunlukcu_plaket_notu",
+        "required_class": "Günlükçü",
+        "button_text": "Portrenin plaketinin arkasındaki notu bul",
+        "dice_dc": 10,
+        "success": { "text": "Not oradaydı: 'Adı Morvaine. Söyleyeni dinler, söyleyeni korkutamaz.' Notu cebinize koyup mahzene geri iniyorsunuz.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Portre duvardan düşüyor ve tuval yırtılıyor; içinden bir çığlık yükseliyor. Kaçacak yer yok: aşağı inmekten başka.", "hp_change": -1, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "falci_kartlari_ac",
+        "required_class": "Falcı",
+        "button_text": "Kartları parkeye aç ve son sahneyi oku",
+        "dice_dc": 11,
+        "success": { "text": "Son kart Güneş. Aşağı inerseniz bir şans var. Gruba bir cesaret dalgası yayılıyor ve merdivenlere yöneliyorsunuz.", "hp_change": 1, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Kartlar elinden kayıyor ve hepsi ters düşüyor. İçinizde bir soğukluk, yine de aşağı iniyorsunuz.", "hp_change": -1, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "elspeth_icin_geri_in",
+        "required_class": "ANY",
+        "button_text": "Elspeth için mahzene geri in",
+        "dice_dc": 10,
+        "success": { "text": "Elspeth'in elini tutup merdivenleri birlikte iniyorsunuz. Kız ilk kez gülümsüyor.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Merdivenin ortasında basamak kırılıyor. Yaralı ama dimdik, aşağıya varıyorsunuz.", "hp_change": -1, "next_node_id": "mahzen_07_ac_olan" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_07_ac_olan",
+    "title": "Aç Olan",
+    "public_text": "Sunağın önündesiniz. Mumlar bir anda yükseliyor ve aynı anda sönüyor. Karanlıkta bir şey doğruluyor: tavana değecek kadar uzun, siyah dantelden bir kadın silueti. Yüzü Agatha'nın yüzü, ama ağzı kulaklarına kadar yırtık ve içi bomboş. Elspeth'in ninnisini söylüyor, onun sesiyle. Sunağa bağlı gümüş bir zincir, kadının elinden Elspeth'in bileğine uzanıyor; kız yerde, neredeyse saydam. 'Yüz otuz dört yıl,' diyor şey. 'Ve hâlâ açım.' Başını size çeviriyor. 'Biriniz kalırsa diğerleri gidebilir.' Kimse kıpırdamıyor. Seçim anı geldi.",
+    "class_hints": {
+      "Medyum": "Elspeth sana bakıyor ve bu kez korkmadan dudaklarını oynatıyor: 'Adını söyle. Yüzüne. Ben de seninle söyleyeceğim.' İkiniz birlikte söylerseniz sesinin gücü ikiye katlanır.",
+      "Günlükçü": "Tam ad Morvaine. Agatha'nın notunda bir kural var: ad, şeyin yüzüne ve sunağa dokunarak söylenmeli. Elini sunaktan çekme.",
+      "Bilgin": "Sunaktaki yazı bir sürgün formülü: 'Ad + Git.' Adı söyledikten hemen sonra 'Git!' denmezse ad yalnızca onu çağırır, kovmaz. Bunu adı söyleyecek kişiye fısılda.",
+      "Gizemci": "Zincir onun beslenme yolu. Zinciri kırarsan Elspeth özgür kalır ve şey açlığından zayıflar; ama tüm öfkesini sana yöneltir.",
+      "Avcı": "Bu bir ghoul değil, ghoul'ların efendisi. Tuz onu yalnızca durdurur, gümüş yalnızca yaralar. Onu öldüremezsin; ama sunağın etrafına tuz çemberi çekersen bir yüzyıl daha mühürlersin.",
+      "Falcı": "Kartlarda tek bir şans var. Ad bir kez söylenir. Yanlış kişi, yanlış anda söylerse ikinci şans olmaz.",
+      "Dedektif": "Gölgeye saldırmak boşuna: gerçek bedeni sunağın içindeki kemikler. Sunağın taş kapağı bir kenardan gevşek.",
+      "Muhafız": "'Biriniz kalırsa' derken yalan söylemiyor. Bir anlaşma teklif ediyor. Kabul edersen diğerleri gerçekten çıkar. Bunu sadece sen biliyorsun.",
+      "Şifacı": "Grubun canı azalıyor; bu odanın havası bile emiyor. Uzun bir savaşı kaldıramazsınız: tek, kesin bir hamle gerek."
+    },
+    "actions": [
+      {
+        "action_id": "medyum_adini_soyle",
+        "required_class": "Medyum",
+        "button_text": "Elspeth'le birlikte adını yüzüne söyle",
+        "dice_dc": 13,
+        "success": {
+          "text": "'Morvaine,' diyorsunuz, iki ses tek ağızdan, 've git.' Siyah dantel bir kül bulutuna dönüşüyor. Zincir kırılıyor. Elspeth ayağa kalkıyor, size teşekkür ediyor ve ilk kez, yüz otuz dört yıl sonra, ninnisinin sonunu söylüyor. Şafak, kırık vitraylardan mahzene kadar iniyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "victory", "title": "Ninni Bitti" }
+        },
+        "fail": { "text": "Ad boğazında takılıyor. Şey gülüyor, Elspeth'in sesiyle, ve zincir senin bileğine de dolanıyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      },
+      {
+        "action_id": "gunlukcu_adini_soyle",
+        "required_class": "Günlükçü",
+        "button_text": "Sunağa dokun ve adı defterdeki gibi oku",
+        "dice_dc": 13,
+        "success": {
+          "text": "Elin sunakta, sesin titremeden okuyorsun: 'Morvaine. Git.' Yazı satır satır silinir gibi şey de siliniyor. Ravenwood'un kayıtlarına bu gece yeni bir satır ekliyorsun: Elspeth Blackthorne, 31 Ekim, eve döndü.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "victory", "title": "Son Satır" }
+        },
+        "fail": { "text": "Elin sunaktan kayıyor ve ad boşluğa söyleniyor. Şey, adını duyunca daha da büyüyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      },
+      {
+        "action_id": "gizemci_zinciri_kir",
+        "required_class": "Gizemci",
+        "button_text": "Elspeth'i besleyen zinciri kır",
+        "dice_dc": 14,
+        "success": {
+          "text": "Zincir bir buz gibi parçalanıyor. Elspeth özgür; şey ise açlıktan büzülüyor, küçülüyor, en sonunda sunağın çatlaklarına sızıp kayboluyor. Ölmedi, ama artık yemeği yok. Elspeth sizinle birlikte yukarı çıkıyor ve şafakla birlikte gülümseyerek soluyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "victory", "title": "Özgür Ruh" }
+        },
+        "fail": { "text": "Zincir dayanıyor ve şeyin bütün öfkesi sana dönüyor. Grup seni tutup geri çekiyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      },
+      {
+        "action_id": "avci_tuz_cemberi",
+        "required_class": "Avcı",
+        "button_text": "Sunağın etrafına tuz ve gümüş çemberi çek",
+        "dice_dc": 13,
+        "success": {
+          "text": "Çember kapanıyor ve şey sunağın içine geri çekiliyor, çığlık atarak. Mühür yeniden mühürlendi; bir yüzyıl daha. Ama zincir hâlâ orada ve Elspeth onun ucunda. Merdivenleri çıkarken arkanızdan bir çocuk sesi 'Teşekkürler' diyor; hüzünlü.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "bittersweet", "title": "Bir Yüzyıl Daha" }
+        },
+        "fail": { "text": "Çemberin son avucu yere değmeden bir pençe tuzu dağıtıyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      },
+      {
+        "action_id": "dedektif_kemikleri_bul",
+        "required_class": "Dedektif",
+        "button_text": "Sunak kapağını kaydır, gerçek bedeni ortaya çıkar",
+        "dice_dc": 14,
+        "success": {
+          "text": "Taş kapak kayıyor: içeride siyah dantele sarılı kemikler. Fenerin alevini kemiklere değdiriyorsun. Gölge, bedeniyle birlikte yanıyor. Elspeth'in zinciri kopuyor ve küçük kız alevlerin ışığında, ilk kez, sıcak görünüyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "victory", "title": "Kül ve Şafak" }
+        },
+        "fail": { "text": "Kapak sıkışıyor. Şey ne yaptığını anlıyor ve bütün ağırlığıyla üstünüze çöküyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      },
+      {
+        "action_id": "hep_birlikte_adini_haykir",
+        "required_class": "ANY",
+        "button_text": "Hep birlikte adını haykırın: \"Morvaine, git!\"",
+        "dice_dc": 14,
+        "success": {
+          "text": "Sesleriniz tek bir çan gibi yankılanıyor. Şey sallanıyor, dağılıyor, ve son kez Elspeth'in sesiyle değil kendi sesiyle, çok eski ve çok yorgun bir sesle, iç çekiyor. Sonra sessizlik. Elspeth zincirsiz ayakta duruyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "victory", "title": "Birlikte" }
+        },
+        "fail": { "text": "Sesleriniz birbirine karışıyor, ad dağılıyor. Şey gülüyor ve karanlık daralıyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      },
+      {
+        "action_id": "anlasmayi_kabul_et",
+        "required_class": "Muhafız",
+        "button_text": "Teklifi kabul et: sen kal, diğerleri gitsin",
+        "dice_dc": 10,
+        "success": {
+          "text": "Öne çıkıyorsun. 'Ben kalırım.' Zincir Elspeth'in bileğinden çözülüp seninkine geçiyor. Diğerleri Elspeth'i kucaklayıp merdivenlerden çıkıyor. Şafak söktüğünde konakta bir muhafız nöbet tutuyor; ve bir gün, biri onun adını hatırlayacak.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "bittersweet", "title": "Muhafızın Yemini" }
+        },
+        "fail": { "text": "Şey güldü: 'Yalancı.' Teklif hiç gerçek değildi. Zincir hepinize uzanıyor.", "hp_change": -3, "next_node_id": "mahzen_08_son_direnis" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_08_son_direnis",
+    "title": "Son Direniş",
+    "public_text": "Mumların hepsi söndü. Tek ışık, sunağın çatlaklarından sızan soğuk mavi bir parıltı. Zincir zeminde yılan gibi kıvrılıyor, ayak bileklerinizi arıyor. Nefesiniz buhar oluyor. Şey artık şekil değiştirmeyi bıraktı: sadece bir ağız, mahzenin tavanını kaplayan dev, karanlık bir ağız. Elspeth, onu kaybetmek üzere olduğunuz yerde, size elini uzatıyor. Bir şansınız daha var. Belki de son şansınız.",
+    "class_hints": {
+      "Şifacı": "Kalan tüm merhemleri ve son şişeyi bir kerede kullanabilirsin. Grubu ayakta tutar, ama bir sonraki darbeye karşı hiçbir şeyiniz kalmaz.",
+      "Medyum": "Elspeth hâlâ adı biliyor. Elini tutarsan ad senin ağzından onun sesiyle çıkar.",
+      "Muhafız": "Ağız sizin üstünüze kapanmak üzere. Kalkanını kaldırırsan bir saniye kazandırırsın. O saniyede biri adı söyleyebilir.",
+      "Falcı": "Son kart açıldı: Ölüm. Ama Ölüm kartı son değil, değişim demek. Hepiniz birlikte bir şey yaparsanız."
+    },
+    "actions": [
+      {
+        "action_id": "son_kez_haykir",
+        "required_class": "ANY",
+        "button_text": "Elspeth'in elini tutun ve son kez adını haykırın",
+        "dice_dc": 12,
+        "success": {
+          "text": "Elspeth'in eli sıcak. Ad sesinizden çıkıyor ve bu kez şey dayanamıyor. Ağız kapanmadan, ses kesilmeden önce çöküyor. Merdivenleri sürünerek çıkıyorsunuz; yaralı, bitkin, ama hayatta. Ve yanınızda, bir çocuk, ilk kez bir şafak görüyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": { "type": "bittersweet", "title": "Bedeli Ödendi" }
+        },
+        "fail": {
+          "text": "Ad kaybolup gidiyor. Ağız kapanıyor. Ertesi sabah Ravenwood köylüleri Blackthorne Konağı'nın mutfak kapağını kapalı buluyor. Aşağıdan bir ninni yükseliyor; artık birden fazla sesle.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": { "type": "defeat", "title": "Aç Olan Doydu" }
+        }
+      },
+      {
+        "action_id": "sifaci_son_sise",
+        "required_class": "Şifacı",
+        "button_text": "Son şişeyi grubun üzerine dök ve kaçın",
+        "dice_dc": 12,
+        "success": {
+          "text": "Şişe kırılıyor ve gümüşi bir buhar sizi sarıyor; zincir size değemiyor. Merdivenlere koşuyorsunuz. Hepiniz kurtuluyorsunuz; ama arkanızda kalan Elspeth'in ninnisi daha da kederli.",
+          "hp_change": 2,
+          "next_node_id": null,
+          "ending": { "type": "bittersweet", "title": "Gümüş Buhar" }
+        },
+        "fail": {
+          "text": "Şişe elinde patlıyor. Zincirler hepinizi buluyor ve mahzen sonsuza dek susuyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": { "type": "defeat", "title": "Sessiz Mahzen" }
+        }
+      },
+      {
+        "action_id": "muhafiz_bir_saniye",
+        "required_class": "Muhafız",
+        "button_text": "Kalkanı kaldır ve gruba bir saniye kazandır",
+        "dice_dc": 11,
+        "success": {
+          "text": "Ağız kalkanına kapanıyor ve bir saniye duruyor. O saniyede grup adı haykırıyor. Şey dağılıyor; kalkanın ise ikiye bölünmüş. Hayattasın. Hepiniz hayattasınız.",
+          "hp_change": -2,
+          "next_node_id": null,
+          "ending": { "type": "victory", "title": "Bir Saniye" }
+        },
+        "fail": {
+          "text": "Kalkan dayanmıyor. Karanlık hepinizi yutuyor ve ninni devam ediyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": { "type": "defeat", "title": "Aç Olan Doydu" }
+        }
+      }
+    ]
+  }
+]

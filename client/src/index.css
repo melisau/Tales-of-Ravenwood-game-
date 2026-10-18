@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Tailwind'in shared/ klasöründeki sınıf adlarını da taraması için */
+@source "../../shared";
+
+html,
+body {
+  background: #0d0712;
+  color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}

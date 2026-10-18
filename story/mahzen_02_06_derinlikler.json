@@ -1,0 +1,345 @@
+[
+  {
+    "node_id": "mahzen_02_muhurlu_kapi",
+    "title": "Mühürlü Kapı",
+    "public_text": "Demir kapının önünde duruyorsunuz. Paslı zincir iki kez dolanmış, ama asma kilit yeni yağlanmış gibi parlıyor. Kemerin üstündeki solmuş harfler fener ışığında kıpırdıyor gibi. Kapının ardından ritmik bir ses geliyor: tırmalama, durma, tırmalama. Sanki bir şey sabırla, sırasının gelmesini bekliyor. Tozun içinde, kapının dibinde, küçük bir el izi var; parmakları içeriyi değil, dışarıyı gösteriyor. Fıçıların arasından gelen ninni bir kez daha başlıyor ve tam en güzel yerinde kesiliyor.",
+    "class_hints": {
+      "Tamirci": "Kilit eski bir Blackthorne üç-pimli kilidi. Yağ taze, ama yağın damladığı yön tuhaf: kilidi biri İÇERİDEN açıp kapatıyor. Mandal bu taraftan ince bir telle kaldırılabilir; zinciri kesmeye gerek yok.",
+      "Avcı": "Tırmalamanın ritmi bir ghoul'un volta atması. Saldırmıyor, bekliyor; yani içeride onu doyuran ya da bağlayan başka bir şey var. Kapı eşiğine çekilecek bir tuz çizgisi onu durdurur.",
+      "Dedektif": "Taze yağ damlaları sağ duvardaki gevşek bir tuğlaya doğru gidiyor. Tuğlanın etrafındaki harç kırık ve temiz: biri onu sık sık yerinden çıkarıyor. Arkasında büyük ihtimalle bir anahtar var.",
+      "Muhafız": "Menteşeler solda ve paslı; kapı içeri doğru açılıyor. Zorla açılırsa geri kapanmaz. İçerideki şey dışarı çıkmak isterse kapıyı omzunla tutabilecek tek kişi sensin.",
+      "Medyum": "Elspeth kapının hemen yanında, başını iki yana sallıyor. Kapıdan korkmuyor; kapının ardındaki tırmalamadan korkuyor. Dudakları tek bir kelime söylüyor: 'Dinle.'",
+      "Bilgin": "Kemerdeki mühür hâlâ uykuda. Kilit açılırsa mühür bozulmaz; ama kapı zorla kırılırsa mühür 'zorla açılmış' sayılır ve uyanır."
+    },
+    "actions": [
+      {
+        "action_id": "tamirci_mandali_kaldir",
+        "required_class": "Tamirci",
+        "button_text": "İnce bir telle mandalı içeriden kaldır",
+        "dice_dc": 12,
+        "success": { "text": "Tel mandalın altına kayar, hafif bir klik. Zincir gevşer, kapı ses çıkarmadan aralanır. Tırmalama aniden durur; içerisi mum kokuyor.", "hp_change": 0, "next_node_id": "mahzen_04_kan_muhru" },
+        "fail": { "text": "Tel kırılır ve kilidin içine düşer. Kapının ardındaki şey sesi duyar; tırmalama bir anda öfkeli bir vuruşa dönüşür ve kemerdeki harfler kızıllaşır.", "hp_change": -1, "next_node_id": "mahzen_04b_uyanan_muhur" }
+      },
+      {
+        "action_id": "dedektif_anahtari_bul",
+        "required_class": "Dedektif",
+        "button_text": "Gevşek tuğlanın arkasındaki anahtarı bul",
+        "dice_dc": 13,
+        "success": { "text": "Tuğla elinde kayar; arkasında kemik saplı, minicik bir anahtar. Kilit tek turda açılır. Anahtarın sapında kazınmış bir harf var: 'M'.", "hp_change": 0, "next_node_id": "mahzen_04_kan_muhru" },
+        "fail": { "text": "Yanlış tuğla. Duvardan kopan taşın ardındaki boşluktan soğuk bir el uzanıp bileğini kavrar. Kurtulduğunda bileğinde morarmış parmak izleri kalır.", "hp_change": -1, "next_node_id": "mahzen_03b_sahte_ses" }
+      },
+      {
+        "action_id": "avci_tuz_cizgisi",
+        "required_class": "Avcı",
+        "button_text": "Eşiğe tuz çek, sonra kapıyı aç",
+        "dice_dc": 11,
+        "success": { "text": "Tuz çizgisi tamamlanır tamamlanmaz kapının ardındaki şey uzaklaşır. Zinciri sökerken ellerin titremiyor: hazırsınız. Kapı, mahzenin en derin noktasına açılıyor.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Kese yırtılır, tuz yere dağılır. Çizgi kapanmadan kapı içeriden itilir ve bir pençe kolunu sıyırır.", "hp_change": -2, "next_node_id": "mahzen_03b_sahte_ses" }
+      },
+      {
+        "action_id": "kapiyi_dinle",
+        "required_class": "ANY",
+        "button_text": "Kulağını kapıya daya ve dinle",
+        "dice_dc": 10,
+        "success": { "text": "Tırmalamanın altından ince bir ses duyuyorsun, bir çocuk sesi: 'Rafın arkası... büyükannem oradan girerdi.' Ses kesilir; soğuk bir nefes enseni okşar.", "hp_change": 0, "next_node_id": "mahzen_03_elspeth_fisiltisi" },
+        "fail": { "text": "Ninniyi duyuyorsun, çok yakından. Ona cevap vermemek için dudağını ısırıyorsun ama geç kaldın: gölgeler fıçıların arasından kopup geliyor.", "hp_change": -1, "next_node_id": "mahzen_03b_sahte_ses" }
+      },
+      {
+        "action_id": "kapiyi_zorla",
+        "required_class": "ANY",
+        "button_text": "Zinciri kır, kapıyı omuzla",
+        "dice_dc": 14,
+        "success": { "text": "Paslı halka ikinci darbede kopar ve kapı içeri savrulur. Mühür bir an kızarır ama sönüp gider; şanslısınız.", "hp_change": 0, "next_node_id": "mahzen_04_kan_muhru" },
+        "fail": { "text": "Zincir dayanır, omzunuz dayanmaz. Üçüncü darbede kapı açılır ama kemerdeki mühür bir çığlık gibi parlar.", "hp_change": -2, "next_node_id": "mahzen_04b_uyanan_muhur" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_03_elspeth_fisiltisi",
+    "title": "Elspeth'in Fısıltısı",
+    "public_text": "Fıçıların arasında hava ısınıyor, garip biçimde. Solgun bir ışık yoğunlaşıyor ve küçük bir kız beliriyor: gece elbisesi içinde, yalınayak, saçları ıslak. Elspeth Blackthorne. Size bakıyor ama gözleri sizin arkanızdaki bir şeye kayıp duruyor. Bileğinde, neredeyse görünmez, gümüşi bir iplik var; iplik şarap rafının ardına doğru uzanıyor ve gergin. 'Büyükannem onunla bir anlaşma yaptı,' diyor. 'Beni verdi. Karşılığında konak hiç yanmadı, hiç yıkılmadı.' Sonra fısıldıyor: 'O sadece adını bilen birinden korkar.'",
+    "class_hints": {
+      "Medyum": "Elspeth adı biliyor ama söylemekten korkuyor; söylerse ip onu geri çekecek. Ona yalnızca ilk heceyi sorarsan söyleyebilir: 'Mor...' Tam adı bir yerlerde yazılı olmalı.",
+      "Günlükçü": "Kayıtlarda Agatha Blackthorne'un 1892 tarihli bir mektubu geçiyor: 'M. ile anlaşma imzalandı; bedel en küçük olanın sesi.' Elspeth'in ninnisi... onun sesi. Ninniyi söyleyen şey sesini çalmış.",
+      "Falcı": "Kartlar Kule'yi ters gösteriyor: adı yanlış yerde söylemek boşunadır. Ad, yalnızca onun sunağının önünde, onun yüzüne söylendiğinde işe yarar. Tek bir şansınız olacak.",
+      "Şifacı": "Elspeth'e yaklaştıkça parmak uçların uyuşuyor; o, varlığını sürdürmek için çevresindeki sıcaklığı çekiyor. Ona biraz sıcaklık verebilirsin, ama bedeli kendi canından olur.",
+      "Gizemci": "Bileğindeki gümüş iplik bir bağlama büyüsü. Kesilirse Elspeth serbest kalır ve rafın ardındaki şey en önemli yiyeceğini kaybeder; ama ipin kesildiğini anında hisseder.",
+      "İzci": "Elspeth'in ayak izleri yok; ama ipliğin gerildiği yönden hava akıyor. Rafın arkasındaki geçit tam orada."
+    },
+    "actions": [
+      {
+        "action_id": "medyum_adin_ilk_hecesi",
+        "required_class": "Medyum",
+        "button_text": "Elspeth'e adın ilk hecesini sor",
+        "dice_dc": 13,
+        "success": { "text": "Elspeth gözlerini yumup fısıldar: 'Mor...' İp gerilir, kız titrer ama kaybolmaz. Teşekkür eder gibi elinizi sıkar; avucunuza bir sıcaklık yayılır. Sonra rafı gösterir.", "hp_change": 1, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Soruyu sorduğun anda ip bir kırbaç gibi gerilir ve Elspeth karanlığa çekilir. Onun yerinde, başka bir şey gülümsüyor.", "hp_change": -1, "next_node_id": "mahzen_03b_sahte_ses" }
+      },
+      {
+        "action_id": "gizemci_ipi_kes",
+        "required_class": "Gizemci",
+        "button_text": "Elspeth'in bileğindeki bağlama ipini kes",
+        "dice_dc": 12,
+        "success": { "text": "Doğru kelimeyle ip bir çiy damlası gibi çözülür. Elspeth ilk kez derin bir nefes alır. Mahzenin dibinden aç bir uluma yükseliyor; artık sizi bekliyor, ama zayıf.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "İp kesilmez, size bağlanır. Bir an boyunca o şeyin açlığını kendi midende hissedersin. Kemerdeki mühür sarsılır.", "hp_change": -2, "next_node_id": "mahzen_04b_uyanan_muhur" }
+      },
+      {
+        "action_id": "sifaci_elspethi_isit",
+        "required_class": "Şifacı",
+        "button_text": "Elspeth'i ısıtmak için ona kendi sıcaklığından ver",
+        "dice_dc": 11,
+        "success": { "text": "Ellerini onun küçük ellerinin üstüne koyuyorsun. Kızın yüzüne renk gelir; karşılığında sana ve gruba bir huzur yayılır. 'Arkada,' diyor, 'rafın arkasında.'", "hp_change": 2, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Sıcaklığın akmıyor, emiliyor. Dizlerin bükülüyor. Elspeth özür diler gibi geri çekilir ve rafı işaret eder.", "hp_change": -1, "next_node_id": "mahzen_05_gizli_gecit" }
+      },
+      {
+        "action_id": "elspethi_takip_et",
+        "required_class": "ANY",
+        "button_text": "Elspeth'in işaret ettiği yere git",
+        "dice_dc": 10,
+        "success": { "text": "Elspeth'in ışığını izliyorsunuz. Raf bir kapı gibi dönüyor ve önünüzde dar, nemli bir tünel açılıyor.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Işığı kaybediyorsunuz. Karanlıkta yanınızda yürüyen küçük figürün Elspeth olmadığını fark ettiğinizde, o çoktan dişlerini göstermiştir.", "hp_change": -1, "next_node_id": "mahzen_03b_sahte_ses" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_03b_sahte_ses",
+    "title": "Sahte Ses",
+    "public_text": "Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.",
+    "class_hints": {
+      "Avcı": "Ghoul'lar sesle avlanır; görmezler. Kımıldamazsanız sizi bulamaz. Gümüş ya da tuz onu yakar. Boğazındaki yumuşak nokta tek darbede düşürmek için tek şansın.",
+      "Muhafız": "Fıçıların arasındaki koridor tek kişilik. Orayı tutarsan ghoul grubun yanına geçemez; ama tüm darbeleri sen alırsın.",
+      "Şifacı": "Pençelerinde kara bir çürüklük var. Sıyrılan kişiyi hemen temizlemezsen yara kararır. Çantandaki sirke ve tuz yeterli.",
+      "Medyum": "Gerçek Elspeth solda, fıçıların tepesinde, ağlayarak sizi uyarıyor: 'Konuşmayın! Sesinizi duyarsa sesinizi de alır!'",
+      "Dedektif": "Ghoul'un durduğu yerin tam üstünde, ilk girişte gördüğün sarkık kiriş var. Tel hâlâ gergin. Biri teli koparırsa kiriş tam üstüne düşer.",
+      "Simyacı": "Yer, ghoul'un ayaklarının altında yağla ıslak. Bir kıvılcım onu tutuşturur; ama alev fıçılara da sıçrar."
+    },
+    "actions": [
+      {
+        "action_id": "muhafiz_koridoru_tut",
+        "required_class": "Muhafız",
+        "button_text": "Dar koridoru tek başına tut",
+        "dice_dc": 12,
+        "success": { "text": "Kalkanını iki fıçının arasına sıkıştırıp bekliyorsun. Ghoul üç kez çarpar, üçünde de geri savrulur ve sonunda karanlığa çekilir. Grup demir kapıya ulaşır.", "hp_change": 0, "next_node_id": "mahzen_02_muhurlu_kapi" },
+        "fail": { "text": "Koridoru tutuyorsun ama pençeler kalkanın kenarından geçiyor. Ghoul çekildiğinde kolun kan içinde; grup yine de kapıya ulaşır.", "hp_change": -2, "next_node_id": "mahzen_02_muhurlu_kapi" }
+      },
+      {
+        "action_id": "avci_bogazina_vur",
+        "required_class": "Avcı",
+        "button_text": "Sessizce yaklaş ve boğazına gümüşle vur",
+        "dice_dc": 13,
+        "success": { "text": "Nefesini tutup üç adım atıyorsun; dördüncüde gümüş bıçak boğazına gömülür. Ghoul Elspeth'in sesiyle değil, kendi gerçek sesiyle, korkunç bir hırıltıyla yığılır. Arkasında, rafın ardında bir geçit görünüyor.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Bir kemik ayağının altında çatırdar. Ghoul sana döner; pençesi yanından geçerken fenerini devirir. Yağ alev alır.", "hp_change": -2, "next_node_id": "mahzen_06_yanan_mahzen" }
+      },
+      {
+        "action_id": "dedektif_kirisi_dusur",
+        "required_class": "Dedektif",
+        "button_text": "Teli kopar, kirişi ghoul'un üstüne düşür",
+        "dice_dc": 12,
+        "success": { "text": "Tel bir tını gibi kopar. Kiriş tam hesapladığın yere iner ve ghoul taşların altında kalır. Toz dağıldığında ninni de susmuştur.", "hp_change": 0, "next_node_id": "mahzen_02_muhurlu_kapi" },
+        "fail": { "text": "Kiriş düşer ama ghoul son anda kenara sıçrar. Taş parçaları hepinize yağar.", "hp_change": -2, "next_node_id": "mahzen_02_muhurlu_kapi" }
+      },
+      {
+        "action_id": "kimildamadan_bekle",
+        "required_class": "ANY",
+        "button_text": "Herkes donsun, nefesini tutsun",
+        "dice_dc": 12,
+        "success": { "text": "Kimse kıpırdamıyor. Ghoul burnunu yüzlerinize bir karış yaklaştırıyor... ve geçip gidiyor. Gittiği yönde, rafın ardında bir geçit açık kalmış.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Birinizin dişleri takırdıyor. Ghoul sesin geldiği yöne atılır; kaçışma, çığlıklar ve sonunda demir kapının önünde soluk soluğa duruyorsunuz.", "hp_change": -2, "next_node_id": "mahzen_02_muhurlu_kapi" }
+      },
+      {
+        "action_id": "kapiya_kos",
+        "required_class": "ANY",
+        "button_text": "Dağılın ve demir kapıya koşun",
+        "dice_dc": 11,
+        "success": { "text": "Herkes farklı yöne koşuyor; ghoul hangisinin peşine düşeceğini bilemiyor. Demir kapıda buluşuyorsunuz.", "hp_change": 0, "next_node_id": "mahzen_02_muhurlu_kapi" },
+        "fail": { "text": "Koşarken biriniz tökezler ve pençe sırtını bulur. Kapıya ulaşırsınız ama ağır bedelle.", "hp_change": -2, "next_node_id": "mahzen_02_muhurlu_kapi" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_04_kan_muhru",
+    "title": "Kan Mührünün Ardında",
+    "public_text": "Kapının ardında küçük bir şapel var. Yüzlerce eriyip donmuş mum, ortada siyah taştan bir sunak ve sunağın önünde, bir çocuk boyunda, kapağı aralık bir tabut. Duvarlarda Blackthorne ailesinin portreleri; hepsinin gözleri kazınmış. Sunağın üzerinde deri ciltli kalın bir defter duruyor, yanında kurumuş kan lekeli bir bıçak. Mumların bazıları kendiliğinden yanıyor. Burada hava ağır ve tatlı; çürümüş bal gibi. Şapelin karşı duvarında bir başka geçit karanlığa açılıyor ve oradan derin, yavaş bir nefes sesi geliyor.",
+    "class_hints": {
+      "Günlükçü": "Bu defter Agatha Blackthorne'un. Son sayfaya kadar gidersen, titrek bir el yazısıyla tam adı bulacaksın. Ama bazı sayfalar yırtılmış; dikkatli oku, yanlış adı söylemek onu güçlendirir.",
+      "Bilgin": "Sunağın kenarına kazınmış ad bir harfi kazınarak bozulmuş: M O R _ A I N E. Eksik harf, çağırma dilinde 'açlık' anlamına gelen işaretin ilk sesi: V. Ad: Morvaine.",
+      "Dedektif": "Tabut boş. Kapağın iç yüzünde küçük tırnak izleri var, eski ve derin. Elspeth buraya canlı konmuş. Tabutun dibinde bir oyuncak bebek; bebeğin elinde katlanmış bir kâğıt.",
+      "Gizemci": "Sunak, şeyi bu dünyaya bağlayan çapa. Sunağı kırarsan onu zayıflatırsın; ama kırılan çapa onu öfkelendirir ve anında uyandırır.",
+      "Şifacı": "Raflarda Agatha'nın şişeleri var: tentürdiyot, laudanum, tuzlu merhem. Çoğu bozulmuş ama işe yarayanları seçebilirsin.",
+      "Falcı": "Mum alevleri hep aynı yöne eğiliyor: karşı duvardaki geçide. Kartların söylediği tek şey: 'Son sahne orada.'"
+    },
+    "actions": [
+      {
+        "action_id": "gunlukcu_defteri_oku",
+        "required_class": "Günlükçü",
+        "button_text": "Agatha'nın defterinin son sayfalarını oku",
+        "dice_dc": 11,
+        "success": { "text": "Son sayfada, mürekkebi gözyaşıyla dağılmış bir satır: 'Morvaine, aç olan, beni affet.' Adı yüksek sesle söylemiyorsun; sadece hafızana kazıyorsun. Karşı geçitteki nefes bir anlığına duruyor.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Sayfalar elinde ufalanıyor. Yarım bir isim okuyorsun ve istemsizce mırıldanıyorsun. Mumlar söner, karşı geçitten bir şey cevap verir.", "hp_change": -1, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "bilgin_eksik_harfi_coz",
+        "required_class": "Bilgin",
+        "button_text": "Sunaktaki kazınmış adın eksik harfini çöz",
+        "dice_dc": 13,
+        "success": { "text": "Harfin şeklini parmaklarınla takip ediyorsun ve ad zihninde tamamlanıyor. Söylemiyorsun. Ama biliyorsun.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Yanlış harfi hayal ettiğin anda sunak sıcaklaşıyor. Kemerdeki mühür, kapının ardında yeniden çığlık atıyor.", "hp_change": -2, "next_node_id": "mahzen_04b_uyanan_muhur" }
+      },
+      {
+        "action_id": "sifaci_ilaclari_topla",
+        "required_class": "Şifacı",
+        "button_text": "Agatha'nın raflarından işe yarar ilaçları topla",
+        "dice_dc": 10,
+        "success": { "text": "Bozulmamış üç şişe ve bir kavanoz merhem buluyorsun. Yaraları sararken grubun nefesi düzeliyor. Hazırsınız.", "hp_change": 2, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Açtığın ilk şişeden yeşil bir duman yükseliyor. Öksürerek karşı geçide yöneliyorsunuz.", "hp_change": -1, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "tabutu_incele",
+        "required_class": "ANY",
+        "button_text": "Tabuttaki bebeğin elindeki kâğıdı al",
+        "dice_dc": 12,
+        "success": { "text": "Kâğıt bir çocuk çizimi: siyah bir kadın, kocaman bir ağız ve altında yamuk harflerle bir isim, 'MORVAİNE'. Elspeth onu yıllar önce tanımış.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Bebeğin başı döner ve porselen gözleri sana dikilir. Elini çektiğinde parmaklarında küçük ısırık izleri var.", "hp_change": -2, "next_node_id": "mahzen_07_ac_olan" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_04b_uyanan_muhur",
+    "title": "Uyanan Mühür",
+    "public_text": "Kemerdeki harfler artık yanmıyor, kanıyor. Mahzenin tavanından toz ve küçük taşlar yağıyor; zemin derin bir yerden gelen bir nabızla titriyor. Fenerlerinizin ışığı kısalıyor, sanki karanlık onu yiyor. Duvarlardaki gölgeler sizinle aynı anda hareket etmiyor; bir saniye geriden geliyorlar, sonra bir saniye önden. Fıçılardan biri patlıyor ve içinden kara bir sıvı değil, fısıltılar akıyor. Bir şey uyanıyor. Ve uyanan şey açlık hissediyor.",
+    "class_hints": {
+      "Gizemci": "Mühür tamamen açılmadı; yarı uyanık. Doğru karşı-sözü söylersen tekrar uyutabilirsin, ama mühür bunu sana ödetir. Başarısız olursan onu tamamen uyandırırsın.",
+      "Falcı": "Kartlarda bir yol görünüyor: rafın arkası. Gölgelerin geç kaldığı yöne gidin, önden gittiği yöne değil. Kehanet açık; uyup uymamak size kalmış.",
+      "Muhafız": "Tavandaki en büyük taş çatlıyor; düşerse birini ezer. Grubu kendi altına toplayıp kalkanı kaldırırsan düşen taşları sen karşılarsın.",
+      "Medyum": "Elspeth dizlerinin üstüne çökmüş, kulaklarını kapatmış. Uyanan şey önce onu çağırıyor; Elspeth gittikçe solgunlaşıyor.",
+      "Şifacı": "Titreşim kulaklardan kan getirmeye başladı. Bu sahnede uzun kalırsanız hepiniz yara alırsınız."
+    },
+    "actions": [
+      {
+        "action_id": "gizemci_muhru_uyut",
+        "required_class": "Gizemci",
+        "button_text": "Karşı-sözü söyle ve mührü yeniden uyut",
+        "dice_dc": 13,
+        "success": { "text": "Sözler ağzından buz gibi dökülüyor. Kanayan harfler yavaşça kararıyor, nabız duruyor. Kapı kendiliğinden aralanıyor; içerisi artık sessiz.", "hp_change": 0, "next_node_id": "mahzen_04_kan_muhru" },
+        "fail": { "text": "Son hecede sesin kırılıyor. Mühür bir cam gibi çatlar ve karanlık kapıdan değil, her yerden üstünüze akar. Sizi bir sonraki odaya, onun önüne sürükler.", "hp_change": -2, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "falci_kehanete_uy",
+        "required_class": "Falcı",
+        "button_text": "Kehaneti izle: gölgelerin geç kaldığı yöne git",
+        "dice_dc": 12,
+        "success": { "text": "Gözlerini gölgelerden ayırmadan ilerliyorsun ve grup peşinden geliyor. Raf, siz dokunmadan dönüyor; gizli tünel nefes alıyor gibi.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Kartları yanlış okuyorsun; gölgeler önden gidiyor. Bir fener devriliyor ve yağ tutuşuyor.", "hp_change": -2, "next_node_id": "mahzen_06_yanan_mahzen" }
+      },
+      {
+        "action_id": "muhafiz_grubu_siper_et",
+        "required_class": "Muhafız",
+        "button_text": "Grubu kalkanının altına topla",
+        "dice_dc": 11,
+        "success": { "text": "Taş tam kalkanının üstüne iniyor; kolun uyuşuyor ama kimse yaralanmıyor. Sarsıntı dindiğinde kapı aralık kalmış.", "hp_change": 0, "next_node_id": "mahzen_04_kan_muhru" },
+        "fail": { "text": "Kalkan taşı karşılıyor ama yanından geçen parçalar hepinizi buluyor. Toz içinde kapıdan geçiyorsunuz.", "hp_change": -2, "next_node_id": "mahzen_04_kan_muhru" }
+      },
+      {
+        "action_id": "rafa_dogru_kac",
+        "required_class": "ANY",
+        "button_text": "Şarap rafına koşun ve arkasına saklanın",
+        "dice_dc": 13,
+        "success": { "text": "Rafın ardında bir boşluk var; biri sıkışarak, biri sürünerek, hepiniz içeri giriyorsunuz. Arkanızda mahzen kükrüyor.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Raf yerinden oynamıyor. Arkanızda açılan karanlık sizi yutar; gözlerinizi açtığınızda başka bir odadasınız ve karşınızda o var.", "hp_change": -2, "next_node_id": "mahzen_07_ac_olan" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_05_gizli_gecit",
+    "title": "Gizli Geçit",
+    "public_text": "Tünel dar, alçak ve nemli; duvarlarından soluk yeşil bir ışık sızıyor. Yerde eski oyuncaklar var: bir tahta at, kafası olmayan bir bebek, paslanmış bir zil. Duvara oyulmuş nişlerde küçük kemikler. Biraz ileride tünel ikiye ayrılıyor: soldan taze, serin bir hava geliyor; sağdan mum kokusu ve o yavaş, derin nefes. Ayrımın tam ortasında, bir taşın altına sıkıştırılmış yırtık bir defter sayfası rüzgârda kıpırdıyor. Duvarda paslı bir zincir ve makaradan oluşan eski bir düzenek tavana doğru uzanıyor.",
+    "class_hints": {
+      "İzci": "Soldaki hava bahçeden geliyor; o yol konağın arka avlusuna çıkıyor. Sağdaki yol sunağa, onun arkasından çıkıyor. Arkasından girerseniz sizi görmeden yanına kadar varabilirsiniz.",
+      "Günlükçü": "Taşın altındaki sayfa Agatha'nın defterinden yırtılmış. Sayfanın köşesinde ad yazıyor; ama yarısı ıslanmış. Dikkatli açarsan okunabilir.",
+      "Tamirci": "Duvardaki zincir ve makara eski bir yük asansörü; doğrudan konağın mutfağına çıkıyor. Biraz yağ ve doğru dişliyle çalışır. Grubu yukarı çıkarabilir.",
+      "Avcı": "Nişlerdeki kemikler kemirilmiş. Burası bir ghoul yuvası, ama yuva boş: sahibi az önce çıkmış ve dönecek.",
+      "Simyacı": "Duvardaki yeşil ışık zararsız bir mantar. Fenerleri söndürüp bu mantarla ilerlerseniz alevin yarattığı tehlikeden kurtulursunuz.",
+      "Medyum": "Sağ koridordan yüzlerce çocuk fısıltısı geliyor; hepsi aynı ninniyi, hepsi biraz falsolu. Sol koridor sessiz."
+    },
+    "actions": [
+      {
+        "action_id": "izci_arka_yolu_sec",
+        "required_class": "İzci",
+        "button_text": "Sağ tüneli izleyip sunağa arkadan yaklaş",
+        "dice_dc": 11,
+        "success": { "text": "İzleri okuyarak grubu sessizce ilerletiyorsun. Tünel bir perdenin arkasında bitiyor; perdenin öbür yanında, size sırtı dönük, o duruyor.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Ayrımı yanlış okuyorsun ve tünel bir döngü gibi sizi yuvaya geri getiriyor. Yuvanın sahibi dönmüş.", "hp_change": -1, "next_node_id": "mahzen_03b_sahte_ses" }
+      },
+      {
+        "action_id": "tamirci_asansoru_calistir",
+        "required_class": "Tamirci",
+        "button_text": "Eski yük asansörünü onarıp konağa çık",
+        "dice_dc": 12,
+        "success": { "text": "Dişliler gıcırdayarak dönüyor. Platform sizi yavaş yavaş yukarı çekiyor ve mutfağın sıcak taşlarına çıkıyorsunuz. Aşağıdan gelen ninni sizi takip ediyor.", "hp_change": 0, "next_node_id": "konak_02_buyuk_salon" },
+        "fail": { "text": "Zincir yarı yolda kopuyor. Platformla birlikte aşağı, sağ tünelin dibine düşüyorsunuz; mum kokusunun tam ortasına.", "hp_change": -2, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "yirtik_sayfayi_ac",
+        "required_class": "ANY",
+        "button_text": "Taşın altındaki yırtık sayfayı dikkatle aç",
+        "dice_dc": 12,
+        "success": { "text": "Islak mürekkep yine de okunuyor: 'Morvaine.' Adı kimse yüksek sesle söylemiyor, ama hepiniz biliyorsunuz. Sağ tünele yöneliyorsunuz.", "hp_change": 0, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Sayfa parmaklarınızda eriyor; sadece ilk heceleri okuyabiliyorsunuz. Sağ tünelden gelen nefes hızlanıyor.", "hp_change": -1, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "simyaci_mantar_isigi",
+        "required_class": "Simyacı",
+        "button_text": "Fenerleri söndür, mantarla ışık yap",
+        "dice_dc": 10,
+        "success": { "text": "Mantarı bir şişeye ezip karıştırıyorsun; şişe zümrüt gibi parlıyor. Alev olmadan, gölge yaratmadan sunağa doğru ilerliyorsunuz. Yüreğiniz biraz hafifliyor.", "hp_change": 1, "next_node_id": "mahzen_07_ac_olan" },
+        "fail": { "text": "Karışım yanlış: şişe tıslıyor ve yağlı tünelde kıvılcım saçıyor.", "hp_change": -2, "next_node_id": "mahzen_06_yanan_mahzen" }
+      }
+    ]
+  },
+  {
+    "node_id": "mahzen_06_yanan_mahzen",
+    "title": "Yanan Mahzen",
+    "public_text": "Mavi alevler duvar boyunca koşuyor, sonra sararıyor, sonra kızıla dönüyor. Yağ fıçıları birer birer patlıyor; her patlamada tavandan kıvılcım yağıyor. Duman yoğun ve tatlı kokulu; ciğerlerinizi yakıyor. Alevlerin içinde, ateşe hiç aldırmadan duran küçük bir figür var: Elspeth. Ateş ona dokunmuyor. Size bakıp eliyle iki yönü gösteriyor: biri merdivenlerin olduğu, dumanla dolu çıkış; diğeri şarap rafının ardındaki karanlık. Isı her saniye artıyor.",
+    "class_hints": {
+      "Simyacı": "Fıçıların yarısı yağ, yarısı adamotu tozu. Tozu ıslak kum ya da tuzla örtersen ateş boğulur. Köşedeki kum çuvalı yeterli; ama çuvalı taşımak için iki kişi lazım.",
+      "Şifacı": "Dumanda adamotu var: uzun süre solunursa önce halüsinasyon, sonra bayılma. Ağızlara ıslak bez bağlarsanız zaman kazanırsınız.",
+      "Muhafız": "Rafın önündeki yanan kiriş yolu kapatıyor. Onu kalkanınla iterek açabilirsin; ama yanacaksın.",
+      "Medyum": "Elspeth sizi kurtarmak istiyor ve doğruyu söylüyor: merdivenler artık güvenli değil, kapak kilitli. Raf tek yol.",
+      "Avcı": "Ateşten kaçan fareler hep aynı yöne koşuyor: rafın altına. Orada hava var."
+    },
+    "actions": [
+      {
+        "action_id": "simyaci_atesi_bogar",
+        "required_class": "Simyacı",
+        "button_text": "Kum ve tuzla ateşi boğ",
+        "dice_dc": 12,
+        "success": { "text": "Kumu doğru fıçılara savuruyorsun; alevler tıslayarak çöküyor. Duman dağılırken demir kapı karşınızda, sessiz ve bekleyen.", "hp_change": 0, "next_node_id": "mahzen_02_muhurlu_kapi" },
+        "fail": { "text": "Kum yanlış fıçıya gidiyor ve toz bulutu bir alev topuna dönüyor. Patlama sizi mahzenin en derin köşesine savuruyor.", "hp_change": -2, "next_node_id": "mahzen_07_ac_olan" }
+      },
+      {
+        "action_id": "sifaci_bezleri_islat",
+        "required_class": "Şifacı",
+        "button_text": "Herkesin ağzına ıslak bez bağla, yanıkları sar",
+        "dice_dc": 11,
+        "success": { "text": "Hızlı ellerle herkesin yüzünü örtüp yanıklara merhem sürüyorsun. Nefesler düzeliyor; alevlerin arasından demir kapıya kadar ilerliyorsunuz.", "hp_change": 2, "next_node_id": "mahzen_02_muhurlu_kapi" },
+        "fail": { "text": "Bezler yetmiyor; dumanın içinde öksürerek ve birbirinize tutunarak demir kapıya varıyorsunuz.", "hp_change": -1, "next_node_id": "mahzen_02_muhurlu_kapi" }
+      },
+      {
+        "action_id": "muhafiz_kirisi_it",
+        "required_class": "Muhafız",
+        "button_text": "Yanan kirişi kalkanla it, rafa yol aç",
+        "dice_dc": 13,
+        "success": { "text": "Kalkanın kızarıyor ama kiriş devriliyor. Grup senin açtığın yoldan rafın ardındaki serin karanlığa dalıyor.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Kiriş devriliyor ama kıvılcım yağmuru sırtına iniyor. Yine de yol açıldı.", "hp_change": -2, "next_node_id": "mahzen_05_gizli_gecit" }
+      },
+      {
+        "action_id": "elspethi_izle_atesten",
+        "required_class": "ANY",
+        "button_text": "Ateşin içinden Elspeth'i izle",
+        "dice_dc": 12,
+        "success": { "text": "Elspeth'in geçtiği yerde alevler bir an geri çekiliyor. Onun ardından, yanmadan, rafın arkasına geçiyorsunuz.", "hp_change": 0, "next_node_id": "mahzen_05_gizli_gecit" },
+        "fail": { "text": "Elspeth'i kaybediyorsunuz. Dumanın içinde bir kapıya çarpıyorsunuz; açıldığında karşınızdaki şey ateşten çok daha sıcak.", "hp_change": -3, "next_node_id": "mahzen_07_ac_olan" }
+      }
+    ]
+  }
+]
