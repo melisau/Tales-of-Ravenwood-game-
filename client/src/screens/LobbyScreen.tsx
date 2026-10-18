@@ -11,7 +11,8 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
   const isHost = me.isHost;
   const players = room.players;
   const missingClass = players.filter((p) => !p.classId);
-  const canStart = players.length >= MIN_PLAYERS && missingClass.length === 0;
+  const minimum = room.mode === 'betrayal' ? 4 : MIN_PLAYERS;
+  const canStart = players.length >= minimum && missingClass.length === 0;
 
   const share = async () => {
     const text = `Tales of Ravenwood'a gel! Oda kodu: ${room.code}`;
@@ -54,6 +55,18 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
       </section>
 
       <div className="space-y-4">
+        <Panel>
+          <label htmlFor="game-mode"><Label>Oyun modu</Label></label>
+          <select id="game-mode" value={room.mode} disabled={!isHost} onChange={(event) => void game.setMode(event.target.value as 'cooperative' | 'betrayal')}
+            className="mt-2 w-full rounded-xl border border-[#c9a24a]/30 bg-[#160b1d] p-3 text-[#f3dfa6]">
+            <option value="cooperative">Birlikte hayatta kal · 2–12 kişi</option>
+            <option value="betrayal">Gizli Hain · 4–12 kişi</option>
+          </select>
+          <p className="mt-2 text-sm leading-relaxed text-[#c9b48a]">{room.mode === 'betrayal'
+            ? 'Rastgele bir kişi karanlığın hizmetkârı olur. Hain yenilgide, maceracılar zafer veya buruk sonda kazanır. Hainin iki gizli laneti vardır; herkesin sınıfı aynı kalır. Roller finalde açılır.'
+            : 'Herkes aynı tarafta. Zafer veya buruk sonda birlikte kazanırsınız; yenilgide birlikte kaybedersiniz.'}</p>
+          <p className="mt-2 text-xs text-[#a893b3]">Süre sınırı yok. Her aşamada bağlı oyuncular hazır olduğunu onaylayınca ilerlenir; zar elle atılır. Modu yalnızca Host lobide değiştirir.</p>
+        </Panel>
         {/* Benim sınıfım */}
         <Panel>
           <Label>Senin sınıfın</Label>
@@ -125,8 +138,8 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
             </Button>
             {!canStart && (
               <p className="text-center text-[13px] text-[#a893b3]">
-                {players.length < MIN_PLAYERS
-                  ? `En az ${MIN_PLAYERS} oyuncu gerekli. Kodu masadakilere söyle.`
+                {players.length < minimum
+                  ? `Bu modda en az ${minimum} oyuncu gerekli. Kodu masadakilere söyle.`
                   : `Sınıf seçmesi beklenenler: ${missingClass.map((p) => p.name).join(', ')}`}
               </p>
             )}

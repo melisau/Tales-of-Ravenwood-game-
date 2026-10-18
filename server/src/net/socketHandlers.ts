@@ -81,6 +81,9 @@ export function registerSocketHandlers(io: IO, manager: RoomManager, rateLimit: 
     );
     socket.on('class:release', (ack) => respond(ack, () => void manager.releaseClass(socket.id)));
     socket.on('game:start', (ack) => respond(ack, () => void manager.start(socket.id)));
+    socket.on('room:mode', (p, ack) => respond(ack, () => void manager.setMode(socket.id, parse(schemas['room:mode'], p).mode)));
+    socket.on('darkness:curse', (ack) => respond(ack, () => void manager.curse(socket.id)));
+    socket.on('game:ready', (p, ack) => respond(ack, () => void manager.ready(socket.id, parse(schemas['game:ready'], p))));
     socket.on('game:advance', (ack) => respond(ack, () => void manager.advance(socket.id)));
     socket.on('choice:submit', (p, ack) =>
       respond(ack, () => void manager.submitChoice(socket.id, parse(schemas['choice:submit'], p).actionId)),

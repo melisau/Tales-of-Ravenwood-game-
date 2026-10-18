@@ -2,6 +2,7 @@ import { randomInt } from 'node:crypto';
 import type {
   ActionOutcome,
   GameOverInfo,
+  GameMode,
   PendingRoll,
   PrivateHintPayload,
   PublicActionView,
@@ -43,6 +44,8 @@ export const systemClock: Clock = {
 };
 
 export interface EngineDeps {
+  /** Production uses cryptographic randomness; tests can select a fixed player. */
+  chooseTraitorIndex?: (playerCount: number) => number;
   story: StoryRepository;
   outbox: RoomOutbox;
   clock: Clock;
@@ -50,13 +53,6 @@ export interface EngineDeps {
   rollD20: () => number;
   startNodeId: string;
   basePlayerHp: number;
-  timers: {
-    sceneTextMs: number;
-    privateChoicesMs: number;
-    discussionMs: number;
-    diceRollMs: number;
-    sceneResultMs: number;
-  };
 }
 
 export const cryptoD20 = (): number => randomInt(1, 21);
@@ -70,6 +66,8 @@ interface ScaledAction extends StoryAction {
  * Tüm faz değişiklikleri `transition()` üzerinden geçer.
  */
 export class GameEngine {
+  private curseQueued = false;
+  private darknessPenalty = 0;
   private node: StoryNode | null = null;
   private actions: ScaledAction[] = [];
   private scaling: ScalingInfo | null = null;
@@ -80,9 +78,6 @@ export class GameEngine {
   private gameOver: GameOverInfo | null = null;
   private phaseDurationMs: number | null = null;
   private sceneNumber = 0;
-  private timer: unknown = null;
-  /** Her geçişte artar; eski timer callback'lerinin state bozmasını engeller. */
-  private epoch = 0;
 
   constructor(
     private readonly room: Room,
@@ -90,6 +85,25 @@ export class GameEngine {
   ) {}
 
   // ═════════════════════════ Komutlar (socket katmanından çağrılır) ═════════════════════════
+
+  setMode(byPlayerId: string, mode: GameMode): void {
+    this.room.assertHost(byPlayerId);
+    assertPhase(this.room.phase, GamePhase.LOBBY);
+    if (mode !== 'cooperative' && mode !== 'betrayal') throw new GameError('VALIDATION', 'Geçersiz oyun modu');
+    this.room.mode = mode;
+    this.broadcastState();
+  }
+
+  curse(byPlayerId: string): void {
+    assertPhase(this.room.phase, GamePhase.DISCUSSION_TIMER);
+    const player = this.room.getPlayer(byPlayerId);
+    if (this.room.mode !== 'betrayal' || player.allegiance !== 'darkness' || player.cursesLeft <= 0 || this.curseQueued) {
+      throw new GameError('NOT_ALLOWED', 'Bu sahnede lanet kullanamazsın');
+    }
+    player.cursesLeft--;
+    this.curseQueued = true;
+    this.sendPrivateRole(player);
+  }
 
   start(byPlayerId: string): void {
     this.room.assertHost(byPlayerId);
@@ -103,6 +117,22 @@ export class GameEngine {
     if (missing.length > 0) {
       throw new GameError('VALIDATION', `Sınıf seçmeyenler: ${missing.map((p) => p.name).join(', ')}`);
     }
+
+    if (this.room.mode === 'betrayal' && players.length < 4) {
+      throw new GameError('NOT_ENOUGH_PLAYERS', 'Gizli Hain modu için en az 4 oyuncu gerekli');
+    }
+    const traitorIndex = this.room.mode === 'betrayal'
+      ? (this.deps.chooseTraitorIndex ?? ((count: number) => randomInt(count)))(players.length)
+      : -1;
+    if (this.room.mode === 'betrayal' && (!Number.isInteger(traitorIndex) || traitorIndex < 0 || traitorIndex >= players.length)) {
+      throw new Error('Hain seçimi geçersiz');
+    }
+    players.forEach((player, index) => {
+      player.allegiance = index === traitorIndex ? 'darkness' : 'adventurers';
+      player.cursesLeft = index === traitorIndex ? 2 : 0;
+    });
+    this.curseQueued = false;
+    this.darknessPenalty = 0;
 
     // Ölçekleme oyun başında sabitlenir; sonradan düşen bağlantılar dengeyi değiştirmez.
     const cfg = getTierConfig(players.length);
@@ -125,22 +155,33 @@ export class GameEngine {
     this.enterScene(this.deps.startNodeId);
   }
 
-  /** Host'un "devam" butonu: okuma, seçim, tartışma ve sonuç fazlarını erken bitirir. */
+  /** Only the host can reset a completed game. Active phases require consent. */
   advance(byPlayerId: string): void {
     this.room.assertHost(byPlayerId);
+    assertPhase(this.room.phase, GamePhase.GAME_OVER);
+    this.resetToLobby();
+  }
+
+  ready(playerId: string, request: { ready: boolean; phase: GamePhase; sceneNumber: number }): void {
+    assertPhase(this.room.phase, GamePhase.SCENE_TEXT, GamePhase.PRIVATE_CHOICES, GamePhase.DISCUSSION_TIMER, GamePhase.SCENE_RESULT);
+    if (request.phase !== this.room.phase || request.sceneNumber !== this.sceneNumber) {
+      throw new GameError('INVALID_PHASE', 'Sahne veya aşama değişti; ekranı kontrol et');
+    }
+    const player = this.room.getPlayer(playerId);
+    if (request.ready && this.room.phase === GamePhase.PRIVATE_CHOICES && !player.choice) {
+      throw new GameError('NOT_ALLOWED', 'Önce bir seçenek seç');
+    }
+    player.ready = request.ready;
+    const connected = this.room.connectedPlayers();
+    if (!request.ready || !connected.length || !connected.every((p) => p.ready)) {
+      this.broadcastState();
+      return;
+    }
     switch (this.room.phase) {
-      case GamePhase.SCENE_TEXT:
-        return this.enterPrivateChoices();
-      case GamePhase.PRIVATE_CHOICES:
-        return this.enterDiscussion();
-      case GamePhase.DISCUSSION_TIMER:
-        return this.enterDiceRoll();
-      case GamePhase.SCENE_RESULT:
-        return this.proceedFromResult();
-      case GamePhase.GAME_OVER:
-        return this.resetToLobby();
-      default:
-        throw new GameError('INVALID_PHASE', `${this.room.phase} fazı Host tarafından atlanamaz`);
+      case GamePhase.SCENE_TEXT: return this.enterPrivateChoices();
+      case GamePhase.PRIVATE_CHOICES: return this.enterDiscussion();
+      case GamePhase.DISCUSSION_TIMER: return this.enterDiceRoll();
+      case GamePhase.SCENE_RESULT: return this.proceedFromResult();
     }
   }
 
@@ -154,12 +195,8 @@ export class GameEngine {
     }
     player.choice = actionId;
     player.choiceAt = this.deps.clock.now();
+    player.ready = false;
     this.broadcastState(); // sadece hasChosen bayrağı görünür, seçimin kendisi değil
-
-    // Herkes seçtiyse beklemeye gerek yok, tartışmaya geç.
-    if (this.room.phase === GamePhase.PRIVATE_CHOICES && this.room.connectedPlayers().every((p) => p.choice !== null)) {
-      this.enterDiscussion();
-    }
   }
 
   roll(byPlayerId: string): SceneResult {
@@ -176,32 +213,19 @@ export class GameEngine {
 
   onPlayerReconnected(player: Player): void {
     this.broadcastState();
+    this.sendPrivateRole(player);
     if (this.node && this.room.phase !== GamePhase.LOBBY && this.room.phase !== GamePhase.GAME_OVER) {
       this.sendPrivateHint(player); // gizli ipucunu yeni socket'e tekrar gönder
     }
   }
 
   onPlayerDisconnected(player: Player): void {
+    player.ready = false;
     this.broadcastState();
-    // Seçim fazında kalan herkes seçmişse beklemeye gerek yok.
-    if (
-      this.room.phase === GamePhase.PRIVATE_CHOICES &&
-      this.room.connectedPlayers().length > 0 &&
-      this.room.connectedPlayers().every((p) => p.choice !== null)
-    ) {
-      this.enterDiscussion();
-    }
-    // Zarcı düştüyse oyunu 30 sn bekletme: kısa bir süre sonra sunucu onun yerine atar.
-    if (this.room.phase === GamePhase.DICE_ROLL && this.pendingRoll?.rollerPlayerId === player.id) {
-      this.clearTimer();
-      this.armTimer(Math.min(3_000, this.deps.timers.diceRollMs), () => this.resolveRoll());
-      this.broadcastState();
-    }
   }
 
   dispose(): void {
-    this.clearTimer();
-    this.epoch++;
+    // No automatic phase timers; room cleanup is owned by RoomManager.
   }
 
   // ═════════════════════════ Faz girişleri ═════════════════════════
@@ -222,27 +246,29 @@ export class GameEngine {
     this.sceneNumber++;
     this.actions = this.computeVisibleActions(node);
     this.pendingRoll = null;
+    this.curseQueued = false;
+    this.darknessPenalty = 0;
     for (const p of this.room.players.values()) {
       p.choice = null;
       p.choiceAt = null;
     }
-    this.armTimer(this.deps.timers.sceneTextMs, () => this.enterPrivateChoices());
 
     // 1) Genel sahne metni herkese
     this.broadcastState();
     // 2) Asimetrik veri: her oyuncunun kendi socket'ine sadece kendi sınıfının ipucu
-    for (const player of this.room.connectedPlayers()) this.sendPrivateHint(player);
+    for (const player of this.room.connectedPlayers()) {
+      this.sendPrivateHint(player);
+      this.sendPrivateRole(player);
+    }
   }
 
   private enterPrivateChoices(): void {
     this.transition(GamePhase.PRIVATE_CHOICES);
-    this.armTimer(this.deps.timers.privateChoicesMs, () => this.enterDiscussion());
     this.broadcastState();
   }
 
   private enterDiscussion(): void {
     this.transition(GamePhase.DISCUSSION_TIMER);
-    this.armTimer(this.deps.timers.discussionMs, () => this.enterDiceRoll());
     this.broadcastState();
   }
 
@@ -250,10 +276,8 @@ export class GameEngine {
     this.transition(GamePhase.DICE_ROLL);
     const action = this.pickWinningAction();
     const roller = this.pickRoller(action);
-    this.pendingRoll = { action_id: action.action_id, rollerPlayerId: roller.id, dc: action.scaledDC };
-    // Zarcı bağlı değilse daha kısa bekle.
-    const wait = roller.socketId === null ? Math.min(3_000, this.deps.timers.diceRollMs) : this.deps.timers.diceRollMs;
-    this.armTimer(wait, () => this.resolveRoll());
+    this.darknessPenalty = this.curseQueued ? Math.min(2, 20 - action.scaledDC) : 0;
+    this.pendingRoll = { action_id: action.action_id, rollerPlayerId: roller.id, dc: action.scaledDC + this.darknessPenalty };
     this.broadcastState();
   }
 
@@ -276,6 +300,7 @@ export class GameEngine {
     const hpDeltaByPlayer = this.applyHpChange(outcome.hp_change, roller.id);
 
     const result: SceneResult = {
+      darknessPenalty: this.darknessPenalty,
       action_id: action.action_id,
       rollerPlayerId: roller.id,
       roll,
@@ -291,7 +316,6 @@ export class GameEngine {
     };
     this.lastResult = result;
     this.transition(GamePhase.SCENE_RESULT);
-    this.armTimer(this.deps.timers.sceneResultMs, () => this.proceedFromResult());
     this.deps.outbox.toRoom('scene:result', result);
     this.broadcastState();
     return result;
@@ -324,8 +348,11 @@ export class GameEngine {
 
   private endGame(info: GameOverInfo): void {
     this.transition(GamePhase.GAME_OVER);
-    this.gameOver = info;
-    this.deps.outbox.toRoom('game:over', info);
+    const traitor = [...this.room.players.values()].find((p) => p.allegiance === 'darkness');
+    this.gameOver = this.room.mode === 'betrayal' && traitor
+      ? { ...info, betrayal: { winningSide: info.victory ? 'adventurers' : 'darkness', traitorPlayerId: traitor.id } }
+      : info;
+    this.deps.outbox.toRoom('game:over', this.gameOver);
     this.broadcastState();
   }
 
@@ -339,10 +366,15 @@ export class GameEngine {
     this.lastOutcome = null;
     this.gameOver = null;
     this.sceneNumber = 0;
+    this.curseQueued = false;
+    this.darknessPenalty = 0;
     // Bağlantısı kopmuş oyuncular lobide tutulmaz.
     for (const p of [...this.room.players.values()]) {
       if (p.socketId === null) this.room.removePlayer(p.id);
-      else Object.assign(p, { hp: 0, maxHp: 0, choice: null, choiceAt: null });
+      else {
+        Object.assign(p, { hp: 0, maxHp: 0, choice: null, choiceAt: null, ready: false, allegiance: 'adventurers', cursesLeft: 0 });
+        this.deps.outbox.toPlayer(p, 'player:role', null);
+      }
     }
     this.broadcastState();
   }
@@ -421,31 +453,11 @@ export class GameEngine {
 
   private transition(to: GamePhase): void {
     assertTransition(this.room.phase, to);
-    this.clearTimer();
-    this.epoch++;
+    for (const player of this.room.players.values()) player.ready = false;
     this.phaseEndsAt = null;
     this.phaseDurationMs = null;
     this.room.phase = to;
     this.room.touch();
-  }
-
-  private armTimer(ms: number, fn: () => void): void {
-    const epoch = this.epoch;
-    this.phaseEndsAt = this.deps.clock.now() + ms;
-    this.phaseDurationMs = ms;
-    this.timer = this.deps.clock.setTimeout(() => {
-      if (epoch !== this.epoch) return; // faz zaten değişti
-      try {
-        fn();
-      } catch (err) {
-        console.error(`[engine:${this.room.code}] timer hatası`, err);
-      }
-    }, ms);
-  }
-
-  private clearTimer(): void {
-    if (this.timer !== null) this.deps.clock.clearTimeout(this.timer);
-    this.timer = null;
   }
 
   private partyHp(): number {
@@ -465,6 +477,14 @@ export class GameEngine {
     this.deps.outbox.toPlayer(player, 'scene:hint', payload);
   }
 
+  private sendPrivateRole(player: Player): void {
+    this.deps.outbox.toPlayer(player, 'player:role', this.room.phase === GamePhase.LOBBY ? null : {
+      allegiance: player.allegiance,
+      cursesLeft: player.cursesLeft,
+      curseQueued: player.allegiance === 'darkness' && this.curseQueued,
+    });
+  }
+
   broadcastState(): void {
     this.deps.outbox.toRoom('room:state', this.getPublicState());
   }
@@ -478,6 +498,7 @@ export class GameEngine {
       dc: a.scaledDC,
     }));
     return {
+      mode: this.room.mode,
       code: this.room.code,
       phase: this.room.phase,
       players,

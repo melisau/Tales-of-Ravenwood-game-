@@ -3,8 +3,7 @@ import { GameError } from '../core/errors';
 
 /**
  * İzin verilen faz geçişleri. Bu tablo dışındaki her geçiş bir programlama
- * hatasıdır ve exception fırlatır — böylece yarış koşulları (ör. timer ve
- * host aynı anda ilerletirse) sessizce state bozmaz.
+ * hatasıdır ve exception fırlatır. Aktif aşamalar oyuncuların hazır onayıyla ilerler.
  *
  *  LOBBY → SCENE_TEXT → PRIVATE_CHOICES → DISCUSSION_TIMER → DICE_ROLL → SCENE_RESULT
  *                ↑                                                            │

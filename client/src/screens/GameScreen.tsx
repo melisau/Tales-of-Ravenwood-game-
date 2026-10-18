@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CLASSES } from '../../../shared/classes';
 import { ANY_CLASS, GamePhase, type PublicActionView, type PublicPlayer, type PublicRoomState, type SceneResult } from '../../../shared/types';
 import SecretCharacterScreen from '../components/SecretCharacterScreen';
+import { SecretRoleCard } from '../components/SecretRoleCard';
 import type { Game } from '../state/useGame';
 import { Button, FONT_DISPLAY, HelpButton, HpBar, Label } from '../ui/kit';
 
@@ -9,9 +10,9 @@ import { Button, FONT_DISPLAY, HelpButton, HpBar, Label } from '../ui/kit';
 const REVEAL_DELAY_MS = 1600;
 
 const PHASE_COPY: Partial<Record<GamePhase, { title: string; body: string }>> = {
-  [GamePhase.SCENE_TEXT]: { title: 'Sahneyi okuyun', body: 'Metni masaya sesli okuyun. Sonra mührü kırıp gizli ipucuna bakın.' },
+  [GamePhase.SCENE_TEXT]: { title: 'Sahneyi okuyun', body: 'Metni masaya sesli okuyun. Sonra mührü kırıp gizli ipucuna bakın. Süre sınırı yok; okuyunca hazır olduğunu onayla.' },
   [GamePhase.PRIVATE_CHOICES]: { title: 'Gizlice oy ver', body: 'Ne yapılmalı? Kimse senin oyunu görmez.' },
-  [GamePhase.DISCUSSION_TIMER]: { title: 'Tartışın!', body: 'İpuçlarını paylaşın ya da saklayın. Süre bitene kadar oyunu değiştirebilirsin.' },
+  [GamePhase.DISCUSSION_TIMER]: { title: 'Tartışın!', body: 'İpuçlarını karşılaştırın, kime güveneceğinize karar verin. Herkes hazır olana kadar oyunu değiştirebilirsin; süre sınırı yok.' },
   [GamePhase.DICE_ROLL]: { title: 'Zar zamanı', body: '' },
   [GamePhase.SCENE_RESULT]: { title: 'Kader konuştu', body: '' },
 };
@@ -54,7 +55,7 @@ export function GameScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: () 
       diceKey={`${game.nodeKey}:${diceAction?.action_id ?? ''}`}
       canRoll={phase === GamePhase.DICE_ROLL && (iAmRoller || hostRollsForAbsent)}
       rollerLabel={diceRoller ? `${diceRoller.classId ?? ''} · ${diceRoller.name}` : undefined}
-      dc={diceAction?.dc}
+      dc={result?.dc ?? pending?.dc ?? diceAction?.dc}
       actionLabel={diceAction?.button_text}
       requestRoll={game.roll}
       // Zarı bu telefondan attıysan kendi animasyonun oynar; değilse (başkası attı ya da
@@ -68,9 +69,13 @@ export function GameScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: () 
       }
     >
       <PhaseBanner phase={phase} roller={roller} meId={me.id} />
+      <SecretRoleCard key={game.nodeKey} game={game} />
+      {phase === GamePhase.DICE_ROLL && pendingAction && pending && pending.dc > pendingAction.dc && (
+        <p className="text-center text-sm text-[#ff9a9e]">Karanlık bu zarı etkiliyor: zorluk +{pending.dc - pendingAction.dc}. Kaynağı bilinmiyor.</p>
+      )}
 
       {phase === GamePhase.SCENE_TEXT && (
-        <HostControl isHost={me.isHost} label="Seçimlere geç →" waiting="Host herkes okuyunca seçimlere geçecek." onClick={game.advance} />
+        <ReadyControl game={game} label="Okudum, seçimlere hazırım" />
       )}
 
       {(phase === GamePhase.PRIVATE_CHOICES || phase === GamePhase.DISCUSSION_TIMER) && (
@@ -83,23 +88,33 @@ export function GameScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: () 
             ownActionIds={game.hint?.ownActionIds ?? []}
             onVote={(id) => void game.vote(id, game.nodeKey)}
           />
-          <HostControl
-            isHost={me.isHost}
-            label={phase === GamePhase.PRIVATE_CHOICES ? 'Oylamayı kapat, tartışmaya geç' : 'Tartışmayı bitir, zara geç'}
-            waiting=""
-            onClick={game.advance}
-            subtle
-          />
+          <ReadyControl game={game} label={phase === GamePhase.PRIVATE_CHOICES ? 'Oyumu seçtim, tartışmaya hazırım' : 'Kararım hazır, zara geçelim'} disabled={phase === GamePhase.PRIVATE_CHOICES && !me.hasChosen} />
         </>
       )}
 
       {result && revealed && (
         <>
           <ResultCard result={result} room={room} />
-          <HostControl isHost={me.isHost} label="Hikayeye devam →" waiting="Hikaye birazdan devam ediyor…" onClick={game.advance} />
+          {result.darknessPenalty > 0 && <p className="text-center text-sm text-[#ff9a9e]">Karanlık etkisi: zorluk +{result.darknessPenalty}.</p>}
+          <ReadyControl game={game} label="Sonucu okudum, devam edelim" />
         </>
       )}
     </SecretCharacterScreen>
+  );
+}
+
+function ReadyControl({ game, label, disabled = false }: { game: Game; label: string; disabled?: boolean }) {
+  const room = game.room!;
+  const me = game.me!;
+  const waiting = room.players.filter((p) => p.connected && !p.ready);
+  return (
+    <div className="space-y-2">
+      <Button disabled={disabled || game.connection !== 'online'} onClick={() => void game.ready(true, room.phase, room.sceneNumber)}>
+        {me.ready ? 'Hazırım · durumu yeniden kontrol et' : label}
+      </Button>
+      {me.ready && <Button variant="ghost" onClick={() => void game.ready(false, room.phase, room.sceneNumber)}>Hazır değilim, bekleyin</Button>}
+      <p className="text-center text-xs text-[#a893b3]">Süre sınırı yok. {waiting.length ? `Beklenenler: ${waiting.map((p) => p.name).join(', ')}` : 'Herkes hazır; devam etmek için onayla.'}</p>
+    </div>
   );
 }
 
@@ -295,17 +310,6 @@ function ResultCard({ result, room }: { result: SceneResult; room: PublicRoomSta
       <style>{`@keyframes rw-result-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.rw-result-in{animation:rw-result-in .5s ease-out both}`}</style>
     </article>
   );
-}
-
-function HostControl({ isHost, label, waiting, onClick, subtle }: { isHost: boolean; label: string; waiting: string; onClick: () => unknown; subtle?: boolean }) {
-  if (isHost) {
-    return (
-      <Button variant={subtle ? 'secondary' : 'primary'} onClick={() => void onClick()}>
-        {label}
-      </Button>
-    );
-  }
-  return waiting ? <p className="text-center text-[13.5px] italic text-[#a893b3]">{waiting}</p> : null;
 }
 
 /** key değiştiğinde false olur, `ms` sonra true. Zar sonucunu herkese aynı anda açıklamak için. */

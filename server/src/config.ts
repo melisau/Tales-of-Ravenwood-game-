@@ -23,11 +23,6 @@ export const config = {
   basePlayerHp: num('BASE_PLAYER_HP', 10),
 
   timers: {
-    sceneTextMs: num('SCENE_TEXT_MS', 60_000), // host ilerletmezse otomatik geçiş
-    privateChoicesMs: num('PRIVATE_CHOICES_MS', 30_000),
-    discussionMs: num('DISCUSSION_MS', 90_000),
-    diceRollMs: num('DICE_ROLL_MS', 30_000), // zarcı atmazsa sunucu atar
-    sceneResultMs: num('SCENE_RESULT_MS', 10_000),
     reconnectGraceMs: num('RECONNECT_GRACE_MS', 30_000),
     emptyRoomTtlMs: num('EMPTY_ROOM_TTL_MS', 10 * 60_000),
   },

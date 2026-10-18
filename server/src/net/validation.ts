@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CLASS_IDS } from '../../../shared/types';
+import { CLASS_IDS, GamePhase } from '../../../shared/types';
 import { ROOM_CODE_REGEX } from '../core/roomCode';
 
 /** İstemciden gelen her payload bu şemalardan geçer; güvenilmeyen girdi asla doğrudan kullanılmaz. */
@@ -18,6 +18,8 @@ const code = z
   .pipe(z.string().regex(ROOM_CODE_REGEX, 'Oda kodu 4 harf olmalı'));
 
 export const schemas = {
+  'game:ready': z.object({ ready: z.boolean(), phase: z.nativeEnum(GamePhase), sceneNumber: z.number().int().positive() }),
+  'room:mode': z.object({ mode: z.enum(['cooperative', 'betrayal']) }),
   'room:create': z.object({ name }),
   'room:join': z.object({ code, name }),
   'room:rejoin': z.object({ code, sessionToken: z.string().min(16).max(64) }),

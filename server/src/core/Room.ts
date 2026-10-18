@@ -1,10 +1,12 @@
 import { randomBytes, randomUUID } from 'node:crypto';
-import type { ClassId, PublicPlayer } from '../../../shared/types';
+import type { Allegiance, ClassId, GameMode, PublicPlayer } from '../../../shared/types';
 import { GamePhase } from '../../../shared/types';
 import { MAX_PLAYERS } from '../../../shared/scaling';
 import { GameError } from './errors';
 
 export interface Player {
+  allegiance: Allegiance;
+  cursesLeft: number;
   readonly id: string;
   readonly sessionToken: string;
   name: string;
@@ -17,6 +19,7 @@ export interface Player {
   /** Gizli seçim — asla toplu yayına girmez. */
   choice: string | null;
   choiceAt: number | null;
+  ready: boolean;
 }
 
 /**
@@ -24,6 +27,7 @@ export interface Player {
  * Oyuncu sırası (Map ekleme sırası) host devri için kullanılır.
  */
 export class Room {
+  mode: GameMode = 'cooperative';
   readonly players = new Map<string, Player>();
   hostId: string | null = null;
   phase: GamePhase = GamePhase.LOBBY;
@@ -39,6 +43,8 @@ export class Room {
     if (this.players.size >= MAX_PLAYERS) throw new GameError('ROOM_FULL', `Oda dolu (${MAX_PLAYERS} oyuncu)`);
 
     const player: Player = {
+      allegiance: 'adventurers',
+      cursesLeft: 0,
       id: randomUUID(),
       sessionToken: randomBytes(24).toString('base64url'),
       name: this.uniqueName(name),
@@ -50,6 +56,7 @@ export class Room {
       disconnectedAt: null,
       choice: null,
       choiceAt: null,
+      ready: false,
     };
     this.players.set(player.id, player);
     // İlk giren Host olur.
@@ -130,6 +137,7 @@ export class Room {
       isHost: p.id === this.hostId,
       connected: p.socketId !== null,
       hasChosen: p.choice !== null,
+      ready: p.ready,
     }));
   }
 

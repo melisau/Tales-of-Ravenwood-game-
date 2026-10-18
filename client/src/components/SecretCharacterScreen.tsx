@@ -160,7 +160,7 @@ function Header(p: {
         <HpBar hp={p.hp} maxHp={p.maxHp} />
       </div>
 
-      <CountdownRing endsAt={p.phaseEndsAt} totalSeconds={p.totalSeconds} serverOffsetMs={p.serverOffsetMs} />
+      {p.phaseEndsAt !== null && <CountdownRing endsAt={p.phaseEndsAt} totalSeconds={p.totalSeconds} serverOffsetMs={p.serverOffsetMs} />}
     </header>
   );
 }

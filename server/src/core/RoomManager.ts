@@ -1,4 +1,4 @@
-import type { ClassId, JoinResult, ServerToClientEvents } from '../../../shared/types';
+import type { ClassId, ClientToServerEvents, GameMode, JoinResult, ServerToClientEvents } from '../../../shared/types';
 import { GamePhase } from '../../../shared/types';
 import { GameEngine, type Clock, type EngineDeps } from '../engine/GameEngine';
 import { GameError } from './errors';
@@ -158,6 +158,21 @@ export class RoomManager {
   start(socketId: string): void {
     const { entry, player } = this.ctx(socketId);
     entry.engine.start(player.id);
+  }
+
+  setMode(socketId: string, mode: GameMode): void {
+    const { entry, player } = this.ctx(socketId);
+    entry.engine.setMode(player.id, mode);
+  }
+
+  curse(socketId: string): void {
+    const { entry, player } = this.ctx(socketId);
+    entry.engine.curse(player.id);
+  }
+
+  ready(socketId: string, request: Parameters<ClientToServerEvents['game:ready']>[0]): void {
+    const { entry, player } = this.ctx(socketId);
+    entry.engine.ready(player.id, request);
   }
 
   advance(socketId: string): void {

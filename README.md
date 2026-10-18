@@ -1,7 +1,36 @@
 # 🦇 Tales of Ravenwood
 
-2–12 oyunculu, aynı masada telefonlarla oynanan Cadılar Bayramı temalı co-op FRP.
+2–12 oyunculu, aynı masada telefonlarla oynanan Cadılar Bayramı temalı FRP.
 Sunucu otoriterdir: zar, HP, faz geçişleri ve gizli ipuçları yalnızca sunucuda hesaplanır.
+
+## Oyun modları ve gizli bağlılık
+
+- **Birlikte hayatta kal (2–12 kişi):** Herkes maceracıdır. Zafer veya buruk son
+  birlikte başarı, yenilgi birlikte kayıptır.
+- **Gizli Hain (4–12 kişi):** Host lobide bu modu seçer. Sunucu oyun başında
+  rastgele tam bir kişiyi karanlığın hizmetkârı yapar; Host da seçilebilir.
+  Sınıf seçimi değişmez. Bağlılık yalnızca oyuncunun kendi socket'ine gönderilir
+  ve yeniden bağlanmada korunur; roller oyun sonunda açıklanır.
+- Maceracılar zafer veya buruk sonda, hain ise yenilgide kazanır. Toplam canın
+  sıfırlanması da yenilgidir. Hain bilgi saklayabilir, çarpıtabilir ve grubu
+  tehlikeli seçeneklere ikna etmeye çalışabilir.
+- Hainin oyun boyunca **iki laneti** vardır: tartışmada, sahne başına bir kez,
+  sonraki zarın DC değerine +2 ekler (tavan 20). Kullanım geri alınmaz; doğal
+  1/20 kuralları değişmez. Zar aşamasında artan DC görünür, kullanan açıklanmaz.
+  Suçlama ile oyuncu çıkarma yoktur; karşı oyun ipuçlarını karşılaştırmak ve
+  şüpheli önerilere oy vermemektir. Bu ilk sürümün dengesi masa testleriyle
+  geliştirilebilir.
+
+## Süresiz, onayla ilerleyen oyun
+
+Okuma, seçim, tartışma ve sonuç aşamalarında **geri sayım ve otomatik geçiş yoktur**.
+Her bağlı oyuncu “Hazırım” dediğinde bir sonraki aşamaya geçilir. Seçim aşamasında
+önce oy vermek gerekir; yalnızca oy vermek aşamayı bitirmez. Oy değiştirmek
+oyuncunun hazır onayını geri alır. Oyuncu onayını ayrıca geri çekebilir.
+Host aşamaları tek başına atlayamaz. Zar ilgili oyuncu basınca atılır; bağlantısı
+kopmuşsa Host onun yerine elle atabilir. Bağlantısı kopanlar hazır sayımına
+katılmaz; kopma olayı kendi başına aşamayı değiştirmez, kalanlardan biri yeniden
+onaylayabilir. Bağlı bir oyuncu onay vermezse oyun bekler.
 
 ```
 ravenwood/
@@ -40,14 +69,14 @@ ravenwood/
 
 - **Transport soyutlaması.** `GameEngine` ve `RoomManager` socket.io'yu bilmez; `Transport` arayüzü üzerinden konuşur. Oyun mantığı sahte transport + sahte saatle milisaniyeler içinde test edilir; ileride Redis adapter ya da başka bir protokol eklemek tek dosyalık iştir.
 - **Kalıcı oyuncu kimliği.** Oyuncu `playerId` + `sessionToken` ile tanınır, socket id ile değil. Telefon kilitlenip açıldığında `room:rejoin` aynı karaktere döner ve gizli ipucu yeni socket'e tekrar gönderilir.
-- **Geçiş tablosu.** Her faz değişikliği `stateMachine.ts`'deki tablodan geçer; her geçişte artan `epoch` sayacı, faz değişmişken tetiklenen eski timer'ların state bozmasını engeller.
+- **Geçiş tablosu.** Her faz değişikliği `stateMachine.ts`'deki tablodan geçer; hazır isteklerindeki faz ve sahne numarası eski isteklerin yeni aşamayı atlatmasını engeller.
 - **Ölçekleme oyun başında sabitlenir.** Ortada biri düşerse DC değişmez.
-- **Kilitlenme yok.** Her fazın bir süresi var; zarcı düşerse sunucu 3 sn sonra onun yerine atar; Host düşerse en eski bağlı oyuncu Host olur.
+- **Oyuncu kontrolü.** Faz süreleri yoktur. Host düşerse en eski bağlı oyuncu Host olur; zarcı bağlı değilse Host elle zar atar.
 
 ## Durum makinesi
 
 ```
-LOBBY → SCENE_TEXT → PRIVATE_CHOICES → DISCUSSION_TIMER (90 sn) → DICE_ROLL → SCENE_RESULT ─┐
+LOBBY → SCENE_TEXT → PRIVATE_CHOICES → DISCUSSION_TIMER (süresiz) → DICE_ROLL → SCENE_RESULT ─┐
               ↑                                                                             │
               └──────────────────────────── next_node_id ───────────────────────────────────┤
                                                                                 GAME_OVER ←─┘ → LOBBY
@@ -55,11 +84,11 @@ LOBBY → SCENE_TEXT → PRIVATE_CHOICES → DISCUSSION_TIMER (90 sn) → DICE_R
 
 | Faz | Ne olur | Nasıl biter |
 |---|---|---|
-| `SCENE_TEXT` | Herkese genel metin (`room:state`), **her socket'e ayrı** `scene:hint` | Host `game:advance` ya da 60 sn |
-| `PRIVATE_CHOICES` | Her oyuncu gizlice oy verir; herkese sadece `hasChosen` görünür | Herkes seçince ya da 30 sn |
-| `DISCUSSION_TIMER` | Masada tartışma; oylar değiştirilebilir | 90 sn ya da Host |
-| `DICE_ROLL` | En çok oy alan aksiyon seçilir. Sınıfa özel aksiyonu o sınıfın sahibi (+2 bonus), ANY aksiyonu ilk oy veren atar | Zarcı `dice:roll` ya da 30 sn |
-| `SCENE_RESULT` | `scene:result` yayını, HP güncellemesi | 10 sn ya da Host |
+| `SCENE_TEXT` | Herkese genel metin (`room:state`), **her socket'e ayrı** `scene:hint` | Her bağlı oyuncu hazır onayını verince |
+| `PRIVATE_CHOICES` | Gizli oy; herkese sadece `hasChosen` ve hazır bilgisi görünür | Her bağlı oyuncu oyunu seçip hazır onayını verince |
+| `DISCUSSION_TIMER` | Süresiz tartışma; oylar değiştirilebilir. Enum adı uyumluluk için korunur. | Her bağlı oyuncu hazır onayını verince |
+| `DICE_ROLL` | Sınıfa özel aksiyonda sahibi (+2), ANY aksiyonda ilk oy veren atar | Zarcı `dice:roll`; zarcı bağlı değilse Host |
+| `SCENE_RESULT` | `scene:result` yayını, HP güncellemesi | Her bağlı oyuncu hazır onayını verince |
 
 Odada sahibi olmayan sınıf aksiyonları sahnede hiç gösterilmez; her düğümde en az bir `"required_class": "ANY"` aksiyonu şema tarafından zorunludur.
 
@@ -74,8 +103,11 @@ Odada sahibi olmayan sınıf aksiyonları sahnede hiç gösterilmez; her düğü
 | `room:rejoin` | `{ code, sessionToken }` | Bağlantısı kopan |
 | `room:leave` | — | |
 | `class:select` / `class:release` | `{ classId }` / — | Lobide |
-| `game:start` | — | Host, ≥2 oyuncu, herkes sınıf seçmiş |
-| `game:advance` | — | Host |
+| `room:mode` | `{ mode: 'cooperative' \| 'betrayal' }` | Host, yalnızca lobide |
+| `game:start` | — | Host, moda göre ≥2 veya ≥4 oyuncu, herkes sınıf seçmiş |
+| `game:ready` | `{ ready, phase, sceneNumber }` | Okuma, seçim, tartışma, sonuç aşamalarında oyuncu |
+| `game:advance` | — | Host, yalnızca oyun sonundan lobiye dönüş |
+| `darkness:curse` | — | Hain, tartışmada, hakkı varsa ve bu sahnede kullanmadıysa |
 | `choice:submit` | `{ actionId }` | Seçim/tartışma fazında |
 | `dice:roll` | — | Sadece zarcı (o düşmüşse Host) |
 
@@ -85,6 +117,7 @@ Odada sahibi olmayan sınıf aksiyonları sahnede hiç gösterilmez; her düğü
 |---|---|---|
 | `room:state` | Oda | `PublicRoomState` — gizli veri içermez (testle doğrulandı) |
 | `scene:hint` | **Tek socket** | `{ classId, hint, ownActionIds }` |
+| `player:role` | **Tek socket** | `{ allegiance, cursesLeft, curseQueued }`; lobide sıfırlamak için `null` |
 | `dice:rolling` | Oda | Diğer telefonlarda animasyon başlatmak için |
 | `scene:result` | Oda | Ham zar, bonus, toplam, DC, kritik, oyuncu bazlı HP değişimi |
 | `game:over` | Oda | `{ victory, reason }` |
@@ -155,7 +188,7 @@ cd server && npm run typecheck && npm run build && npm start  # production sunuc
 cd client && npm run build                                    # dist/ (Vercel/Netlify'a yüklenebilir)
 ```
 
-Sunucu ortam değişkenleri: `PORT`, `CORS_ORIGIN` (varsayılan her yer; internete açarken kısıtla), `STORY_DIR`, `START_NODE_ID`, `STRICT_STORY=false` (taslak yazarken kırık bağlantılara izin verir), süreler için `DISCUSSION_MS` vb. (`config.ts`).
+Sunucu ortam değişkenleri: `PORT`, `CORS_ORIGIN` (varsayılan her yer; internete açarken kısıtla), `STORY_DIR`, `START_NODE_ID`, `STRICT_STORY=false` (taslak yazarken kırık bağlantılara izin verir). Aşama süreleri kaldırılmıştır; eski `DISCUSSION_MS`, `SCENE_TEXT_MS` vb. ayarlar kullanılmaz. Bağlantı ve boş oda temizliği süreleri `config.ts` içindedir.
 İstemci: `VITE_SERVER_URL` (sunucu başka bir adresteyse).
 
 ### Yeni sahne yazmak

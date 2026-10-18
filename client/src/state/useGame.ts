@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type {
   ClassId,
+  GameMode,
   GameOverInfo,
   JoinResult,
   PrivateHintPayload,
+  PrivateRole,
   PublicPlayer,
   PublicRoomState,
   SceneResult,
 } from '../../../shared/types';
+import { GamePhase } from '../../../shared/types';
 import { call, createSocket, type GameSocket } from '../net/socket';
 
 const SESSION_KEY = 'ravenwood.session';
@@ -58,6 +61,7 @@ export function useGame() {
   const [room, setRoom] = useState<PublicRoomState | null>(null);
   const [playerId, setPlayerId] = useState<string | null>(sessionRef.current?.playerId ?? null);
   const [hint, setHint] = useState<PrivateHintPayload | null>(null);
+  const [role, setRole] = useState<PrivateRole | null>(null);
   const [serverOffsetMs, setServerOffsetMs] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [rejoining, setRejoining] = useState(!!sessionRef.current);
@@ -66,6 +70,7 @@ export function useGame() {
 
   const applyState = useCallback((s: PublicRoomState) => {
     setRoom(s);
+    if (s.phase === GamePhase.LOBBY) setRole(null);
     setServerOffsetMs(s.serverNow - Date.now());
   }, []);
 
@@ -82,6 +87,7 @@ export function useGame() {
     storage.remove(SESSION_KEY);
     setRoom(null);
     setHint(null);
+    setRole(null);
     setPlayerId(null);
     setMyVote(null);
   }, []);
@@ -107,6 +113,7 @@ export function useGame() {
     socket.on('connect_error', () => setConnection('offline'));
     socket.on('room:state', applyState);
     socket.on('scene:hint', setHint);
+    socket.on('player:role', setRole);
     socket.on('room:error', (e) => setError(e.message));
 
     return () => {
@@ -150,6 +157,9 @@ export function useGame() {
       selectClass: (classId: ClassId) => run((s) => call(s, 'class:select', { classId })),
       releaseClass: () => run((s) => call(s, 'class:release')),
       start: () => run((s) => call(s, 'game:start')),
+      setMode: (mode: GameMode) => run((s) => call(s, 'room:mode', { mode })),
+      curse: () => run((s) => call(s, 'darkness:curse')),
+      ready: (ready: boolean, phase: GamePhase, sceneNumber: number) => run((s) => call(s, 'game:ready', { ready, phase, sceneNumber })),
       advance: () => run((s) => call(s, 'game:advance')),
       vote: (actionId: string, nodeKey: string) =>
         run(async (s) => {
@@ -176,6 +186,7 @@ export function useGame() {
 
   return {
     connection,
+    role,
     rejoining,
     room,
     me,

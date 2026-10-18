@@ -152,7 +152,7 @@ const STEPS: ReadonlyArray<{ icon: string; title: string; body: ReactNode }> = [
     body: (
       <>
         Telefonunda <b>sadece senin sınıfının</b> görebildiği bir ipucu var: Dedektif tuzağı, Medyum ruhu, Bilgin yazıyı görür.
-        Mührü kır, oku. <b>Tehlike uyarılarını paylaş; emin olmadığın yorumunu kesin bilgiden ayır.</b> O sahnede sınıfına ipucu gelmeyebilir.
+        Mührü kır, oku. <b>Hain modunda kime güveneceğini düşün; birlikte oynarken tehlikeleri paylaş.</b> O sahnede sınıfına ipucu gelmeyebilir.
       </>
     ),
   },
@@ -163,10 +163,10 @@ const STEPS: ReadonlyArray<{ icon: string; title: string; body: ReactNode }> = [
   },
   {
     icon: '⏳',
-    title: '90 saniye tartışın',
+    title: 'Acele etmeden tartışın',
     body: (
       <>
-        Geri sayım başlar. Önce herkes ipucunu kendi sözleriyle anlatsın, sonra ipuçlarını birleştirip karar verin. Süre bitmeden <b>oyunu değiştirebilirsin</b>.
+        Süre sınırı yok. Anlatılan ipuçlarını karşılaştırın, çelişkileri sorgulayın. Herkes hazır olduğunu onaylayana kadar <b>oyunu değiştirebilirsin</b>.
       </>
     ),
   },
@@ -201,18 +201,19 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
 
       <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
         <h2 className="text-lg font-bold text-[#f3dfa6]">Amacınız ve oyunun sonu</h2>
-        <p className="mt-2">Blackthorne Konağı'nın sırrını çözün, tehlikelerden kurtulun ve mümkünse tutsak ruhu özgür bırakın. Hepiniz aynı takımdasınız; bireysel puan, hain rolü veya kişisel zafer yok.</p>
+        <p className="mt-2">Blackthorne Konağı'nın sırrını çözün, tehlikelerden kurtulun ve mümkünse tutsak ruhu özgür bırakın. Lobide Host iki moddan birini seçer: <b>Birlikte hayatta kal</b> (2–12 kişi, herkes aynı tarafta) veya <b>Gizli Hain</b> (4–12 kişi, rastgele bir kişi kötü güçle işbirliği yapar). Hain herhangi bir sınıftan olabilir; Host da hain olabilir.</p>
         <ul className="mt-2 list-disc space-y-1 pl-5">
-          <li><b>Zafer:</b> Hikâyede zafer olarak tanımlanan bir sona ulaşın.</li>
-          <li><b>Buruk son:</b> Kaçış veya fedakârlık gibi bedelli bir sona ulaşın. Oyun bunu da takım başarısı sayar; hikâyedeki her sorun çözülmeyebilir.</li>
-          <li><b>Yenilgi:</b> Grubun toplam canı sıfıra düşerse veya hikâye yenilgi sonuyla biterse herkes kaybeder. Tek kişinin canının sıfırlanması tek başına takım yenilgisi değildir.</li>
+          <li><b>Zafer veya buruk son:</b> Maceracılar kazanır. Hain varsa kaybeder; hikâyedeki her sorun çözülmüş olmayabilir.</li>
+          <li><b>Yenilgi:</b> Grubun toplam canı sıfıra düşerse veya hikâye yenilgi sonuyla biterse maceracılar kaybeder, hain varsa kazanır. Tek kişinin canının sıfırlanması tek başına oyunu bitirmez.</li>
+          <li><b>Hainin anlaşması:</b> Bilgi saklayıp yalan söyleyebilir, yanlış hamleleri savunabilir. Tartışmada oyun boyunca iki kez gizli lanet kullanabilir: o sahnenin zar zorluğu +2 (en fazla 20), sahne başına bir kullanım. Doğal 20 yine başarılıdır. Laneti kimin kullandığı gizli kalır; roller finalde açılır.</li>
+          <li><b>Kontrol sizde:</b> Okuma, seçim, tartışma ve sonuç aşamalarında herkes “Hazırım” dediğinde ilerlenir. Oy değiştirmek hazır onayını geri alır. Zar elle atılır; zarcı bağlı değilse Host onun yerine basabilir. Host aşamaları tek başına atlayamaz.</li>
         </ul>
       </section>
 
       <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
         <h2 className="text-lg font-bold text-[#f3dfa6]">İpucumu ne zaman paylaşmalıyım?</h2>
-        <p className="mt-2">Gizlilik, herkesin farklı bir parçayı önce kendi başına görmesi içindir. İpucu saklamak bonus kazandırmaz. Tartışmada tuzak, zehir, güvenilmeyen ses ve güvenli yol uyarılarını seçim kesinleşmeden paylaşın.</p>
-        <p className="mt-2">“Metinde bu yazıyor” ile “bence bu anlama geliyor” ayrımını yapın. Belirsiz kehaneti başkasının bilgisiyle karşılaştırın. Rol yapmak için kısa süre bekleyebilirsiniz; kritik tehlikeyi saklamak ekibin yanlış karar vermesine yol açabilir.</p>
+        <p className="mt-2">Birlikte oynarken tehlike uyarılarını paylaşmak grubu korur. Gizli Hain modunda ise güven bir karardır: hain doğru ipucunu saklayabilir veya tersini söyleyerek sizi tuzağa yöneltebilir. Maceracı olarak bilgini önce güvendiğin biriyle konuşabilir, başka birinin anlatımıyla karşılaştırabilir veya tartışmada açıklayabilirsin.</p>
+        <p className="mt-2">“Metinde bu yazıyor” ile “bence bu anlama geliyor” ayrımını yapın. Susmak tek başına hainlik kanıtı değildir. Birini oyundan çıkarma veya rolünü zorla açma yok; çelişkileri sorgulayıp güvenmediğiniz öneriye oy vermeyebilirsiniz. İpucu saklamak doğrudan puan kazandırmaz; hainin amacı sizi yenilgiye götürmektir.</p>
         <p className="mt-2 italic text-[#c9b48a]">Örnek: Simyacı “Buhar yanıcı, ateş kullanmayalım” der; Bilgin “Mühür gönüllü kanla açılıyor” diye tamamlar. Sonra grup seçenekleri değerlendirir. Doğru yorum başarıyı garanti etmez; zar yine atılır.</p>
       </section>
 
@@ -290,7 +291,7 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
           Unutma
         </h3>
         <ul className="list-disc space-y-1.5 pl-5 text-[14px] leading-snug text-[#e4d6b8] marker:text-[#7a0e1a]">
-          <li>Birlikte kazanır, birlikte kaybedersiniz. Grubun toplam canı biterse karanlık kazanır.</li>
+          <li>Birlikte modunda herkes aynı tarafta; Gizli Hain modunda bir kişi karanlık için çalışır.</li>
           <li>Kimse tüm resmi görmez. Bir sınıfın ipucu, diğerininkinin eksik parçası olabilir.</li>
           <li>Telefonlarınızı birbirinize göstermek yerine ipuçlarını sözlü aktarın; amaç bilgileri birlikte anlamlandırmaktır.</li>
           <li>Bağlantın koparsa aynı odaya tekrar gir; karakterin seni bekler.</li>

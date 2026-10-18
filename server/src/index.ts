@@ -36,7 +36,6 @@ async function main(): Promise<void> {
       rollD20: cryptoD20,
       startNodeId: config.startNodeId,
       basePlayerHp: config.basePlayerHp,
-      timers: config.timers,
     },
   });
 

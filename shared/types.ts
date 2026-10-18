@@ -51,6 +51,15 @@ export interface ClassDefinition {
 // ───────────────────────────── Hikaye ─────────────────────────────
 
 export type EndingType = 'victory' | 'bittersweet' | 'defeat';
+export type GameMode = 'cooperative' | 'betrayal';
+export type Allegiance = 'adventurers' | 'darkness';
+
+/** Only delivered to this player's socket. Never stored in public room state. */
+export interface PrivateRole {
+  allegiance: Allegiance;
+  cursesLeft: number;
+  curseQueued: boolean;
+}
 
 export interface StoryEnding {
   type: EndingType;
@@ -71,6 +80,7 @@ export interface GameOverInfo {
   type: EndingType;
   title: string;
   reason: string;
+  betrayal?: { winningSide: Allegiance; traitorPlayerId: string };
 }
 
 export interface StoryAction {
@@ -113,6 +123,7 @@ export interface PublicPlayer {
   isHost: boolean;
   connected: boolean;
   hasChosen: boolean; // seçimi gizli; sadece "seçti mi" bilgisi açık
+  ready: boolean;
 }
 
 export interface ScalingInfo {
@@ -125,6 +136,7 @@ export interface ScalingInfo {
 
 /** Herkese yayınlanan oda görünümü. Gizli veri asla burada olmaz. */
 export interface PublicRoomState {
+  mode: GameMode;
   code: string;
   phase: GamePhase;
   players: PublicPlayer[];
@@ -167,6 +179,7 @@ export interface PendingRoll {
 }
 
 export interface SceneResult {
+  darknessPenalty: number;
   action_id: string;
   rollerPlayerId: string;
   roll: number; // ham d20
@@ -217,6 +230,9 @@ export interface JoinResult {
 }
 
 export interface ClientToServerEvents {
+  'game:ready': (p: { ready: boolean; phase: GamePhase; sceneNumber: number }, ack: Ack) => void;
+  'room:mode': (p: { mode: GameMode }, ack: Ack) => void;
+  'darkness:curse': (ack: Ack) => void;
   'room:create': (p: { name: string }, ack: Ack<JoinResult>) => void;
   'room:join': (p: { code: string; name: string }, ack: Ack<JoinResult>) => void;
   'room:rejoin': (p: { code: string; sessionToken: string }, ack: Ack<JoinResult>) => void;
@@ -224,13 +240,14 @@ export interface ClientToServerEvents {
   'class:select': (p: { classId: ClassId }, ack: Ack) => void;
   'class:release': (ack: Ack) => void;
   'game:start': (ack: Ack) => void;
-  /** Host sahne okumasını bitirince seçim fazına geçirir */
+  /** Host completed game → lobby reset; active phases use game:ready. */
   'game:advance': (ack: Ack) => void;
   'choice:submit': (p: { actionId: string }, ack: Ack) => void;
   'dice:roll': (ack: Ack<SceneResult>) => void;
 }
 
 export interface ServerToClientEvents {
+  'player:role': (role: PrivateRole | null) => void;
   'room:state': (state: PublicRoomState) => void;
   'scene:hint': (payload: PrivateHintPayload) => void;
   'dice:rolling': (p: { rollerPlayerId: string; action_id: string }) => void;

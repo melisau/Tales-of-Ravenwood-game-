@@ -13,6 +13,8 @@ export function GameOverScreen({ game }: { game: Game }) {
   const over = game.gameOver!;
   const me = game.me!;
   const s = STYLE[over.type];
+  const traitor = room.players.find((p) => p.id === over.betrayal?.traitorPlayerId);
+  const mySide = me.id === over.betrayal?.traitorPlayerId ? 'darkness' : 'adventurers';
 
   return (
     <Backdrop>
@@ -28,6 +30,11 @@ export function GameOverScreen({ game }: { game: Game }) {
       </section>
 
       <div className="space-y-4">
+        {over.betrayal && <Panel>
+          <Label>{over.betrayal.winningSide === mySide ? 'Kazandın' : 'Kaybettin'}</Label>
+          <p className="mt-2 text-[#f3dfa6]">{over.betrayal.winningSide === 'darkness' ? 'Karanlık ve hizmetkârı kazandı.' : 'Maceracılar kazandı; hain kaybetti.'}</p>
+          <p className="mt-2 text-sm text-[#c9b48a]">Karanlığın hizmetkârı: <b>{traitor?.name ?? 'Ayrılan oyuncu'}</b>{traitor?.classId ? ` · ${traitor.classId}` : ''}. Diğer oyuncular maceracıydı.</p>
+        </Panel>}
         <Panel>
           <div className="flex items-baseline justify-between">
             <Label>Gecenin özeti</Label>
