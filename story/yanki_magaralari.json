@@ -1,0 +1,652 @@
+[
+  {
+    "node_id": "yanki_01_esik",
+    "title": "Kuyunun Altındaki Rüzgâr",
+    "public_text": "Blackthorne Konağı'nın kurumuş kuyusundan, kayıp bekçi Neris'in feneri yükseliyor. İp boş; fener kendi kendine sallanıyor. Kuyunun dibine indiğinizde bir mağara ikiye ayrılıyor. Solda yukarı esen serin bir rüzgâr ve duvara çizilmiş açık bir çember var. Sağda sıcak hava, baş aşağı bir taç ve uzaktan gelen üç vuruş. Neris'in defterindeki son cümle yarım: 'Beni sesimle aramayın; ben...' Kuyunun ipi yukarı çekiliyor. Konağa dönebilmek için önce bu tünellerin hangi anıyı sakladığını bulmalısınız.",
+    "ambience": "cave_wind",
+    "class_hints": {
+      "Medyum": "Sağdan gelen ses Neris değil; birden fazla boğaz aynı sesi taklit ediyor.",
+      "Bilgin": "Açık çember eski madencilerin hava işareti. Ters taç ise bir geçiş işareti; anlamının son satırı kazınmış.",
+      "Dedektif": "Defterin kenarında taze tırnak izleri var. Cümle korkudan değil, bir el tarafından kesilmiş.",
+      "İzci": "Sol tüneldeki hava yüzeye doğru gidiyor. Sağdaki sıcaklık aşağıdan yükseliyor."
+    },
+    "darkness": {
+      "hint": "Ters taç Morvaine’in dinleme kapısıdır. Üç vuruşa cevap vermek onu uyandırır. Sağ yolu savun; sıcak havanın bekçinin ateşi olduğunu söyle. Sol çember gerçek hava çıkışını gösterir.",
+      "favored_action_ids": [
+        "yanki_taca_vur"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "yanki_ruzgar_izle",
+        "required_class": "ANY",
+        "button_text": "Açık çemberden serin rüzgârı takip et",
+        "dice_dc": 11,
+        "success": {
+          "text": "Hava sizi damlaların ölçülü düştüğü bir galeriye götürüyor. Defterin eksik sayfası taş bir kâsenin altında.",
+          "hp_change": 0,
+          "next_node_id": "yanki_02_damlalar"
+        },
+        "fail": {
+          "text": "Yarık daralıyor; çantanız kayaya takılıyor. Bir sıyrıkla damla galerisine çıkıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_02_damlalar"
+        }
+      },
+      {
+        "action_id": "yanki_taca_vur",
+        "required_class": "ANY",
+        "button_text": "Ters tacın yanında üç kez vurup cevap bekle",
+        "dice_dc": 10,
+        "success": {
+          "text": "Üç vuruş geri geliyor; dördüncüsü kalbinizin içinden. Sıcak tünel açılıyor ve Neris’in sesi sizi çağırıyor.",
+          "hp_change": -2,
+          "next_node_id": "yanki_03_agiz"
+        },
+        "fail": {
+          "text": "Taç çatlıyor. Aşağıdan kopan bir çığlık sizi sıcak tünele sürüklüyor.",
+          "hp_change": -2,
+          "next_node_id": "yanki_03_agiz"
+        }
+      },
+      {
+        "action_id": "yanki_ip_merdiven",
+        "required_class": "ANY",
+        "button_text": "Kuyu duvarından bir dönüş yolu hazırla",
+        "dice_dc": 13,
+        "success": {
+          "text": "Çivilerden bir güvenlik hattı kuruyorsunuz. Hat sizi köklerle sarılmış yan geçide ulaştırıyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_05_kokler"
+        },
+        "fail": {
+          "text": "Bir çivi boşalıyor; fener kayıp düşüyor. Işığı takip ederek damla galerisine iniyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_02_damlalar"
+        }
+      },
+      {
+        "action_id": "yanki_ruha_sor",
+        "required_class": "Medyum",
+        "button_text": "Bekçinin gerçek sesini ruhlara sor",
+        "dice_dc": 11,
+        "success": {
+          "text": "Bir kadın fısıldıyor: “Suyun hatırlamadığı adı kullan.” Damla galerisine yöneliyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "yanki_02_damlalar"
+        },
+        "fail": {
+          "text": "Cevap yerine keskin bir nefes duyuyorsun. Sıcak tünelin kapısı aralanıyor.",
+          "hp_change": -1,
+          "next_node_id": "yanki_03_agiz"
+        }
+      },
+      {
+        "action_id": "yanki_hava_haritasi",
+        "required_class": "İzci",
+        "button_text": "Hava akımından mağaranın haritasını çıkar",
+        "dice_dc": 10,
+        "success": {
+          "text": "Yüzeye çıkan ince bir yarık buluyorsun; köklerin altındaki güvenli sete varıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "yanki_05_kokler"
+        },
+        "fail": {
+          "text": "Yan akımı çıkış sanıyorsun. Harita sizi su galerisine indiriyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_02_damlalar"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "yanki_02_damlalar",
+    "title": "Hatırlayan Damlalar",
+    "public_text": "Tavandan üç ayrı su ipliği düşüyor: soldaki taş kâseye iki yavaş damla, ortadaki çatlağa üç hızlı damla, sağdaki boşluğa tek damla. Her düşüşte suyun içinde bir insan yüzü belirip siliniyor. Neris'in defter sayfası kâsenin altında: 'Suyun söylediği adlar ödünçtür.' Zeminde açık çember ile ters taç yeniden kazınmış. Ortadaki çatlağın yanında susamış bir çocuk silueti elini uzatıyor. Sağdaki set sarnıca, sol basamaklar köklere iniyor. Damlaları dinleyebilir, düzenlerini değiştirebilir ya da suya hiç dokunmadan ilerleyebilirsiniz.",
+    "ambience": "droplets",
+    "class_hints": {
+      "Simyacı": "Ortadaki su su değil; diline değerse insanın kendi adını unutturan gümüş tuzu içeriyor.",
+      "Şifacı": "Siluetin boğazı hareket etmiyor. Gerçek bir susuzluk belirtisi yok.",
+      "Falcı": "Bir kartta su içen kişi aynada kendini tanımıyor. Diğerinde boş kâse bir kilidi açıyor.",
+      "Tamirci": "Kâse kaldırılınca alttaki kanala su dolacak; bu bir denge düzeneği."
+    },
+    "darkness": {
+      "hint": "Ters taçlı su hafızayı Morvaine’e taşır. Ortadaki suyu kâseye aktarır ya da tattırırsanız sesler güçlenir. Bunu çocuğu kurtarma yolu diye savun. Kâseyi boş kaldırmak güvenli vanayı açar.",
+      "favored_action_ids": [
+        "yanki_suyu_tat"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "yanki_damla_say",
+        "required_class": "ANY",
+        "button_text": "Damlaları say ve kâseyi suya dokunmadan kaldır",
+        "dice_dc": 11,
+        "success": {
+          "text": "İki, üç, bir: kâseyi altıncı damlada kaldırınca sarnıcın kapısı açılıyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Ritmi kaçırıyorsunuz; taş kapı parmaklarınıza kapanıyor ama aralık kalıyor.",
+          "hp_change": -1,
+          "next_node_id": "yanki_04_sarnic"
+        }
+      },
+      {
+        "action_id": "yanki_suyu_tat",
+        "required_class": "ANY",
+        "button_text": "Çocuğa yardım etmek için ortadaki suyu kâseye doldur",
+        "dice_dc": 10,
+        "success": {
+          "text": "Çocuk gülümsüyor; yüzü Neris’in yüzüne dönüşüyor. Artık adınızı bilen ses sizi çağırıyor.",
+          "hp_change": -2,
+          "next_node_id": "yanki_03_agiz"
+        },
+        "fail": {
+          "text": "Su tersine akıyor ve bileklerinizi yakıyor. Sıcak tünelin ağzına savruluyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "yanki_03_agiz"
+        }
+      },
+      {
+        "action_id": "yanki_kuru_set",
+        "required_class": "ANY",
+        "button_text": "Suya dokunmadan kuru basamakları izle",
+        "dice_dc": 12,
+        "success": {
+          "text": "Damlaların sesini geride bırakıp köklerin örttüğü taş sete ulaşıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "yanki_05_kokler"
+        },
+        "fail": {
+          "text": "Bir basamak kırılıyor. Altındaki sarnıca düşüyor, birbirinizi çekip çıkarıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_04_sarnic"
+        }
+      },
+      {
+        "action_id": "yanki_suyu_ayir",
+        "required_class": "Simyacı",
+        "button_text": "Gümüş tuzunu sudan ayır",
+        "dice_dc": 10,
+        "success": {
+          "text": "Tuzu ayırınca kâsenin dibinde güvenli vana işareti beliriyor. Sarnıca geçiyorsunuz.",
+          "hp_change": 1,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Karışım köpürüp taşları kayganlaştırıyor; sarnıca yaralı varıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_04_sarnic"
+        }
+      },
+      {
+        "action_id": "yanki_kanali_ac",
+        "required_class": "Tamirci",
+        "button_text": "Kâsenin altındaki kanalı aletle aç",
+        "dice_dc": 11,
+        "success": {
+          "text": "Kanal boşalıyor, kapı sessizce açılıyor. Neris’in fenerinden bir kıvılcım kopuyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Alet çatlağa düşüyor. Onu almaya uzanınca sıcak ses sizi duyuyor.",
+          "hp_change": -1,
+          "next_node_id": "yanki_03_agiz"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "yanki_03_agiz",
+    "title": "Sizin Sesinizle Konuşan Mağara",
+    "public_text": "Duvarlar bir ağız gibi açılıp kapanıyor. İçeriden her biriniz kendi sesinizi duyuyorsunuz: 'Korkma, ben yolu buldum.' Tavanda baş aşağı taç biçiminde siyah kristaller var; yerde beyaz taşlardan kurulmuş açık bir halka. Neris, halkanın içinde diz çökmüş. Gözleri kapalı, eli ağzında; konuşmamaya çalışıyor. Bir ses, 'Hepimiz aynı cümleyi söylersek kapı açılacak,' diyor. Halkanın dışında bir dar geçit, kristallerin ardında sarnıca inen merdiven görünüyor.",
+    "ambience": "scary_cave",
+    "class_hints": {
+      "Avcı": "Kristaller sesle besleniyor. Yaratık, tekrar edilen cümleleri daha net taklit edebiliyor.",
+      "Muhafız": "Beyaz taş halkası ağırlığı taşıyor; taşları bozmazsanız Neris’i çekebilirsiniz.",
+      "Günlükçü": "Neris’in defterindeki eski madenci kuralı: “Kendi sesine cevap verme.”",
+      "Gizemci": "Ters taç yansıtıcı bir mühür; ortak bir cümle büyüyü tamamlar."
+    },
+    "darkness": {
+      "hint": "Herkesin aynı cümleyi tekrar etmesi kristallerdeki ters tacı besler. “Birlikte olmak bizi korur” diye savun; bu sahnede tekrar etmek gerçekten karanlığa güç verir. Beyaz halka bekçiyi koruyor.",
+      "favored_action_ids": [
+        "yanki_cumleyi_tekrarla"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "yanki_sessiz_kurtar",
+        "required_class": "ANY",
+        "button_text": "Konuşmadan beyaz halkadan Neris’i çıkar",
+        "dice_dc": 12,
+        "success": {
+          "text": "Ellerinizle anlaşarak Neris’i kaldırıyorsunuz. Size sarnıca giden kuru merdiveni gösteriyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Bir taş devriliyor; Neris’i çekiyorsunuz ama ağız omzunuzu sıyırıyor.",
+          "hp_change": -2,
+          "next_node_id": "yanki_04_sarnic"
+        }
+      },
+      {
+        "action_id": "yanki_cumleyi_tekrarla",
+        "required_class": "ANY",
+        "button_text": "Kapıyı açmak için aynı güven cümlesini hep birlikte söyle",
+        "dice_dc": 10,
+        "success": {
+          "text": "Cümle çoğalıp bin ağızdan geri dönüyor. Beyaz halka kararıyor; sarnıçtaki kalp uyanıyor.",
+          "hp_change": -3,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Sesleriniz birbirini bastırıyor. Kristaller parçalanıyor ve dar geçide kaçıyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "yanki_05_kokler"
+        }
+      },
+      {
+        "action_id": "yanki_gozleri_kapat",
+        "required_class": "ANY",
+        "button_text": "Sesleri izlemek yerine kapalı gözlerle dar geçide ilerle",
+        "dice_dc": 13,
+        "success": {
+          "text": "Duvara dokunarak köklerin olduğu sete çıkıyorsunuz; taklitler arkanızda kalıyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_05_kokler"
+        },
+        "fail": {
+          "text": "Biriniz yanlış sesi izliyor. Onu yakalayıp sarnıcın merdivenine çekiyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "yanki_04_sarnic"
+        }
+      },
+      {
+        "action_id": "yanki_kristal_avla",
+        "required_class": "Avcı",
+        "button_text": "Ses kristallerini titreşimsiz bezle sar",
+        "dice_dc": 11,
+        "success": {
+          "text": "Kristaller sustukça Neris nefes alıyor. Sarnıca giden yol açılıyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Bir kristal bezin içinde çığlık atıyor. Köklerin yoluna kaçıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_05_kokler"
+        }
+      },
+      {
+        "action_id": "yanki_halkayi_tut",
+        "required_class": "Muhafız",
+        "button_text": "Beyaz halkanın taşlarını kalkanla sabitle",
+        "dice_dc": 10,
+        "success": {
+          "text": "Halka bozulmadan Neris’i dışarı çekiyorsunuz; sarnıca geçiyorsunuz.",
+          "hp_change": 1,
+          "next_node_id": "yanki_04_sarnic"
+        },
+        "fail": {
+          "text": "Kalkan çatlıyor. Neris kurtuluyor ama ağız bileğini yakalıyor.",
+          "hp_change": -2,
+          "next_node_id": "yanki_04_sarnic"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "yanki_04_sarnic",
+    "title": "Adların Sarnıcı",
+    "public_text": "Yeraltı gölünün üstüne düşen her damla, bir adı suyun yüzeyine yazıyor. Neris kuru bir basamakta bekliyor; suyun içine bakmıyor. Gölün ortasında küçük bir fener, altında çan biçimli bir taş var. Kıyıdaki levhada 'Bir ad ver, bir yol al' yazıyor. Bir yanında içe kapanan taç, diğer yanında açık çember bulunan iki vana, gölün su seviyesini yönetiyor. Açık çemberin kolu paslı; taçlı kol yeni yağlanmış. Taş köprü son odaya, kuru kanal ise köklere gidiyor.",
+    "ambience": "droplets",
+    "class_hints": {
+      "Bilgin": "“Bir ad ver” cümlesi sonraki satırdan koparılmış. Tam metin: “Bir ad verme; su adları saklar.”",
+      "Dedektif": "Yeni yağın içinde aynı siyah kristallerin tozu var. Kol bilerek cazip hale getirilmiş.",
+      "Simyacı": "Paslı vana tatlı suyu dışarı boşaltıyor; taçlı vana kristal tuzunu göle katıyor.",
+      "Şifacı": "Neris kendi adını duyduğunda bayılıyor. Suya ad söylemek bir şeyi güçlendiriyor."
+    },
+    "darkness": {
+      "hint": "İçe kapanan taçlı vanayı açmak adları kalbe taşır. Kolay açılan kolu güvenli bir tahliye kolu diye savun. “Bir ad ver” teklifini kabul ettirmek de işine yarar; kendi adını söylemeden başkasını ikna et.",
+      "favored_action_ids": [
+        "yanki_tac_vanasi"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "yanki_acik_vana",
+        "required_class": "ANY",
+        "button_text": "Paslı açık çember vanasını birlikte çevir",
+        "dice_dc": 12,
+        "success": {
+          "text": "Su çekiliyor; taş köprü görünür oluyor. Neris’in feneri son odayı aydınlatıyor.",
+          "hp_change": 0,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Vana elinizi kesiyor ama su bir miktar çekiliyor. Köprüden geçiyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_tac_vanasi",
+        "required_class": "ANY",
+        "button_text": "Yeni yağlanmış taçlı vanayı açıp yolu temizle",
+        "dice_dc": 10,
+        "success": {
+          "text": "Göl sessizce kararıyor. Fenerin altında atan bir gölge beliriyor ve köprü sizi içine çekiyor.",
+          "hp_change": -3,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Vana kırılıyor. Su yükselmeden kuru kanala kaçıyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "yanki_05_kokler"
+        }
+      },
+      {
+        "action_id": "yanki_kuru_kanal",
+        "required_class": "ANY",
+        "button_text": "Levhanın teklifini reddedip kuru kanaldan ilerle",
+        "dice_dc": 11,
+        "success": {
+          "text": "Duvar boyunca ilerleyip köklerin tuttuğu çıkış setine varıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "yanki_05_kokler"
+        },
+        "fail": {
+          "text": "Kanal çökerken köprünün üstüne atlıyorsunuz; son oda önünüzde.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_yaziyi_tamamla",
+        "required_class": "Bilgin",
+        "button_text": "Levhanın kazınmış son satırını çöz",
+        "dice_dc": 10,
+        "success": {
+          "text": "Eksik uyarıyı okuyunca göldeki adlar siliniyor. Köprü açılıyor.",
+          "hp_change": 1,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Bir hece yanlış çıkıyor; su seni tanıyor. Köprüye koşuyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_nerisi_uyandir",
+        "required_class": "Şifacı",
+        "button_text": "Neris’in adını söylemeden bilincini toparla",
+        "dice_dc": 11,
+        "success": {
+          "text": "Bekçi gözlerini açıp fenerin altındaki taşın kırılmasını işaret ediyor.",
+          "hp_change": 2,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Neris’in ağzından başka bir ses çıkıyor. Onu çekerek köklere gidiyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_05_kokler"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "yanki_05_kokler",
+    "title": "Köklerin Tuttuğu Yol",
+    "public_text": "Bir incir ağacının kökleri mağaranın tavanından sarkıp taş bir merdiveni tutuyor. Yukarıda konağın bahçesindeki rüzgârı duyuyorsunuz. Merdivenin yanında Neris'in eski arkadaşlarının adları var; birinin üstü ters taçla çizilmiş. Tavana bağlı siyah bir ip, merdivenle yeraltındaki fener arasında gerilmiş. İpi kesmek çıkışı açacak gibi görünüyor, fakat kökler de o ipe dolanmış. Köklerin arasından kalbin odasına giden ikinci bir patika var. Bir seçim: hemen kaçış mı, düğümü çözmek mi, mağaranın sesini bütünüyle susturmak mı? Köklerin arasından bekçi Neris çıkıyor; yorgun ama hayatta. “Bana da sizin sesinizle seslendiler,” diyor. Sizi görür görmez aynı taş sete tutunuyor.",
+    "ambience": "cave_wind",
+    "class_hints": {
+      "İzci": "Siyah ip kesilirse taş merdivenin alt desteği de boşalacak. Yan patika sağlam.",
+      "Tamirci": "İpin ucunda bir kilit değil, ağırlık dengeleyici var; düğümü çözerek sabitlemek mümkün.",
+      "Dedektif": "Taçla çizilmiş isim başkasının eliyle silinmiş. Bu bir kurtarma işareti değil.",
+      "Günlükçü": "Madenci kaydında “İpi kesen sesi serbest bırakır” deniyor; sonraki satırda yüzeye yayılan kayıplar var.",
+      "Avcı": "Köklerdeki izler yüzeye çıkmak isteyen bir taklitçiye ait. Siyah ip kesilirse ona yol açılacak.",
+      "Muhafız": "Merdivenin ağırlığı siyah ipte; ipi kesmek yerine düğümü çözüp desteği sabitlemek gerekiyor."
+    },
+    "darkness": {
+      "hint": "Siyah ip kökleri değil, Morvaine’in yüzeye çıkan nefesini bağlıyor. Kesilmesini savun; “hızlı çıkış” de. Başarıyla kesmek bile kalbin sesini güçlendirir. Düğümün çözülüp sabitlenmesi onu zayıflatır.",
+      "favored_action_ids": [
+        "yanki_siyah_ip"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "yanki_dugumu_coz",
+        "required_class": "ANY",
+        "button_text": "İpi kesmeden düğümü çöz ve merdiveni sabitle",
+        "dice_dc": 12,
+        "success": {
+          "text": "Kökler merdiveni yeniden tutuyor. Neris’le bahçeye çıkıyorsunuz; aşağıdaki ses henüz susmadı.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "bittersweet",
+            "title": "Köklerin Üstünde Şafak"
+          }
+        },
+        "fail": {
+          "text": "Düğüm sıkışıyor; düşen taşlardan kaçıp kalbin patikasına giriyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_siyah_ip",
+        "required_class": "ANY",
+        "button_text": "Çıkışı açmak için taçlı siyah ipi kes",
+        "dice_dc": 10,
+        "success": {
+          "text": "İp kopuyor ve bahçenin rüzgârı bir çığlığa dönüşüyor. Merdiven yıkılıyor; kalbin odasına düşüyorsunuz.",
+          "hp_change": -3,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Bıçak kayıyor, ip dayanıyor. Yaralı halde kalbin patikasına çekiliyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_kalbe_git",
+        "required_class": "ANY",
+        "button_text": "Kaçmak yerine sesi kaynağında susturmaya git",
+        "dice_dc": 11,
+        "success": {
+          "text": "Köklerin arasındaki sağlam yolu buluyor, fenerin yandığı son odaya ulaşıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Kökler bileklerinizi sıkıyor; birbirinizi kurtararak son odaya varıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_deneyi_incele",
+        "required_class": "Dedektif",
+        "button_text": "İpteki taşıyıcı izi incele ve güvenli düğümü bul",
+        "dice_dc": 10,
+        "success": {
+          "text": "Gerçek taşıyıcı düğümü bulup çıkışı açıyorsun; bekçi yanınızda ama mağara hâlâ sesli.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "bittersweet",
+            "title": "İzin Ardındaki Bahçe"
+          }
+        },
+        "fail": {
+          "text": "Yanlış düğüm açılıyor. İp sizi kalbin odasına sürüklüyor.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      },
+      {
+        "action_id": "yanki_kayip_adlari_oku",
+        "required_class": "Günlükçü",
+        "button_text": "Kayıp madencilerin gerçek adlarını kayıttan oku",
+        "dice_dc": 11,
+        "success": {
+          "text": "Kökler adları tanıyıp kalbe giden yolu açıyor; grubun korkusu hafifliyor.",
+          "hp_change": 1,
+          "next_node_id": "yanki_06_kalp"
+        },
+        "fail": {
+          "text": "Silinmiş ad cevap veriyor. Ses sizi son odaya çağırıyor.",
+          "hp_change": -1,
+          "next_node_id": "yanki_06_kalp"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "yanki_06_kalp",
+    "title": "Yankının Kalbi",
+    "public_text": "Mağaranın en derin odasında fener, siyah bir taşın üzerinde sallanıyor. Taş bir kalp gibi atıyor; her atışta yüzeyinde tanıdık ağızlar açılıyor. Zeminde yarım kalmış açık çember ve tamamlanmış ters taç var. Neris feneri size uzatıyor: 'Alevi taşın üstüne koyarsanız bütün adlar geri dönecek,' diyor bir ses; bekçinin gerçek ağzıysa kıpırdamıyor. Taşın altında çatlak bir çan, arkanızda yüzeye uzanan bir yarık duruyor. Burada bir kapı açmak ile bir şeyi serbest bırakmak aynı hareket olabilir.",
+    "ambience": "scary_cave",
+    "class_hints": {
+      "Medyum": "Neris’in ağzı kapalı. Teklif yine mağaranın sesi; gerçek bekçi çanı gösteriyor.",
+      "Falcı": "Taç üstündeki ateş bahçedeki bütün ağızları açıyor. Çanı susturan ellerde gün doğuyor.",
+      "Günlükçü": "Çatlak çan adları tutan ilk kap. Kırılıp açık çembere konursa anlaşma sona erer.",
+      "Gizemci": "Ters taç tamamlanmış bir çağrı mührü. Üstüne canlı alev koymak çağrıyı kabul etmek."
+    },
+    "darkness": {
+      "hint": "Feneri ters tacın üstüne koymak Morvaine’i mağaradan konağa taşır ve sana zafer getirir. Bunu adları geri verme ritüeli diye savun. Çanı açık çember içinde kırmak onu hapseder; o seçeneği geciktir.",
+      "favored_action_ids": [
+        "yanki_taca_fener"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "yanki_cani_kir",
+        "required_class": "ANY",
+        "button_text": "Çatlak çanı açık çember içinde birlikte kır",
+        "dice_dc": 13,
+        "success": {
+          "text": "Çan bir kez çalıyor; sonra bütün ağızlar kapanıyor. Neris’in adı ona geri dönüyor. Konağın kuyusundan ilk kez temiz rüzgâr esiyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Kuyunun Gerçek Sesi"
+          }
+        },
+        "fail": {
+          "text": "Çember dağılırken taş ağızlarınızdan konuşuyor. Mağara bu kez hepinizin sesini saklıyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Bin Ağızlı Kuyu"
+          }
+        }
+      },
+      {
+        "action_id": "yanki_taca_fener",
+        "required_class": "ANY",
+        "button_text": "Adları geri vermek için feneri ters tacın üstüne koy",
+        "dice_dc": 10,
+        "success": {
+          "text": "Alev siyaha dönüyor. Kapı açılıyor, fakat dışarı çıkan siz değilsiniz: bütün sesler konağın pencerelerine yerleşiyor.",
+          "hp_change": -2,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Konağa Taşınan Karanlık"
+          }
+        },
+        "fail": {
+          "text": "Fener sönüyor; mağara nefesinizi ödünç alıyor. Yukarıdaki kuyu sessizce kapanıyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Ödünç Nefesler"
+          }
+        }
+      },
+      {
+        "action_id": "yanki_yariktan_cik",
+        "required_class": "ANY",
+        "button_text": "Feneri bırakıp Neris’le yüzey yarığından kaç",
+        "dice_dc": 12,
+        "success": {
+          "text": "Dar yarıktan bahçeye çıkıyorsunuz. Bekçi yaşıyor; kuyunun altındaki kalp ise her gece bir kez daha atıyor.",
+          "hp_change": -1,
+          "next_node_id": null,
+          "ending": {
+            "type": "bittersweet",
+            "title": "Bahçeye Dönenler"
+          }
+        },
+        "fail": {
+          "text": "Yarık daralıyor; seslerin arasına sıkışıp kalıyorsunuz.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Köklerin Altında"
+          }
+        }
+      },
+      {
+        "action_id": "yanki_muhru_ters_cevir",
+        "required_class": "Gizemci",
+        "button_text": "Çağrı mührünü kapatma çemberine dönüştür",
+        "dice_dc": 12,
+        "success": {
+          "text": "Taç açık çembere dönüşüyor. Sesler kendi adlarını hatırlayıp dağılıyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Kapanan Yankı"
+          }
+        },
+        "fail": {
+          "text": "Mühür kapanmadan adınızı öğreniyor. Mağara sizi kendi sesi yapıyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Taşın Öğrendiği Ad"
+          }
+        }
+      },
+      {
+        "action_id": "yanki_sessiz_kader",
+        "required_class": "Falcı",
+        "button_text": "Hiçbir sese cevap vermeden çanı son kartın üstüne koy",
+        "dice_dc": 12,
+        "success": {
+          "text": "Çan kartı yakıyor, mağara susuyor. Bekçiyle birlikte şafağa çıkıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Sessiz Kart"
+          }
+        },
+        "fail": {
+          "text": "Kart ters düşüyor; taş adınızı son kez söylüyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Son Yankı"
+          }
+        }
+      }
+    ]
+  }
+]

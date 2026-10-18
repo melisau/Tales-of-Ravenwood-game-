@@ -1,4 +1,6 @@
 import { CLASSES } from '../../../shared/classes';
+import { ADVENTURES } from '../../../shared/adventures';
+import type { AdventureId } from '../../../shared/types';
 import { MAX_PLAYERS, MIN_PLAYERS, getTierConfig, startingHpPerPlayer } from '../../../shared/scaling';
 import type { Game } from '../state/useGame';
 import { PartyAdvice } from '../components/PartyAdvice';
@@ -55,6 +57,15 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
       </section>
 
       <div className="space-y-4">
+        <Panel>
+          <label htmlFor="adventure"><Label>Blackthorne Konağı · Macera seçimi</Label></label>
+          <select id="adventure" value={room.adventureId} disabled={!isHost} onChange={(event) => void game.setAdventure(event.target.value as AdventureId)}
+            className="mt-2 w-full rounded-xl border border-[#c9a24a]/30 bg-[#160b1d] p-3 text-[#f3dfa6]">
+            {ADVENTURES.map((a) => <option key={a.id} value={a.id}>{a.title}</option>)}
+          </select>
+          <p className="mt-2 text-sm leading-relaxed text-[#c9b48a]">{ADVENTURES.find((a) => a.id === room.adventureId)?.description}</p>
+          <p className="mt-2 text-xs text-[#a893b3]">Her macera farklı yollara ve sonlara ayrılır. Zar başarısı hamlenin uygulandığını gösterir; kötü bir ritüelin başarıyla yapılması da mümkün.</p>
+        </Panel>
         <Panel>
           <label htmlFor="game-mode"><Label>Oyun modu</Label></label>
           <select id="game-mode" value={room.mode} disabled={!isHost} onChange={(event) => void game.setMode(event.target.value as 'cooperative' | 'betrayal')}

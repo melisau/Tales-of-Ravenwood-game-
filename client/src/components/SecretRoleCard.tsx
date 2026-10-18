@@ -17,6 +17,12 @@ export function SecretRoleCard({ game }: { game: Game }) {
           ? 'Konağın kötü gücüyle anlaşma yaptın. Hikâye yenilgiyle biterse sen kazanırsın; zafer veya buruk sonla biterse kaybedersin. Sınıfın kimliğinin örtüsü. İpucunu saklayabilir, çarpıtabilir ve tehlikeli hamleleri savunabilirsin.'
           : 'Zafer veya buruk sona ulaşırsanız maceracılar kazanır; yenilgiyle biterse hain kazanır. Aranızda tam bir hain var. İpuçlarını karşılaştır; çelişkileri sorgula ve şüphelendiğin kişinin önerisine oy vermeyebilirsin. İpucunu kime, ne zaman ve ne kadar anlatacağına sen karar ver.'}</p>
         {traitor && <>
+          {game.hint?.darkness && <div className="rounded-xl border border-[#9e1424]/60 bg-[#2a0d12] p-3">
+            <h3 className="font-bold text-[#ffb1a8]">Karanlığın bu sahnedeki fısıltısı</h3>
+            <p className="mt-2">{game.hint.darkness.hint}</p>
+            <p className="mt-2 text-xs text-[#c9b48a]">Savunman istenen seçenekler:</p>
+            <ul className="mt-1 list-disc pl-4">{game.room.scene?.actions.filter((a) => game.hint!.darkness!.favored_action_ids.includes(a.action_id)).map((a) => <li key={a.action_id}>{a.button_text}</li>)}</ul>
+          </div>}
           <p>Kalan lanet: <b>{role.cursesLeft}</b>. Tartışma aşamasında, sahne başına bir kez kullanabilirsin. Bu sahnenin zar zorluğu 2 artar (en fazla 20); doğal 20 yine başarılıdır. Lanet geri alınmaz. Etki zar aşamasında görünür, kimin kullandığı açıklanmaz.</p>
           <Button variant="secondary" disabled={busy || game.connection !== 'online' || game.room.phase !== GamePhase.DISCUSSION_TIMER || role.cursesLeft === 0 || role.curseQueued}
             onClick={async () => { setBusy(true); try { await game.curse(); } finally { setBusy(false); } }}>

@@ -26,6 +26,8 @@ export const storyNodeSchema = z
     node_id: z.string().regex(/^[a-z0-9_]+$/, 'node_id snake_case olmalı'),
     title: z.string().min(1),
     public_text: z.string().min(1),
+    ambience: z.enum(['cave_wind', 'scary_cave', 'droplets', 'music_box']).optional(),
+    darkness: z.object({ hint: z.string().min(1), favored_action_ids: z.array(z.string()).min(1) }).optional(),
     class_hints: z.record(classIdSchema, z.string().min(1)),
     actions: z.array(storyActionSchema).min(1),
   })
@@ -37,9 +39,14 @@ export const storyNodeSchema = z
       }
       ids.add(a.action_id);
     }
-    // Hangi sınıflar odada olursa olsun grup kilitlenmesin diye en az bir "ANY" aksiyon şart.
-    if (!node.actions.some((a) => a.required_class === ANY_CLASS)) {
-      ctx.addIssue({ code: 'custom', message: `${node.node_id}: en az bir required_class="ANY" aksiyonu olmalı` });
+    for (const id of node.darkness?.favored_action_ids ?? []) {
+      if (!node.actions.some((a) => a.action_id === id && a.required_class === ANY_CLASS)) {
+        ctx.addIssue({ code: 'custom', message: `Karanlık işareti herkese açık bir seçeneğe bağlanmalı: ${id}` });
+      }
+    }
+    // Every party must retain meaningful choice, independent of selected classes.
+    if (node.actions.filter((a) => a.required_class === ANY_CLASS).length < 3) {
+      ctx.addIssue({ code: 'custom', message: `${node.node_id}: en az üç required_class="ANY" aksiyonu olmalı` });
     }
   });
 

@@ -53,6 +53,13 @@ export interface ClassDefinition {
 export type EndingType = 'victory' | 'bittersweet' | 'defeat';
 export type GameMode = 'cooperative' | 'betrayal';
 export type Allegiance = 'adventurers' | 'darkness';
+export type AdventureId = 'mahzen' | 'yankilar' | 'on_ucuncu_nota';
+export type AudioCue = 'cave_wind' | 'scary_cave' | 'droplets' | 'music_box';
+
+export interface DarknessClue {
+  hint: string;
+  favored_action_ids: string[];
+}
 
 /** Only delivered to this player's socket. Never stored in public room state. */
 export interface PrivateRole {
@@ -93,6 +100,8 @@ export interface StoryAction {
 }
 
 export interface StoryNode {
+  ambience?: AudioCue;
+  darkness?: DarknessClue;
   node_id: string;
   title: string;
   public_text: string;
@@ -136,6 +145,7 @@ export interface ScalingInfo {
 
 /** Herkese yayınlanan oda görünümü. Gizli veri asla burada olmaz. */
 export interface PublicRoomState {
+  adventureId: AdventureId;
   mode: GameMode;
   code: string;
   phase: GamePhase;
@@ -166,6 +176,7 @@ export interface PublicActionView {
 }
 
 export interface PublicScene {
+  ambience: AudioCue | null;
   node_id: string;
   title: string;
   public_text: string;
@@ -198,6 +209,8 @@ export interface SceneResult {
 
 /** Sadece tek bir socket'e gönderilen gizli paket. */
 export interface PrivateHintPayload {
+  /** Only present for the darkness player; never included in public scene data. */
+  darkness?: DarknessClue;
   node_id: string;
   classId: ClassId;
   hint: string | null; // bu sahnede sınıfa ipucu yoksa null
@@ -230,6 +243,7 @@ export interface JoinResult {
 }
 
 export interface ClientToServerEvents {
+  'room:adventure': (p: { adventureId: AdventureId }, ack: Ack) => void;
   'game:ready': (p: { ready: boolean; phase: GamePhase; sceneNumber: number }, ack: Ack) => void;
   'room:mode': (p: { mode: GameMode }, ack: Ack) => void;
   'darkness:curse': (ack: Ack) => void;

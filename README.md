@@ -3,6 +3,48 @@
 2–12 oyunculu, aynı masada telefonlarla oynanan Cadılar Bayramı temalı FRP.
 Sunucu otoriterdir: zar, HP, faz geçişleri ve gizli ipuçları yalnızca sunucuda hesaplanır.
 
+## Blackthorne Konağı maceraları
+
+Host lobide macerayı seçer; seçim bütün oyunculara uygulanır. Üç macera da
+birlikte hayatta kal veya Gizli Hain modunda oynanabilir.
+
+| Macera | Sahne | Adlandırılmış son | Konu |
+|---|---:|---:|---|
+| Karanlık Mahzen | 11 | 19 | Elspeth, kan mühürleri ve konağın eski anlaşması |
+| Yankı Mağaraları | 6 | 12 | Kayıp bekçi, adları saklayan su ve sesleri taklit eden mağara |
+| On Üçüncü Nota | 6 | 13 | Ada’nın anısı, müzik kutusu ve aynı geceye hapsolmuş konak |
+
+Toplam 23 sahne ve 44 adlandırılmış son vardır. Her sahnede, odadaki sınıflardan
+bağımsız en az üç herkese açık seçenek bulunur; sınıfa özel seçenekler bunlara
+eklenir. Her oyunda bütün sahneler görülmez.
+
+Hain, kendi gizli bağlılık kartında **Karanlığın bu sahnedeki fısıltısı** bölümünü
+görür: işaretin neyi tetiklediği, neden kötü güce yaradığı ve savunması istenen
+seçenekler yalnızca ona gönderilir. Maceracılar kendi sınıf ipuçlarını görür.
+Zarın başarılı olması hamlenin iyi olduğu anlamına gelmez: bir çağrı ritüelinin
+başarıyla yapılması hikâyeyi yenilgiyle bitirip haine kazandırabilir.
+
+## Genel müzik ve sahne atmosferleri
+
+Üstteki **Sesi aç** düğmesiyle oynatmayı başlatın; varsayılan kapalıdır.
+Genel arka plan müziği ile sahne atmosferi iki ayrı döngü halinde karıştırılır.
+Sahne değiştiğinde atmosfer değişir, genel müzik devam eder. Lobide ve finalde
+çalma durur. Ses seviyesi ayarlanabilir; aynı masada tek telefondan açılması
+önerilir. Tarayıcı oynatmayı engellerse kontrol alanında tekrar açma mesajı görünür.
+Ses, gizli rolü ele verecek kişisel efektler içermez; bütün önemli bilgiler metinde de vardır.
+
+| Kullanıcının sağladığı dosya | Oyundaki kullanım |
+|---|---|
+| `idoberg-creepy-halloween-bells-loop-.mp3` | Bütün maceralarda genel arka plan |
+| `cave-wind-.mp3` | Mağarada dolaşma ve hava akımı sahneleri |
+| `scary-cave.mp3` | Tehlikeli mağara ve kötü gücün odaları |
+| `droplets-in-a-cave.mp3` | Damla galerisi, sarnıç ve damlalı mahzen |
+| `scary-music-box-.mp3` | Müzik kutusu ve ona bağlı mekanizma/ayna sahneleri |
+
+Ses dosyaları `client/public/audio/` içindedir. Dosya eşlemeleri `shared/audio.ts`,
+macera kataloğu `shared/adventures.ts` dosyasındadır. Hikâyedeki `ambience` alanı
+sahne atmosferini belirler; alan yoksa yalnızca genel müzik çalar.
+
 ## Oyun modları ve gizli bağlılık
 
 - **Birlikte hayatta kal (2–12 kişi):** Herkes maceracıdır. Zafer veya buruk son
@@ -38,10 +80,11 @@ ravenwood/
 │   ├── types.ts            # Veri tipleri, GamePhase enum, socket event sözleşmesi
 │   ├── classes.ts          # 12 sınıf tanımı
 │   └── scaling.ts          # Dinamik zorluk & zar dengeleme
-├── story/                  # Bölüm 1: Karanlık Mahzen — 11 sahne, 13 son
+├── story/                  # Üç macera — toplam 23 sahne, 44 adlandırılmış son
 │   ├── mahzen_01_karanlik_mahzen.json
 │   ├── mahzen_02_06_derinlikler.json
 │   └── mahzen_07_final.json
+│   # Ayrıca: yanki_magaralari.json, on_ucuncu_nota.json
 ├── scripts/dev.mjs         # `npm run basla`: sunucu + uygulama + telefon adresi
 ├── server/                 # Node.js + Express + Socket.io (TypeScript)
 │   └── src/
@@ -90,7 +133,7 @@ LOBBY → SCENE_TEXT → PRIVATE_CHOICES → DISCUSSION_TIMER (süresiz) → DIC
 | `DICE_ROLL` | Sınıfa özel aksiyonda sahibi (+2), ANY aksiyonda ilk oy veren atar | Zarcı `dice:roll`; zarcı bağlı değilse Host |
 | `SCENE_RESULT` | `scene:result` yayını, HP güncellemesi | Her bağlı oyuncu hazır onayını verince |
 
-Odada sahibi olmayan sınıf aksiyonları sahnede hiç gösterilmez; her düğümde en az bir `"required_class": "ANY"` aksiyonu şema tarafından zorunludur.
+Odada sahibi olmayan sınıf aksiyonları sahnede hiç gösterilmez; her düğümde en az üç `"required_class": "ANY"` aksiyonu şema tarafından zorunludur.
 
 ## Socket event'leri
 
@@ -104,6 +147,7 @@ Odada sahibi olmayan sınıf aksiyonları sahnede hiç gösterilmez; her düğü
 | `room:leave` | — | |
 | `class:select` / `class:release` | `{ classId }` / — | Lobide |
 | `room:mode` | `{ mode: 'cooperative' \| 'betrayal' }` | Host, yalnızca lobide |
+| `room:adventure` | `{ adventureId: 'mahzen' \| 'yankilar' \| 'on_ucuncu_nota' }` | Host, yalnızca lobide |
 | `game:start` | — | Host, moda göre ≥2 veya ≥4 oyuncu, herkes sınıf seçmiş |
 | `game:ready` | `{ ready, phase, sceneNumber }` | Okuma, seçim, tartışma, sonuç aşamalarında oyuncu |
 | `game:advance` | — | Host, yalnızca oyun sonundan lobiye dönüş |
@@ -193,7 +237,7 @@ Sunucu ortam değişkenleri: `PORT`, `CORS_ORIGIN` (varsayılan her yer; interne
 
 ### Yeni sahne yazmak
 
-`story/` klasörüne JSON ekle (tek düğüm ya da dizi). Bir yol bitiyorsa `"next_node_id": null` ve `"ending": { "type": "victory" | "bittersweet" | "defeat", "title": "..." }` ver. `npm test` kırık bağlantıları, ulaşılamayan sahneleri ve sona varılamayan yolları yakalar.
+`story/` klasörüne JSON ekle (tek düğüm ya da dizi). Her sahnede en az üç `ANY` seçeneği bulunmalı. `darkness: { hint, favored_action_ids }` alanında hainin gizli işaret bilgisini yaz; önerilen eylemler herkese açık seçeneklere işaret etmelidir. Atmosfer için `ambience` alanını `cave_wind`, `scary_cave`, `droplets` veya `music_box` olarak ver. Bir yol bitiyorsa `"next_node_id": null` ve `"ending": { "type": "victory" | "bittersweet" | "defeat", "title": "..." }` ver. Yeni bağımsız macerayı `shared/adventures.ts` kataloğuna ekle. `npm test` kırık bağlantıları, erişilemeyen sahneleri, çıkmazları ve ses dosyalarını kontrol eder.
 
 ### İstemci bağlantısı (örnek)
 

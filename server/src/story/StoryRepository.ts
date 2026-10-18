@@ -54,6 +54,10 @@ export class StoryRepository {
     return this.nodes.has(nodeId);
   }
 
+  ids(): string[] {
+    return [...this.nodes.keys()];
+  }
+
   private static findDanglingRefs(map: Map<string, StoryNode>): string[] {
     const missing = new Set<string>();
     for (const node of map.values()) {

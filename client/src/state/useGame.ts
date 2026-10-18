@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type {
   ClassId,
+  AdventureId,
   GameMode,
   GameOverInfo,
   JoinResult,
@@ -158,6 +159,7 @@ export function useGame() {
       releaseClass: () => run((s) => call(s, 'class:release')),
       start: () => run((s) => call(s, 'game:start')),
       setMode: (mode: GameMode) => run((s) => call(s, 'room:mode', { mode })),
+      setAdventure: (adventureId: AdventureId) => run((s) => call(s, 'room:adventure', { adventureId })),
       curse: () => run((s) => call(s, 'darkness:curse')),
       ready: (ready: boolean, phase: GamePhase, sceneNumber: number) => run((s) => call(s, 'game:ready', { ready, phase, sceneNumber })),
       advance: () => run((s) => call(s, 'game:advance')),

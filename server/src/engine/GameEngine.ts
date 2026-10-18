@@ -1,6 +1,7 @@
 import { randomInt } from 'node:crypto';
 import type {
   ActionOutcome,
+  AdventureId,
   GameOverInfo,
   GameMode,
   PendingRoll,
@@ -15,6 +16,7 @@ import type {
 } from '../../../shared/types';
 import { ANY_CLASS, GamePhase } from '../../../shared/types';
 import { CLASSES } from '../../../shared/classes';
+import { ADVENTURES } from '../../../shared/adventures';
 import { MIN_PLAYERS, distributeDamage, getTierConfig, scaleDifficulty, startingHpPerPlayer } from '../../../shared/scaling';
 import { GameError } from '../core/errors';
 import type { Player, Room } from '../core/Room';
@@ -94,6 +96,16 @@ export class GameEngine {
     this.broadcastState();
   }
 
+  setAdventure(byPlayerId: string, adventureId: AdventureId): void {
+    this.room.assertHost(byPlayerId);
+    assertPhase(this.room.phase, GamePhase.LOBBY);
+    const adventure = ADVENTURES.find((a) => a.id === adventureId);
+    if (!adventure || !this.deps.story.has(adventure.startNodeId)) throw new GameError('VALIDATION', 'Hikâye bulunamadı');
+    this.room.adventureId = adventure.id;
+    this.room.adventureStartNodeId = adventure.startNodeId;
+    this.broadcastState();
+  }
+
   curse(byPlayerId: string): void {
     assertPhase(this.room.phase, GamePhase.DISCUSSION_TIMER);
     const player = this.room.getPlayer(byPlayerId);
@@ -152,7 +164,7 @@ export class GameEngine {
     this.lastOutcome = null;
     this.gameOver = null;
     this.sceneNumber = 0;
-    this.enterScene(this.deps.startNodeId);
+    this.enterScene(this.room.adventureStartNodeId ?? this.deps.startNodeId);
   }
 
   /** Only the host can reset a completed game. Active phases require consent. */
@@ -473,6 +485,7 @@ export class GameEngine {
       classId: player.classId,
       hint: this.node.class_hints[player.classId] ?? null,
       ownActionIds: this.actions.filter((a) => a.required_class === player.classId).map((a) => a.action_id),
+      ...(player.allegiance === 'darkness' && this.node.darkness ? { darkness: this.node.darkness } : {}),
     };
     this.deps.outbox.toPlayer(player, 'scene:hint', payload);
   }
@@ -498,6 +511,7 @@ export class GameEngine {
       dc: a.scaledDC,
     }));
     return {
+      adventureId: this.room.adventureId,
       mode: this.room.mode,
       code: this.room.code,
       phase: this.room.phase,
@@ -507,7 +521,7 @@ export class GameEngine {
       partyMaxHp: players.reduce((s, p) => s + p.maxHp, 0),
       scaling: this.scaling,
       scene: this.node
-        ? { node_id: this.node.node_id, title: this.node.title, public_text: this.node.public_text, actions }
+        ? { node_id: this.node.node_id, title: this.node.title, public_text: this.node.public_text, ambience: this.node.ambience ?? null, actions }
         : null,
       phaseEndsAt: this.phaseEndsAt,
       phaseDurationMs: this.phaseDurationMs,

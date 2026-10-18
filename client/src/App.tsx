@@ -6,6 +6,7 @@ import { GameScreen } from './screens/GameScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { LobbyScreen } from './screens/LobbyScreen';
 import { useGame } from './state/useGame';
+import { StoryAudio } from './components/StoryAudio';
 import { Backdrop, ConnectionBanner, Title, Toast } from './ui/kit';
 
 const SEEN_GUIDE_KEY = 'ravenwood.seenGuide';
@@ -85,6 +86,7 @@ export default function App() {
   return (
     <>
       <ConnectionBanner state={game.connection} />
+      <StoryAudio room={room} />
       {screen}
       {game.error && <Toast message={game.error} onClose={game.dismissError} />}
     </>

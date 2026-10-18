@@ -1,0 +1,672 @@
+[
+  {
+    "node_id": "nota_01_cocuk_odasi",
+    "title": "Saat On İkiyi Geçmeyen Oda",
+    "public_text": "Konağın doğu kanadındaki çocuk odası kırk yıldır kilitliydi. Bu gece kapı açık. Beşiğin üstünde dönen müzik kutusu on iki nota çalıyor, sonra aynı yere dönüyor. Penceredeki yağmur damlası aşağı düşmek yerine tekrar cama çıkıyor. Duvarda küçük Ada'nın resmi, altında “Uyandığında dışarı çıkar” cümlesi var. Kutunun kapağında açık bir güneş, kurma kolunda baş aşağı bir taç bulunuyor. İnce bir ses, eksik on üçüncü notayı tamamlamanızı istiyor. Kutunun altındaki servis çekmecesi, portreler galerisi ve kapıdaki ayna üç ayrı yol sunuyor.",
+    "ambience": "music_box",
+    "class_hints": {
+      "Bilgin": "Kapağın içindeki eski yazı “Uyandığında” değil “Uyandırıldığında” diyor; resimle yazı aynı kişiye ait olmayabilir.",
+      "Günlükçü": "Ada Blackthorne bu odada uyumadı; aile onun anısını bir ezgiye bağladı. Defterde on üçüncü nota özellikle çizilmiş.",
+      "Medyum": "Kutunun içinden çıkan ses çocuk değil; Ada’nın gerçek ruhu aynanın arkasında nefesini tutuyor.",
+      "Tamirci": "Kurma kolu eksik değil. On iki notadan sonra durması tasarlanmış bir güvenlik.",
+      "İzci": "Ayak izleri beşikten aynaya gidiyor; hiçbir iz müzik kutusundan dışarı çıkmıyor."
+    },
+    "darkness": {
+      "hint": "Ters taçlı kolu on üçüncü kez çevirmek geceyi tutan varlığı uyandırır. “Eksik notayı tamamlayalım, çocuk uyansın” diye savun. Açık güneş kutuyu durdurur; servisi incelemeleri seni zorlar.",
+      "favored_action_ids": [
+        "nota_on_uc_kez_kur"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "nota_servisi_ac",
+        "required_class": "ANY",
+        "button_text": "Kutuyu kurmadan altındaki servis çekmecesini aç",
+        "dice_dc": 11,
+        "success": {
+          "text": "Çekmecede iki yay ve bir isim levhası buluyorsunuz; mekanizma odasına geçit açılıyor.",
+          "hp_change": 0,
+          "next_node_id": "nota_02_disli"
+        },
+        "fail": {
+          "text": "Çekmece yaylanıp elinizi sıkıştırıyor; arkasındaki mekanizma odası yine de açılıyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_02_disli"
+        }
+      },
+      {
+        "action_id": "nota_on_uc_kez_kur",
+        "required_class": "ANY",
+        "button_text": "Çocuğu uyandırmak için taçlı kolu on üçüncü kez çevir",
+        "dice_dc": 10,
+        "success": {
+          "text": "Eksik nota çalıyor ve bütün portreler gözlerini açıyor. Ada’nın resmi boşalıyor.",
+          "hp_change": -2,
+          "next_node_id": "nota_03_portreler"
+        },
+        "fail": {
+          "text": "Kol geri tepiyor. Galerideki kapılar birden açılıyor; kutu sizi içeri çağırıyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_03_portreler"
+        }
+      },
+      {
+        "action_id": "nota_aynaya_bak",
+        "required_class": "ANY",
+        "button_text": "Müzik kutusuna dokunmadan kapıdaki aynayı incele",
+        "dice_dc": 12,
+        "success": {
+          "text": "Aynada oda değil, mavi giysili bir çocuk görüyorsunuz. Size içeri geçmenizi işaret ediyor.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Cam yüzünüze soğuk bir nefes veriyor; galerinin aynasına geri savruluyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_03_portreler"
+        }
+      },
+      {
+        "action_id": "nota_satiri_oku",
+        "required_class": "Bilgin",
+        "button_text": "Kapağın içindeki mühür yazısını bütünüyle oku",
+        "dice_dc": 10,
+        "success": {
+          "text": "“Anıyı tut, sesi uyandırma.” Yazı servis geçidinin şifresini veriyor.",
+          "hp_change": 0,
+          "next_node_id": "nota_02_disli"
+        },
+        "fail": {
+          "text": "Bir kelime yanlış okunuyor; portrelerde dudaklar kıpırdıyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_03_portreler"
+        }
+      },
+      {
+        "action_id": "nota_ada_kaydi",
+        "required_class": "Günlükçü",
+        "button_text": "Ada’nın gerçek kaydını aile defterinde bul",
+        "dice_dc": 11,
+        "success": {
+          "text": "Anının aynaya bağlandığını öğrenip oraya yöneliyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Kopuk sayfa seni yanlış portreye götürüyor. Galeri uyanıyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_03_portreler"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "nota_02_disli",
+    "title": "İki Yay, Tek Ezgi",
+    "public_text": "Duvarın içinde yürünebilecek kadar büyük bir saat mekanizması var. İki yay karşılıklı gerilmiş: güneş damgalı bronz yay ağır ağır gevşiyor; ters taçlı gümüş yay hiç hareket etmiyor. Ortalarında Ada'nın adının yazılı olduğu porselen bir plaka duruyor. Kutunun ezgisi dişlilerden yayılıyor. Bir işaret “Gümüş yayı tak, kayıp sesi geri al” diyor. Bronz yayda “Sesi değil, adı koru” yazıyor. Aynaya giden küçük kapıyı güneş dişlisi tutuyor; portrelere giden geniş kapı gümüş yayın altında.",
+    "ambience": "music_box",
+    "class_hints": {
+      "Tamirci": "Gümüş yay müziği düzeltmez, durma sınırını kaldırır. Bronz yay tek başına yeterli.",
+      "Simyacı": "Gümüş yayın üstünde cıva ve kurum var. Parlak görünmesi yeni veya güvenli olduğunu göstermiyor.",
+      "Dedektif": "Gümüş yayı öneren levha diğerlerinden yeni; aynı el yazısı kapıdaki sahte cümlede de vardı.",
+      "Gizemci": "Porselen plaka Ada’nın anısını tutuyor. Gümüş yay bunu ezgiye aktaracak."
+    },
+    "darkness": {
+      "hint": "Gümüş yay karanlığın durmadan çalmasını sağlar. Parlak yayı “onarım parçası” diye savun. Porselen isim levhasını yerinden çıkarmak da Ada’yı savunmasız bırakır.",
+      "favored_action_ids": [
+        "nota_gumus_yay"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "nota_bronzu_sabitle",
+        "required_class": "ANY",
+        "button_text": "Bronz yayı yerinde tutup güneş dişlisini yavaşlat",
+        "dice_dc": 12,
+        "success": {
+          "text": "Müzik kısılıyor ve aynanın kapısı açılıyor. Ada’nın adı plakada kalıyor.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Dişli bir parmağı sıkıştırıyor; kapı ağır ağır açılıyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_04_ayna"
+        }
+      },
+      {
+        "action_id": "nota_gumus_yay",
+        "required_class": "ANY",
+        "button_text": "Müziği onarmak için parlak gümüş yayı tak",
+        "dice_dc": 10,
+        "success": {
+          "text": "Ezgideki boşluk kayboluyor. Galeride bütün çerçeveler birlikte nefes alıyor.",
+          "hp_change": -2,
+          "next_node_id": "nota_03_portreler"
+        },
+        "fail": {
+          "text": "Yay kopuyor ve mekanizma durmak yerine hızlanıyor. Portrelere kaçıyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "nota_03_portreler"
+        }
+      },
+      {
+        "action_id": "nota_isim_plakasi",
+        "required_class": "ANY",
+        "button_text": "Yaylara dokunmadan isim plakasının izini takip et",
+        "dice_dc": 11,
+        "success": {
+          "text": "Plakanın altındaki mavi boya aynaya uzanıyor; küçük kapıdan geçiyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Plaka çatlıyor. Altındaki merdiven damlalı mahzene açılıyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_disliyi_kilitle",
+        "required_class": "Tamirci",
+        "button_text": "Mekanizmayı aletle on iki notada kilitle",
+        "dice_dc": 10,
+        "success": {
+          "text": "Kilidi kuruyorsun. Aynanın ardındaki çocuk ilk kez başını kaldırıyor.",
+          "hp_change": 1,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Alet kırılıyor; küçük servis merdiveninden mahzene iniyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_civayi_temizle",
+        "required_class": "Simyacı",
+        "button_text": "Gümüş yaydaki cıvalı kaplamayı temizle",
+        "dice_dc": 11,
+        "success": {
+          "text": "Kaplama çözülünce altındaki ters taç görünür oluyor. Parçayı bırakıp aynaya gidiyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Buhar gözlerinizi yakıyor. Temiz hava için alt mahzene çekiliyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "nota_03_portreler",
+    "title": "İsim İsteyen Çerçeveler",
+    "public_text": "Portreler galerisinde müzik duyulmuyor; yalnızca konağın eski çanları ağır ağır vuruyor. Her çerçeve sizin yüzünüzü taşımaya başlıyor. Ortadaki boş tabloda bir taç var; altında “Ada’ya bir yüz ver” yazıyor. Çerçevenin içindeki karanlık elini uzatıyor. Yerdeki ayak izleri aynaya gidiyor, tavandan sızan su ise alt kata açılan bir kapağı gösteriyor. Kendi adınızı söylemek, resme bir yüz çizmek ya da hiçbirini kabul etmemek mümkün. Çanlar sizi acele ettirmeye çalışsa da karar size ait.",
+    "class_hints": {
+      "Falcı": "Karta çizdiğin yüz senin yüzüne dönüşüyor; boş bıraktığın çerçeve ise kapı oluyor.",
+      "Avcı": "Çerçevenin eli gölge değil, bir taklitçinin uzvu. İsim öğrenirse sizi sesinizden avlar.",
+      "Muhafız": "Tablo duvara asılı değil; bir kapak gibi içeri açılıyor. Fiziksel olarak örtülebilir.",
+      "Medyum": "Ada burada değil. Resimler onun adını yem olarak kullanıyor.",
+      "Günlükçü": "Aile kaydında bu çerçevenin hiç portresi olmadığı yazıyor. “Ada’ya bir yüz ver” sonradan eklenmiş bir vaat."
+    },
+    "darkness": {
+      "hint": "Boş çerçeveye yüz çizmek kötü güce bir beden verir. “Ada’yı geri getirelim” diye savun; kendi adını söylemeden bir başkasının resmini önerebilirsin. Çerçeveyi örtmek bedeni engeller.",
+      "favored_action_ids": [
+        "nota_yuz_ciz"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "nota_cerceveyi_ort",
+        "required_class": "ANY",
+        "button_text": "Boş çerçeveyi örtüp ayak izlerini takip et",
+        "dice_dc": 11,
+        "success": {
+          "text": "Portreler yüzünüzü bırakıyor. Aynanın önüne kendi adlarınızla varıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Örtü yırtılıyor; tablo elinizi sıyırıyor ama aynaya kaçıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_04_ayna"
+        }
+      },
+      {
+        "action_id": "nota_yuz_ciz",
+        "required_class": "ANY",
+        "button_text": "Ada’yı geri getirmek için taçlı çerçeveye bir yüz çiz",
+        "dice_dc": 10,
+        "success": {
+          "text": "Çizgi kendi kendine tamamlanıyor. Çerçeveden çıkan gölge sizi alt mahzene kadar izliyor.",
+          "hp_change": -3,
+          "next_node_id": "nota_05_damla_mahzeni"
+        },
+        "fail": {
+          "text": "Kömür elinizde kırılıyor. Çerçeveler çatlıyor ve mahzen kapağı açılıyor.",
+          "hp_change": -2,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_kapaktan_in",
+        "required_class": "ANY",
+        "button_text": "Portreleri cevapsız bırakıp suyun gösterdiği kapaktan in",
+        "dice_dc": 12,
+        "success": {
+          "text": "Kapağı aralayıp damlalı taş mahzene iniyorsunuz. Yukarıdaki çanlar susuyor.",
+          "hp_change": 0,
+          "next_node_id": "nota_05_damla_mahzeni"
+        },
+        "fail": {
+          "text": "Kapağın kenarı elinizi yaralıyor; merdiven sizi aşağıya götürüyor.",
+          "hp_change": -1,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_karti_bos_birak",
+        "required_class": "Falcı",
+        "button_text": "Boş kader kartını çerçevenin önüne koy",
+        "dice_dc": 11,
+        "success": {
+          "text": "Çerçeve kendini kartta bulamıyor. Ayna kapısı açılıyor.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Kart kararıyor; merdivenlerden mahzene kaçıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_taklidi_tuzla",
+        "required_class": "Avcı",
+        "button_text": "Taklitçinin uzvunu tuz çizgisiyle sınırla",
+        "dice_dc": 10,
+        "success": {
+          "text": "El geri çekiliyor. Ayak izlerini izleyerek aynaya ulaşıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_04_ayna"
+        },
+        "fail": {
+          "text": "Çizgi yarım kalıyor; uzuv kolunu sıyırıyor. Mahzene iniyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "nota_04_ayna",
+    "title": "Ada’nın Hatırladığı Şey",
+    "public_text": "Aynanın içinde bir çocuk oturuyor; elinde anahtarsız bir müzik kutusu var. “Ben ezgiyi hatırlamıyorum,” diyor Ada. “Annemin beni çağırırken söylediği adı hatırlıyorum.” Aynanın altına üç işaret kazınmış: açık güneş, kapalı göz ve ters taç. Güneşin altında porselen isim levhası için bir oyuk var. Tacın altındaki oyukta parlak bir kurma anahtarı duruyor. Ada size bakmıyor; sizin arkanızdaki, sizin şeklinizi alan bir yansıma ona gülümsüyor. Kutunun asıl kaynağı çatıdaki saat odasında, aynanın arkasındaki merdivenden erişiliyor. Aynanın dibinde, yolu nereden gelmiş olursanız olun erişebileceğiniz, üzerinde Ada yazan bir porselen isim levhası duruyor.",
+    "ambience": "music_box",
+    "class_hints": {
+      "Medyum": "Aynadaki çocuk gerçek anı. Arkanızdaki gülümseyen yansımanın ruhu yok.",
+      "Şifacı": "Ada’nın nefesi isim levhasına yaklaşınca düzenli hale geliyor; kurma anahtarına yaklaşınca kesiliyor.",
+      "Bilgin": "Güneş oyuğu anıyı korur, ters taç sesi bedene taşır. Kapalı göz bir kaçış işareti.",
+      "Gizemci": "Çocuk anısı ile taklitçi iki ayrı bağ. Anahtarı aynaya çevirmek ikisini birleştirir."
+    },
+    "darkness": {
+      "hint": "Taçlı anahtarı aynada çevirmek taklitçiyi Ada’nın anısıyla birleştirir. “Çocuğu aynadan çıkaralım” diye savun. İsim levhasının güneşe konması gerçek anıyı korur ve seni zayıflatır.",
+      "favored_action_ids": [
+        "nota_anahtari_cevir"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "nota_gunese_adi_koy",
+        "required_class": "ANY",
+        "button_text": "İsim levhasını açık güneş oyuğuna yerleştir",
+        "dice_dc": 12,
+        "success": {
+          "text": "Ada size kendi sesiyle teşekkür ediyor. Saat odasının merdiveni açılıyor.",
+          "hp_change": 1,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Levha oyuğa sığmıyor; çatlak aynadan yaralanarak saat odasına geçiyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_06_son_nota"
+        }
+      },
+      {
+        "action_id": "nota_anahtari_cevir",
+        "required_class": "ANY",
+        "button_text": "Ada’yı çıkarmak için taçlı anahtarı aynada çevir",
+        "dice_dc": 10,
+        "success": {
+          "text": "Gülümseyen yansıma çocukla aynı yüzü takıyor. Ayna kırılıyor; su dolu mahzene düşüyorsunuz.",
+          "hp_change": -3,
+          "next_node_id": "nota_05_damla_mahzeni"
+        },
+        "fail": {
+          "text": "Anahtar elinize donuyor. Ayna sizi mahzene geri tükürüyor.",
+          "hp_change": -2,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_gozu_kapat",
+        "required_class": "ANY",
+        "button_text": "Kapalı göz işaretini örtüp aynanın yanından geç",
+        "dice_dc": 13,
+        "success": {
+          "text": "Yansıma sizi göremiyor. Çocuğu kurtarmadan saat odasına ulaşıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Örtü kayıyor; yansıma omzunuzu yakalıyor. Merdivene atlıyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "nota_06_son_nota"
+        }
+      },
+      {
+        "action_id": "nota_ada_ruhunu_ayir",
+        "required_class": "Medyum",
+        "button_text": "Ada’nın gerçek sesini yansımadan ayır",
+        "dice_dc": 11,
+        "success": {
+          "text": "Ada’nın adı kendi ağzından çıkıyor. Yansıma soluyor; saat odasına geçiyorsunuz.",
+          "hp_change": 1,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Taklitçi bir an senin sesini alıyor. Mahzene çekilmek zorundasınız.",
+          "hp_change": -1,
+          "next_node_id": "nota_05_damla_mahzeni"
+        }
+      },
+      {
+        "action_id": "nota_bagi_sar",
+        "required_class": "Şifacı",
+        "button_text": "Kırılan anı bağını şifa merhemiyle sabitle",
+        "dice_dc": 10,
+        "success": {
+          "text": "Aynanın çatlağı duruyor, çocuk anısı korunuyor. Saat odasının yolu açılıyor.",
+          "hp_change": 2,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Merhem kararıyor. Yine de merdiveni zorlayarak yukarı çıkıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_06_son_nota"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "nota_05_damla_mahzeni",
+    "title": "Damlaların Tuttuğu Ritim",
+    "public_text": "Saat kulesinin altı doğal bir taş oyuğa açılıyor. Damlalar paslı borulara düşüp müzik kutusunun on iki notasını tekrar ediyor. On üçüncü boru kuru; üstünde ters taç var. Yanındaki duvarda “Suyu eksik yere ver, ezgi tamam olsun” yazıyor. Açık güneşli giderin üstüne eski bir oyuncak sıkışmış. Oyuncağın cebinde Ada’nın kendi çizdiği bir ev resmi duruyor. Boruların arasındaki servis merdiveni saat odasına, giderin arkasındaki alçak geçit bahçeye çıkıyor.",
+    "ambience": "droplets",
+    "class_hints": {
+      "Simyacı": "Kuru boru su taşımak için değil, ses büyütmek için yapılmış. Doldurmak kutunun çağrısını güçlendirir.",
+      "İzci": "Giderin arkasında yüzey rüzgârı var; servis merdiveni de sağlam görünüyor.",
+      "Dedektif": "Eksik yere su isteyen yazı duvarın üstüne sonradan eklenmiş. Oyuncaktaki resim daha eski.",
+      "Tamirci": "On üçüncü boru kapalı sisteme bağlı. Güneşli gider açılırsa bütün sistem basınç kaybeder.",
+      "Şifacı": "On üçüncü boru su değil nefes çekiyor. Yanına yaklaşınca göğsün sıkışıyor; güneşli giderin yanında bu his geçiyor."
+    },
+    "darkness": {
+      "hint": "Taçlı kuru boruya su vermek on üçüncü notayı bütün konağa yayar. Bunu ritmi onarma çözümü diye savun. Güneşli gideri açmak ezgiyi susturur; oyuncaktaki gerçek resmi küçümse.",
+      "favored_action_ids": [
+        "nota_kuru_boruyu_doldur"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "nota_gideri_ac",
+        "required_class": "ANY",
+        "button_text": "Oyuncağı kurtarıp güneşli gideri aç",
+        "dice_dc": 11,
+        "success": {
+          "text": "Su boşalıyor, ezgi zayıflıyor. Ada’nın resmiyle servis merdivenine çıkıyorsunuz.",
+          "hp_change": 1,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Oyuncak takılıyor; su dizlerinize çıkmadan merdivene kaçıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_06_son_nota"
+        }
+      },
+      {
+        "action_id": "nota_kuru_boruyu_doldur",
+        "required_class": "ANY",
+        "button_text": "Eksik ritmi tamamlamak için taçlı kuru boruya su ver",
+        "dice_dc": 10,
+        "success": {
+          "text": "On üçüncü nota borulardan geçip bütün konağı titretiyor. Saat odasının kapısı zorla açılıyor.",
+          "hp_change": -3,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Boru patlıyor; su ve ses sizi merdivene savuruyor.",
+          "hp_change": -2,
+          "next_node_id": "nota_06_son_nota"
+        }
+      },
+      {
+        "action_id": "nota_bahceye_suzul",
+        "required_class": "ANY",
+        "button_text": "Kutuyu bırakıp gider arkasından bahçeye çık",
+        "dice_dc": 13,
+        "success": {
+          "text": "Çamura bulanmış halde bahçeye çıkıyorsunuz. Kule çalmaya devam ediyor; bir gece geri dönmeniz gerekecek.",
+          "hp_change": -1,
+          "next_node_id": null,
+          "ending": {
+            "type": "bittersweet",
+            "title": "Yağmurda Unutulan Ezgi"
+          }
+        },
+        "fail": {
+          "text": "Geçit kapanıyor. Son anda servis merdivenine tutunuyorsunuz.",
+          "hp_change": -2,
+          "next_node_id": "nota_06_son_nota"
+        }
+      },
+      {
+        "action_id": "nota_yolu_isaretle",
+        "required_class": "İzci",
+        "button_text": "Güvenli servis merdivenini izleyip herkesi çıkar",
+        "dice_dc": 10,
+        "success": {
+          "text": "Kuru basamakları buluyor, saat odasına birlikte varıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Bir basamak eksik; arkadaşını çekerek son odaya çıkıyorsun.",
+          "hp_change": -1,
+          "next_node_id": "nota_06_son_nota"
+        }
+      },
+      {
+        "action_id": "nota_sahte_yaziyi_kaz",
+        "required_class": "Dedektif",
+        "button_text": "Sonradan yazılan çağrıyı kazıyıp eski işareti ortaya çıkar",
+        "dice_dc": 11,
+        "success": {
+          "text": "Altından “Suyu kes, adı koru” çıkıyor. Saat odasına bu bilgiyle çıkıyorsunuz.",
+          "hp_change": 0,
+          "next_node_id": "nota_06_son_nota"
+        },
+        "fail": {
+          "text": "Duvar dökülüyor; taşlar kolunu yaralıyor. Yukarı çıkıyorsunuz.",
+          "hp_change": -1,
+          "next_node_id": "nota_06_son_nota"
+        }
+      }
+    ]
+  },
+  {
+    "node_id": "nota_06_son_nota",
+    "title": "On Üçüncü Nota",
+    "public_text": "Saat odasının pencereleri gecenin aynı anına bakıyor. Dev müzik kutusu bütün odayı dolduruyor. Önünüzde üç kol var: açık güneşli durdurucu, ters taçlı tamamlayıcı ve kapalı gözlü unutma kolu. Ada’nın sesi aynanın bir kırığından geliyor: “Beni ezgi olarak değil, adımla hatırlayın.” Başka bir ses tam aynı tonda, “Eksik notayı çalarsanız hepimiz dışarı çıkarız,” diyor. Dışarı çıkacak şeyin kim olduğunu hiçbir kol açıklamıyor. Kutuya dokunmadan da ana yayı kırmayı deneyebilirsiniz.",
+    "ambience": "music_box",
+    "class_hints": {
+      "Gizemci": "Tamamlayıcı kapıyı dışarıya değil, karanlığa açıyor. Güneşli durdurucu adı anıdan ayırmadan sesi kesiyor.",
+      "Falcı": "On üçüncü notanın kartında bütün köylüler aynı yüzü takıyor. Unutma kolunda birinizin yüzü siliniyor.",
+      "Muhafız": "Ana yay kırılabilir, ama geri tepmesi bütün odayı vurur; yükünü karşılamak gerekir.",
+      "Avcı": "Taklitçinin sesi Ada’nınkiyle aynı, fakat nefes almıyor. Onu müzikten ayırırsanız bedeni kalmaz."
+    },
+    "darkness": {
+      "hint": "Ters taçlı tamamlayıcıyı çekmek kötü gücü bütün Ravenwood’a yayar: zar başarılı olsa da maceracılar yenilir, sen kazanırsın. “Herkesi dışarı çıkaracak son nota” diye savun. Güneşli durdurucu ve adın hatırlanması onu hapseder.",
+      "favored_action_ids": [
+        "nota_taci_tamamla"
+      ]
+    },
+    "actions": [
+      {
+        "action_id": "nota_guneste_durdur",
+        "required_class": "ANY",
+        "button_text": "Ada’nın adını söyleyip güneşli durdurucuyu çek",
+        "dice_dc": 13,
+        "success": {
+          "text": "Ada’nın adı son notadan önce söyleniyor. Ezgi duruyor, yağmur yere düşüyor. Kule ilk kez sabahı gösteriyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Ada’nın Sabahı"
+          }
+        },
+        "fail": {
+          "text": "Durdurucu sıkışıyor. Eksik nota kendi kendine çalıyor; saat odası bir daha sabah görmüyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Durmayan Gece"
+          }
+        }
+      },
+      {
+        "action_id": "nota_taci_tamamla",
+        "required_class": "ANY",
+        "button_text": "Herkesi dışarı çıkarmak için taçlı tamamlayıcıyı çek",
+        "dice_dc": 10,
+        "success": {
+          "text": "On üçüncü nota kusursuz. Kapılar açılıyor; fakat her yüz aynı karanlık gülümsemeyi takıyor. Ravenwood artık tek bir sesle konuşuyor.",
+          "hp_change": -2,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Kusursuz Karanlık"
+          }
+        },
+        "fail": {
+          "text": "Kol kırılıyor, kutu sesinizi içine alıyor. O geceye bir ezgi daha ekleniyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Kutudaki Yeni Sesler"
+          }
+        }
+      },
+      {
+        "action_id": "nota_unutmayi_sec",
+        "required_class": "ANY",
+        "button_text": "Bir anınızı verip kapalı gözlü kaçış kolunu çek",
+        "dice_dc": 12,
+        "success": {
+          "text": "Bahçeye çıkıyorsunuz. İçinizden biri neden ağladığını hatırlamıyor; Ada’nın adı da artık dilinizin ucunda değil.",
+          "hp_change": -1,
+          "next_node_id": null,
+          "ending": {
+            "type": "bittersweet",
+            "title": "Hatırlanmayan Çocuk"
+          }
+        },
+        "fail": {
+          "text": "Kutu bir anıyla yetinmiyor. Yüzleriniz aynalarda birer birer siliniyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Silinen Yüzler"
+          }
+        }
+      },
+      {
+        "action_id": "nota_yayi_kir",
+        "required_class": "ANY",
+        "button_text": "Ana yayı birlikte kırıp ezgiyi zorla sustur",
+        "dice_dc": 15,
+        "success": {
+          "text": "Yay kopuyor, elleriniz kanıyor ama müzik duruyor. Ada’nın anısı kırık aynadan özgürce çıkıyor.",
+          "hp_change": -3,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Kırık Yayın Şafağı"
+          }
+        },
+        "fail": {
+          "text": "Yay geri tepiyor; oda sizin yerinize çalmaya başlıyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Demir Ninni"
+          }
+        }
+      },
+      {
+        "action_id": "nota_bagi_coz",
+        "required_class": "Gizemci",
+        "button_text": "Anıyı çağrı büyüsünden ayırıp kutuyu mühürle",
+        "dice_dc": 12,
+        "success": {
+          "text": "Ada’nın adı korunuyor; taklitçi hiçbir ağız bulamadan dağılıyor.",
+          "hp_change": 0,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Korunan İsim"
+          }
+        },
+        "fail": {
+          "text": "Bağ yanlış yerden kopuyor. Kutunun içinde artık sizin adınız var.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Yanlış Bağ"
+          }
+        }
+      },
+      {
+        "action_id": "nota_yayi_gogusle",
+        "required_class": "Muhafız",
+        "button_text": "Ana yayın geri tepmesini kalkanla karşıla",
+        "dice_dc": 12,
+        "success": {
+          "text": "Kalkan parçalanıyor, ezgi susuyor. Arkadaşların Ada’nın adını unutmadan kapıyı açıyor.",
+          "hp_change": -2,
+          "next_node_id": null,
+          "ending": {
+            "type": "victory",
+            "title": "Kalkanın Son Notası"
+          }
+        },
+        "fail": {
+          "text": "Kalkan yetmiyor. Saat odası sessizce üzerinize kapanıyor.",
+          "hp_change": -5,
+          "next_node_id": null,
+          "ending": {
+            "type": "defeat",
+            "title": "Çalmayan Saat"
+          }
+        }
+      }
+    ]
+  }
+]

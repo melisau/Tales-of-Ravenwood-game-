@@ -3,6 +3,9 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { CLASS_IDS } from '../../shared/types';
+import { ADVENTURES } from '../../shared/adventures';
+import { AMBIENCE_TRACKS, BACKGROUND_TRACK } from '../../shared/audio';
+import { stat } from 'node:fs/promises';
 import { StoryRepository } from '../src/story/StoryRepository';
 
 const storyDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../story');
@@ -70,4 +73,61 @@ test('hikaye: her sınıfın en az iki sahnede gizli ipucu ve en az bir özel ak
     assert.ok(actions >= 1, `${c}: hiç özel aksiyonu yok`);
   }
   for (const n of nodes) for (const a of n.actions) assert.ok(a.dice_dc >= 10 && a.dice_dc <= 15, `${a.action_id} DC ${a.dice_dc}`);
+});
+
+test('üç macera: tüm sahneler erişilebilir, her ekip en az üç seçenekle sona ulaşabilir', async () => {
+  const repo = await StoryRepository.loadFromDir(storyDir, { strict: true });
+  const allReached = new Set<string>();
+  for (const adventure of ADVENTURES) {
+    const reached = new Set<string>();
+    const queue = [adventure.startNodeId];
+    const endingTypes = new Set<string>();
+    while (queue.length) {
+      const id = queue.shift()!;
+      if (reached.has(id)) continue;
+      reached.add(id);
+      allReached.add(id);
+      const node = repo.get(id)!;
+      assert.ok(node, `${adventure.title}: ${id} eksik`);
+      const any = node.actions.filter((a) => a.required_class === 'ANY');
+      assert.ok(any.length >= 3, `${id}: üç herkese açık seçenek gerekli`);
+      assert.ok(node.darkness?.hint, `${id}: hain fısıltısı eksik`);
+      assert.ok(node.darkness!.favored_action_ids.every((action) => any.some((a) => a.action_id === action)));
+      for (const action of node.actions) for (const outcome of [action.success, action.fail]) {
+        if (outcome.next_node_id) queue.push(outcome.next_node_id);
+        else { assert.ok(outcome.ending); endingTypes.add(outcome.ending.type); }
+      }
+    }
+    assert.ok(reached.size >= 6);
+    assert.deepEqual([...endingTypes].sort(), ['bittersweet', 'defeat', 'victory']);
+    const nodes = [...reached].map((id) => repo.get(id)!);
+    for (const classId of CLASS_IDS) {
+      assert.ok(nodes.filter((n) => n.class_hints[classId]).length >= 2, `${adventure.title}: ${classId} için en az iki ipucu gerekli`);
+      assert.ok(nodes.some((n) => n.actions.some((a) => a.required_class === classId)), `${adventure.title}: ${classId} özel hamlesi eksik`);
+    }
+    // Reverse fixed point: a terminal is reachable using only class-independent actions.
+    const canFinish = new Set<string>();
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (const id of reached) {
+        if (canFinish.has(id)) continue;
+        const terminalReachable = repo.get(id)!.actions.filter((a) => a.required_class === 'ANY')
+          .some((a) => [a.success, a.fail].some((o) => o.next_node_id === null || canFinish.has(o.next_node_id)));
+        if (terminalReachable) { canFinish.add(id); changed = true; }
+      }
+    }
+    assert.equal(canFinish.size, reached.size, `${adventure.title}: çıkmaz yol var`);
+  }
+  assert.deepEqual([...allReached].sort(), repo.ids().sort(), 'Katalogdan erişilemeyen sahne var');
+});
+
+test('sahne seslerinin tamamı kullanılır ve ses dosyaları pakette bulunur', async () => {
+  const repo = await StoryRepository.loadFromDir(storyDir, { strict: true });
+  const used = new Set(repo.ids().map((id) => repo.get(id)!.ambience).filter(Boolean));
+  assert.deepEqual([...used].sort(), Object.keys(AMBIENCE_TRACKS).sort());
+  for (const file of [BACKGROUND_TRACK, ...Object.values(AMBIENCE_TRACKS).map((a) => a.file)]) {
+    const info = await stat(path.resolve(storyDir, '../client/public/audio', file));
+    assert.ok(info.isFile() && info.size > 1000, `${file}: ses dosyası eksik veya boş`);
+  }
 });

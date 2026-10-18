@@ -1,4 +1,5 @@
-import type { ClassId, ClientToServerEvents, GameMode, JoinResult, ServerToClientEvents } from '../../../shared/types';
+import type { AdventureId, ClassId, ClientToServerEvents, GameMode, JoinResult, ServerToClientEvents } from '../../../shared/types';
+import { ADVENTURES } from '../../../shared/adventures';
 import { GamePhase } from '../../../shared/types';
 import { GameEngine, type Clock, type EngineDeps } from '../engine/GameEngine';
 import { GameError } from './errors';
@@ -54,6 +55,8 @@ export class RoomManager {
     this.assertNotInRoom(socketId);
     const code = generateRoomCode((c) => this.rooms.has(c));
     const room = new Room(code);
+    const adventure = ADVENTURES.find((a) => a.startNodeId === this.opts.engineDeps.startNodeId);
+    if (adventure) room.adventureId = adventure.id;
     const engine = new GameEngine(room, {
       ...this.opts.engineDeps,
       clock: this.opts.clock,
@@ -163,6 +166,11 @@ export class RoomManager {
   setMode(socketId: string, mode: GameMode): void {
     const { entry, player } = this.ctx(socketId);
     entry.engine.setMode(player.id, mode);
+  }
+
+  setAdventure(socketId: string, adventureId: AdventureId): void {
+    const { entry, player } = this.ctx(socketId);
+    entry.engine.setAdventure(player.id, adventureId);
   }
 
   curse(socketId: string): void {

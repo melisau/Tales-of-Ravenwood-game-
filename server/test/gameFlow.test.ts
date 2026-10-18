@@ -439,3 +439,56 @@ test('lanet zarı başarısızlığa çevirebilir ve doğal 1 yine başarısızd
     assert.equal((received('s0', 'game:over').at(-1)!.payload as GameOverInfo).betrayal!.winningSide, 'darkness');
   }
 });
+
+test('macera seçimi yalnızca lobide Host tarafından yapılır ve bütün odaya uygulanır', async (t) => {
+  const { manager, received } = await setup([]);
+  t.after(() => manager.shutdown());
+  const host = manager.createRoom('s0', 'Host');
+  manager.join('s1', host.room.code, 'Konuk');
+  manager.selectClass('s0', 'Medyum');
+  manager.selectClass('s1', 'Bilgin');
+  assert.throws(() => manager.setAdventure('s1', 'yankilar'), GameError);
+  manager.setAdventure('s0', 'yankilar');
+  assert.equal((received('s1', 'room:state').at(-1)!.payload as PublicRoomState).adventureId, 'yankilar');
+  manager.start('s0');
+  const state = received('s0', 'room:state').at(-1)!.payload as PublicRoomState;
+  assert.equal(state.scene!.node_id, 'yanki_01_esik');
+  assert.equal(state.scene!.ambience, 'cave_wind');
+  assert.throws(() => manager.setAdventure('s0', 'on_ucuncu_nota'), GameError);
+});
+
+test('kötü işaretin bilgisi sadece haine gider; başarılı kötü ritüel karanlığa kazandırır', async (t) => {
+  for (const scenario of [
+    { start: 'yanki_06_kalp', action: 'yanki_taca_fener' },
+    { start: 'nota_06_son_nota', action: 'nota_taci_tamamla' },
+  ]) {
+    const { manager, received, log, progress } = await setup([20], scenario.start, () => 1);
+    t.after(() => manager.shutdown());
+    const host = manager.createRoom('s0', 'Host');
+    const traitor = manager.join('s1', host.room.code, 'P1');
+    for (let i = 2; i < 4; i++) manager.join(`s${i}`, host.room.code, `P${i}`);
+    (['Medyum', 'Bilgin', 'Dedektif', 'Şifacı'] as const).forEach((c, i) => manager.selectClass(`s${i}`, c));
+    manager.setMode('s0', 'betrayal');
+    manager.start('s0');
+    const hint = received('s1', 'scene:hint').at(-1)!.payload as import('../../shared/types').PrivateHintPayload;
+    assert.ok(hint.darkness!.favored_action_ids.includes(scenario.action));
+    for (const sid of ['s0', 's2', 's3']) {
+      assert.equal((received(sid, 'scene:hint').at(-1)!.payload as import('../../shared/types').PrivateHintPayload).darkness, undefined);
+    }
+    assert.ok(log.filter((p) => p.event === 'room:state').every((p) => !JSON.stringify(p.payload).includes(hint.darkness!.hint)));
+    manager.handleDisconnect('s1');
+    manager.rejoin('s1-new', host.room.code, traitor.sessionToken);
+    assert.deepEqual((received('s1-new', 'scene:hint').at(-1)!.payload as import('../../shared/types').PrivateHintPayload).darkness, hint.darkness);
+    progress('s0');
+    for (const sid of ['s0', 's1-new', 's2', 's3']) manager.submitChoice(sid, scenario.action);
+    progress('s0');
+    progress('s0');
+    const result = manager.roll('s0');
+    assert.equal(result.success, true);
+    assert.equal(result.critical, 'NAT20');
+    progress('s0');
+    const over = received('s0', 'game:over').at(-1)!.payload as GameOverInfo;
+    assert.equal(over.victory, false);
+    assert.equal(over.betrayal!.winningSide, 'darkness');
+  }
+});

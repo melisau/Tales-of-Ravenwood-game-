@@ -1,7 +1,7 @@
 {
   "node_id": "mahzen_01_karanlik_mahzen",
   "title": "Karanlık Mahzen",
-  "public_text": "Blackthorne Konağı'nın mutfağındaki kapak, siz dokunmadan gıcırdayarak açılır. Aşağıdan yükselen hava, mezar toprağı ve ekşimiş şarap kokuyor. On üç taş basamak inersiniz; on üçüncüsünde fenerlerinizin alevi aynı anda eğilir, sanki biri üflemiş gibi. Mahzen beklediğinizden geniştir: tavana kadar yığılmış çürük fıçılar, duvar boyunca uzanan şarap rafları ve en dipte, örümcek ağlarıyla örülmüş, üstüne solmuş harfler kazınmış alçak bir taş kemer. Kemerin altındaki demir kapı paslı bir zincirle bağlı, ama zincirin kilidi taze yağ parlıyor. Yerde, tozun içinde küçük çıplak ayak izleri fıçılara doğru gidip kayboluyor. Uzakta bir yerde damlayan suyun ritmi yavaşça bir ninniye dönüşüyor... ve sonra susuyor. Arkanızda, mutfak kapağı tok bir sesle kapanır. Ravenwood'da Cadılar Bayramı gecesi henüz yarılanmadı.",
+  "public_text": "Blackthorne Konağı'nın mutfağındaki kapak, siz dokunmadan gıcırdayarak açılır. Aşağıdan yükselen hava, mezar toprağı ve ekşimiş şarap kokuyor. On üç taş basamak inersiniz; on üçüncüsünde fenerlerinizin alevi aynı anda eğilir, sanki biri üflemiş gibi. Mahzen beklediğinizden geniştir: tavana kadar yığılmış çürük fıçılar, duvar boyunca uzanan şarap rafları ve en dipte, örümcek ağlarıyla örülmüş, üstüne solmuş harfler kazınmış alçak bir taş kemer. Kemerin altındaki demir kapı paslı bir zincirle bağlı, ama zincirin kilidi taze yağ parlıyor. Yerde, tozun içinde küçük çıplak ayak izleri fıçılara doğru gidip kayboluyor. Uzakta bir yerde damlayan suyun ritmi yavaşça bir ninniye dönüşüyor... ve sonra susuyor. Arkanızda, mutfak kapağı tok bir sesle kapanır. Ravenwood'da Cadılar Bayramı gecesi henüz yarılanmadı.\n\nDemir kapının dibinde baş aşağı bir taç çizilmiş; altındaki oyuk sanki fener koymak için açılmış.",
   "class_hints": {
     "Dedektif": "Üçüncü sıradaki döşeme taşının kenarındaki toz diğerlerinden daha ince; yakın zamanda kaldırılmış. Fıçıların arasında, diz hizasında gerili, neredeyse görünmez bir kıl tel var. İkisi de aynı yere, tavandaki sarkık kirişe bağlı. Biri o teli kopartırsa tavan çöker.",
     "Medyum": "Fıçıların arkasında bir çocuk ağlıyor; adı Elspeth, 1892'den beri burada. Onda kötülük hissetmiyorsun, sadece korku. Ama mahzende ikinci bir varlık daha var — Elspeth'in sesini taklit ederek ninni söyleyen, çok daha yaşlı ve aç bir şey. Ninniyi duyarsan cevap verme.",
@@ -107,6 +107,29 @@
         "hp_change": -1,
         "next_node_id": "mahzen_02_muhurlu_kapi"
       }
+    },
+    {
+      "action_id": "mahzen_taca_fener",
+      "required_class": "ANY",
+      "button_text": "Kapıyı aydınlatmak için feneri taçlı oyuğa koy",
+      "dice_dc": 10,
+      "success": {
+        "text": "Işık taçtan duvara yayılıyor. Çocuğun sesi kalınlaşıyor; gölgeler sizi kapının arkasına çağırıyor.",
+        "hp_change": -2,
+        "next_node_id": "mahzen_03b_sahte_ses"
+      },
+      "fail": {
+        "text": "Fener devriliyor ve yağ buharı tutuşuyor. Ateşten kaçıyorsunuz.",
+        "hp_change": -2,
+        "next_node_id": "mahzen_06_yanan_mahzen"
+      }
     }
-  ]
+  ],
+  "ambience": "droplets",
+  "darkness": {
+    "hint": "Ters taç seni buraya bağlayan çağrı işareti. Feneri o oyuğa koymak taklitçi sesi uyandırır; “yolu aydınlatalım” diye savun. Yağ buharı da yanıcı: ateşli hamleler grubun işini zorlaştırır.",
+    "favored_action_ids": [
+      "mahzen_taca_fener"
+    ]
+  }
 }

@@ -1,5 +1,5 @@
 import { randomBytes, randomUUID } from 'node:crypto';
-import type { Allegiance, ClassId, GameMode, PublicPlayer } from '../../../shared/types';
+import type { AdventureId, Allegiance, ClassId, GameMode, PublicPlayer } from '../../../shared/types';
 import { GamePhase } from '../../../shared/types';
 import { MAX_PLAYERS } from '../../../shared/scaling';
 import { GameError } from './errors';
@@ -27,6 +27,8 @@ export interface Player {
  * Oyuncu sırası (Map ekleme sırası) host devri için kullanılır.
  */
 export class Room {
+  adventureId: AdventureId = 'mahzen';
+  adventureStartNodeId: string | null = null;
   mode: GameMode = 'cooperative';
   readonly players = new Map<string, Player>();
   hostId: string | null = null;

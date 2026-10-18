@@ -201,11 +201,13 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
 
       <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
         <h2 className="text-lg font-bold text-[#f3dfa6]">Amacınız ve oyunun sonu</h2>
-        <p className="mt-2">Blackthorne Konağı'nın sırrını çözün, tehlikelerden kurtulun ve mümkünse tutsak ruhu özgür bırakın. Lobide Host iki moddan birini seçer: <b>Birlikte hayatta kal</b> (2–12 kişi, herkes aynı tarafta) veya <b>Gizli Hain</b> (4–12 kişi, rastgele bir kişi kötü güçle işbirliği yapar). Hain herhangi bir sınıftan olabilir; Host da hain olabilir.</p>
+        <p className="mt-2">Blackthorne Konağı'nın sırrını çözün, tehlikelerden kurtulun ve mümkünse tutsak ruhu özgür bırakın. Host lobide Karanlık Mahzen, Yankı Mağaraları veya On Üçüncü Nota macerasını seçer. İki mod vardır: <b>Birlikte hayatta kal</b> (2–12 kişi, herkes aynı tarafta) veya <b>Gizli Hain</b> (4–12 kişi, rastgele bir kişi kötü güçle işbirliği yapar). Hain herhangi bir sınıftan olabilir; Host da hain olabilir.</p>
         <ul className="mt-2 list-disc space-y-1 pl-5">
           <li><b>Zafer veya buruk son:</b> Maceracılar kazanır. Hain varsa kaybeder; hikâyedeki her sorun çözülmüş olmayabilir.</li>
           <li><b>Yenilgi:</b> Grubun toplam canı sıfıra düşerse veya hikâye yenilgi sonuyla biterse maceracılar kaybeder, hain varsa kazanır. Tek kişinin canının sıfırlanması tek başına oyunu bitirmez.</li>
           <li><b>Hainin anlaşması:</b> Bilgi saklayıp yalan söyleyebilir, yanlış hamleleri savunabilir. Tartışmada oyun boyunca iki kez gizli lanet kullanabilir: o sahnenin zar zorluğu +2 (en fazla 20), sahne başına bir kullanım. Doğal 20 yine başarılıdır. Laneti kimin kullandığı gizli kalır; roller finalde açılır.</li>
+          <li><b>Kötü işareti savun:</b> Hain kendi gizli bağlılık kartında kötü gücün hangi işareti istediğini ve hangi seçeneği savunacağını görür. Zar başarısı yalnızca hamlenin uygulanmasıdır; kötü bir çağrı ritüeli başarılı olursa maceracılar yine yenilebilir.</li>
+          <li><b>Hikâye sesleri:</b> “Sesi aç” ile genel müziği başlatın. Mağara, damla ve müzik kutusu sahnelerinde atmosfer değişir; ses kapalıyken bütün ipuçları metinde de vardır. Aynı masada tek cihazdan çalmanız önerilir.</li>
           <li><b>Kontrol sizde:</b> Okuma, seçim, tartışma ve sonuç aşamalarında herkes “Hazırım” dediğinde ilerlenir. Oy değiştirmek hazır onayını geri alır. Zar elle atılır; zarcı bağlı değilse Host onun yerine basabilir. Host aşamaları tek başına atlayamaz.</li>
         </ul>
       </section>
