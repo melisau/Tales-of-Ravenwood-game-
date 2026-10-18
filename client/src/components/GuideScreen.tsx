@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { ARCHETYPES, CLASSES } from '../../../shared/classes';
 import type { ClassArchetype, ClassDefinition, ClassId } from '../../../shared/types';
 import { CLASS_IDS } from '../../../shared/types';
+import { PartyAdvice } from './PartyAdvice';
 
 /**
  * Tales of Ravenwood — Başlangıç Rehberi
@@ -22,6 +23,7 @@ export interface GuideScreenProps {
   onSelectClass?: (classId: ClassId) => void;
   takenClasses?: ClassId[];
   mySelectedClass?: ClassId | null;
+  playerCount?: number;
 }
 
 const FONT_DISPLAY = { fontFamily: "'Cinzel', 'Trajan Pro', Georgia, serif" };
@@ -34,6 +36,7 @@ export default function GuideScreen({
   onSelectClass,
   takenClasses = [],
   mySelectedClass = null,
+  playerCount,
 }: GuideScreenProps) {
   const [tab, setTab] = useState<GuideTab>(initialTab);
 
@@ -71,7 +74,8 @@ export default function GuideScreen({
             </section>
           ) : (
             <section role="tabpanel" id="panel-classes" aria-labelledby="tab-classes">
-              <ClassCodex onSelectClass={onSelectClass} takenClasses={takenClasses} mySelectedClass={mySelectedClass} />
+              <PartyAdvice playerCount={playerCount} takenClasses={takenClasses} />
+              <div className="mt-5"><ClassCodex onSelectClass={onSelectClass} takenClasses={takenClasses} mySelectedClass={mySelectedClass} /></div>
             </section>
           )}
         </main>
@@ -148,7 +152,7 @@ const STEPS: ReadonlyArray<{ icon: string; title: string; body: ReactNode }> = [
     body: (
       <>
         Telefonunda <b>sadece senin sınıfının</b> görebildiği bir ipucu var: Dedektif tuzağı, Medyum ruhu, Bilgin yazıyı görür.
-        Mührü kır, oku. <b>Paylaşmak ya da saklamak senin kararın.</b>
+        Mührü kır, oku. <b>Tehlike uyarılarını paylaş; emin olmadığın yorumunu kesin bilgiden ayır.</b> O sahnede sınıfına ipucu gelmeyebilir.
       </>
     ),
   },
@@ -162,7 +166,7 @@ const STEPS: ReadonlyArray<{ icon: string; title: string; body: ReactNode }> = [
     title: '90 saniye tartışın',
     body: (
       <>
-        Geri sayım başlar. İpuçlarını birleştirin, ikna edin, blöf yapın. Süre bitmeden <b>oyunu değiştirebilirsin</b>.
+        Geri sayım başlar. Önce herkes ipucunu kendi sözleriyle anlatsın, sonra ipuçlarını birleştirip karar verin. Süre bitmeden <b>oyunu değiştirebilirsin</b>.
       </>
     ),
   },
@@ -194,6 +198,23 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
       <p className="text-center text-[15px] italic leading-relaxed text-[#d9c9a6]">
         Ravenwood'da Cadılar Bayramı gecesi. Birlikte girdiniz; ancak birlikte çıkabilirsiniz.
       </p>
+
+      <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
+        <h2 className="text-lg font-bold text-[#f3dfa6]">Amacınız ve oyunun sonu</h2>
+        <p className="mt-2">Blackthorne Konağı'nın sırrını çözün, tehlikelerden kurtulun ve mümkünse tutsak ruhu özgür bırakın. Hepiniz aynı takımdasınız; bireysel puan, hain rolü veya kişisel zafer yok.</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li><b>Zafer:</b> Hikâyede zafer olarak tanımlanan bir sona ulaşın.</li>
+          <li><b>Buruk son:</b> Kaçış veya fedakârlık gibi bedelli bir sona ulaşın. Oyun bunu da takım başarısı sayar; hikâyedeki her sorun çözülmeyebilir.</li>
+          <li><b>Yenilgi:</b> Grubun toplam canı sıfıra düşerse veya hikâye yenilgi sonuyla biterse herkes kaybeder. Tek kişinin canının sıfırlanması tek başına takım yenilgisi değildir.</li>
+        </ul>
+      </section>
+
+      <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
+        <h2 className="text-lg font-bold text-[#f3dfa6]">İpucumu ne zaman paylaşmalıyım?</h2>
+        <p className="mt-2">Gizlilik, herkesin farklı bir parçayı önce kendi başına görmesi içindir. İpucu saklamak bonus kazandırmaz. Tartışmada tuzak, zehir, güvenilmeyen ses ve güvenli yol uyarılarını seçim kesinleşmeden paylaşın.</p>
+        <p className="mt-2">“Metinde bu yazıyor” ile “bence bu anlama geliyor” ayrımını yapın. Belirsiz kehaneti başkasının bilgisiyle karşılaştırın. Rol yapmak için kısa süre bekleyebilirsiniz; kritik tehlikeyi saklamak ekibin yanlış karar vermesine yol açabilir.</p>
+        <p className="mt-2 italic text-[#c9b48a]">Örnek: Simyacı “Buhar yanıcı, ateş kullanmayalım” der; Bilgin “Mühür gönüllü kanla açılıyor” diye tamamlar. Sonra grup seçenekleri değerlendirir. Doğru yorum başarıyı garanti etmez; zar yine atılır.</p>
+      </section>
 
       {/* Adımlar — dikey zaman çizelgesi */}
       <ol className="relative space-y-3 before:absolute before:bottom-6 before:left-[21px] before:top-6 before:w-px before:bg-gradient-to-b before:from-[#c9a24a]/60 before:via-[#7a0e1a]/60 before:to-transparent">
@@ -271,7 +292,7 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
         <ul className="list-disc space-y-1.5 pl-5 text-[14px] leading-snug text-[#e4d6b8] marker:text-[#7a0e1a]">
           <li>Birlikte kazanır, birlikte kaybedersiniz. Grubun toplam canı biterse karanlık kazanır.</li>
           <li>Kimse tüm resmi görmez. Bir sınıfın ipucu, diğerininkinin eksik parçası olabilir.</li>
-          <li>Telefonunu masaya ters koy: gizli ipucu gizli kalsın.</li>
+          <li>Telefonlarınızı birbirinize göstermek yerine ipuçlarını sözlü aktarın; amaç bilgileri birlikte anlamlandırmaktır.</li>
           <li>Bağlantın koparsa aynı odaya tekrar gir; karakterin seni bekler.</li>
         </ul>
       </section>

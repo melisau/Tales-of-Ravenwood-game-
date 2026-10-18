@@ -44,13 +44,14 @@ export default function App() {
 
   let screen: ReactElement;
   if (overlay?.kind === 'guide') {
-    screen = <GuideScreen initialTab={overlay.tab} onContinue={closeOverlay} continueLabel={room ? 'Oyuna Dön' : 'Masaya Otur'} />;
+    screen = <GuideScreen initialTab={overlay.tab} playerCount={room?.players.length} takenClasses={room?.takenClasses} onContinue={closeOverlay} continueLabel={room ? 'Oyuna Dön' : 'Masaya Otur'} />;
   } else if (overlay?.kind === 'pickClass' && room?.phase === GamePhase.LOBBY) {
     screen = (
       <GuideScreen
         initialTab="classes"
         takenClasses={room.takenClasses}
         mySelectedClass={me?.classId ?? null}
+        playerCount={room.players.length}
         onSelectClass={async (classId) => {
           await game.selectClass(classId);
         }}

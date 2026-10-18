@@ -1,6 +1,7 @@
 import { CLASSES } from '../../../shared/classes';
 import { MAX_PLAYERS, MIN_PLAYERS, getTierConfig, startingHpPerPlayer } from '../../../shared/scaling';
 import type { Game } from '../state/useGame';
+import { PartyAdvice } from '../components/PartyAdvice';
 import { Backdrop, Button, FONT_DISPLAY, HelpButton, Label, Panel } from '../ui/kit';
 
 /** Lobi: oda kodu, oyuncular, sınıf seçimi, Host başlatır. */
@@ -75,6 +76,8 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
             {me.classId ? 'Sınıfı Değiştir' : 'Sınıfını Seç'}
           </Button>
         </Panel>
+
+        <PartyAdvice playerCount={players.length} takenClasses={room.takenClasses} />
 
         {/* Oyuncular */}
         <Panel>
