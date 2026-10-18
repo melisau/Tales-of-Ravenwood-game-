@@ -3,6 +3,46 @@
 2–12 oyunculu, aynı masada telefonlarla oynanan Cadılar Bayramı temalı FRP.
 Sunucu otoriterdir: zar, HP, faz geçişleri ve gizli ipuçları yalnızca sunucuda hesaplanır.
 
+## Bilgisayar açık olmadan, yalnızca telefonlarla deneme (Railway)
+
+Oyun sunucusu Railway'de çalışır; Android ve iPhone'lar aynı HTTPS adresine
+tarayıcıdan girer. Bilgisayarın açık kalması ve telefonların aynı Wi-Fi'de olması
+gerekmez. Bu yayın kurulumu APK üretmez; daha sonra Android uygulaması da aynı
+sunucuya bağlanabilir.
+
+1. Railway hesabında **New Project → Deploy from GitHub repo** seçin.
+2. `melisau/Tales-of-Ravenwood-game-` deposunu, `main` dalını seçin.
+3. Kök dizini depo kökü olarak bırakın; `client/` veya `server/` seçmeyin.
+   Railway kökteki `Dockerfile` ve `railway.json` dosyalarını kullanır.
+4. Derleme ve sağlık kontrolü geçtikten sonra hizmetin **Settings → Networking →
+   Public Networking → Generate Domain** bölümünden HTTPS adresi oluşturun.
+   Port sorulursa uygulamanın `PORT` değerini kullanın (varsayılan 3000).
+5. Dört telefonda bu adresi açın. Biri oda kursun, diğerleri kodla katılsın.
+   Dört oyuncuyla Gizli Hain modu kullanılabilir. Müziği tek telefondan açın.
+
+İstemci, ses dosyaları ve Socket.IO tek adresten sunulur. Ayrı frontend hizmeti,
+`VITE_SERVER_URL`, API anahtarı veya veritabanı kurulumu gerekmez. Railway hizmeti
+**tek replica** olmalı; mevcut odalar sunucu belleğinde tutulur. Hizmetin yeniden
+başlaması veya yeni sürüm yayınlanması mevcut odaları siler. Otomatik yayınlamayı
+oyun sırasında kapatabilirsiniz. `railway.json` uykuyu kapalı tutar; Railway planı
+ve kullanım kredileri hesaba göre değerlendirilmelidir. Yayın öncesi hesabınızın
+kullanım limitlerini kontrol edin.
+
+Yerelde aynı production paketini denemek için:
+
+```bash
+npm run kur
+npm run build
+npm start
+```
+
+Ardından `http://localhost:3000` adresini açın. Docker varsa `docker build -t
+ravenwood .` ve `docker run --rm -p 3000:3000 ravenwood` aynı paketi çalıştırır.
+
+Resmi rehberler: [GitHub'dan yayınlama](https://docs.railway.com/guides/github),
+[HTTPS alan adı](https://docs.railway.com/networking/public-networking),
+[sağlık kontrolü](https://docs.railway.com/deployments/healthchecks).
+
 ## Blackthorne Konağı maceraları
 
 Host lobide macerayı seçer; seçim bütün oyunculara uygulanır. Üç macera da
@@ -280,5 +320,5 @@ Fontlar için `index.html`'e: `Cinzel` ve `IM Fell English` (Google Fonts). Bile
 
 ## Production'a çıkarken
 
-- Birden fazla sunucu instance'ı için oda state'i bellekte tutulduğundan **sticky session** gerekir (ya da `RoomManager` arkasına Redis tabanlı bir store).
+- Oda state'i bellekte tutulduğu için bu sürüm **tek instance/replica** üzerinde çalışır. Birden fazla instance için ortak bir oda store'u ve uygun Socket.IO adaptörü gerekir; yalnızca istemci bazında sticky session yeterli değildir.
 - `/healthz` oda ve bağlı socket sayısını döndürür; load balancer health check'ine bağlayın.

@@ -1,4 +1,3 @@
-import express from 'express';
 import { createServer } from 'node:http';
 import { Server } from 'socket.io';
 import type { ClientToServerEvents, ServerToClientEvents } from '../../shared/types';
@@ -7,13 +6,13 @@ import { RoomManager } from './core/RoomManager';
 import { cryptoD20, systemClock } from './engine/GameEngine';
 import { createSocketIoTransport, registerSocketHandlers } from './net/socketHandlers';
 import { StoryRepository } from './story/StoryRepository';
+import { createWebApp } from './web/app';
 
 async function main(): Promise<void> {
   const story = await StoryRepository.loadFromDir(config.storyDir, { strict: config.strictStory, logger: console });
   if (!story.has(config.startNodeId)) throw new Error(`Başlangıç düğümü bulunamadı: ${config.startNodeId}`);
 
-  const app = express();
-  app.disable('x-powered-by');
+  const app = createWebApp(config.clientDir, () => manager.stats());
   const httpServer = createServer(app);
 
   const io = new Server<ClientToServerEvents, ServerToClientEvents>(httpServer, {
@@ -40,10 +39,6 @@ async function main(): Promise<void> {
   });
 
   registerSocketHandlers(io, manager, config.rateLimit);
-
-  app.get('/healthz', (_req, res) => {
-    res.json({ status: 'ok', uptime: process.uptime(), ...manager.stats() });
-  });
 
   httpServer.listen(config.port, () => console.info(`🦇 Tales of Ravenwood sunucusu :${config.port} portunda`));
 

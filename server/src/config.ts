@@ -8,6 +8,7 @@ const num = (key: string, fallback: number): number => {
 };
 
 export const config = {
+  clientDir: process.env.CLIENT_DIR ?? fileURLToPath(new URL('../../client/dist', import.meta.url)),
   port: num('PORT', 3000),
   /**
    * Varsayılan: her kaynağa izin (aynı Wi-Fi'deki telefonlar 192.168.x.x'ten bağlanır).

@@ -6,12 +6,16 @@ export type GameSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 /**
  * Sunucu adresi:
  *  - VITE_SERVER_URL verilmişse o (internete yayınlarken)
- *  - yoksa sayfanın açıldığı makinenin 3000 portu. Böylece aynı Wi-Fi'deki
+ *  - development modunda sayfanın açıldığı makinenin 3000 portu. Böylece aynı Wi-Fi'deki
  *    telefonlar http://192.168.x.x:5173 adresine girdiğinde sunucuyu
  *    otomatik olarak http://192.168.x.x:3000'de bulur; ayar gerekmez.
+ *  - production modunda sayfayla aynı adres. HTTPS/WebSocket, Railway domaini
+ *    ve platformun PORT yönlendirmesi için ayrı sunucu adresi gerekmez.
  */
 export function serverUrl(): string {
-  return import.meta.env.VITE_SERVER_URL || `${location.protocol}//${location.hostname}:3000`;
+  return import.meta.env.VITE_SERVER_URL || (import.meta.env.DEV
+    ? `${location.protocol}//${location.hostname}:3000`
+    : location.origin);
 }
 
 export function createSocket(): GameSocket {

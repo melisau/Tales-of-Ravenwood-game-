@@ -9,6 +9,8 @@
     "setup": "npm run kur",
     "basla": "node scripts/dev.mjs",
     "dev": "node scripts/dev.mjs",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "start": "npm start --prefix server",
     "test": "npm test --prefix server"
   },
   "engines": {
