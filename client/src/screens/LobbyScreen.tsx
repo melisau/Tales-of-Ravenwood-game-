@@ -4,6 +4,7 @@ import type { AdventureId } from '../../../shared/types';
 import { MAX_PLAYERS, MIN_PLAYERS, getTierConfig, startingHpPerPlayer } from '../../../shared/scaling';
 import type { Game } from '../state/useGame';
 import { PartyAdvice } from '../components/PartyAdvice';
+import { ClassEmblem } from '../components/ClassEmblem';
 import { Backdrop, Button, FONT_DISPLAY, HelpButton, Label, Panel } from '../ui/kit';
 
 /** Lobi: oda kodu, oyuncular, sınıf seçimi, Host başlatır. */
@@ -84,7 +85,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
           {me.classId ? (
             <div className="mt-2 flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-[#c9a24a] bg-[radial-gradient(circle_at_35%_30%,#4b2160,#1a0c22)] text-xl text-[#e8c66a]">
-                {CLASSES[me.classId].sigil}
+                <ClassEmblem classId={me.classId} />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-lg font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
@@ -115,7 +116,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
             {players.map((p) => (
               <li key={p.id} className={`flex items-center gap-3 py-2.5 ${p.connected ? '' : 'opacity-50'}`}>
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#c9a24a]/50 bg-[#2a1235] text-[#e8c66a]">
-                  {p.classId ? CLASSES[p.classId].sigil : '·'}
+                  <ClassEmblem classId={p.classId} className="h-6 w-6" />
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[17px] text-[#efe3c8]">

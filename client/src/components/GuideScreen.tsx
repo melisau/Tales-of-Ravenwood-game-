@@ -4,6 +4,7 @@ import type { ClassArchetype, ClassDefinition, ClassId } from '../../../shared/t
 import { CLASS_IDS } from '../../../shared/types';
 import { PartyAdvice } from './PartyAdvice';
 import { FONT_BODY, FONT_DISPLAY } from '../ui/kit';
+import { ClassEmblem } from './ClassEmblem';
 
 /**
  * Tales of Ravenwood — Başlangıç Rehberi
@@ -412,7 +413,7 @@ function ClassCard({
         className="flex w-full items-center gap-3 p-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#e8c66a]"
       >
         <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-[#c9a24a] bg-[radial-gradient(circle_at_35%_30%,#4b2160,#1a0c22)] text-xl text-[#e8c66a]">
-          <span aria-hidden>{def.sigil}</span>
+          <ClassEmblem classId={def.id} />
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-2">

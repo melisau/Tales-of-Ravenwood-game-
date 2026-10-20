@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { CLASSES } from '../../../shared/classes';
 import { ANY_CLASS, GamePhase, type PublicActionView, type PublicPlayer, type PublicRoomState, type SceneResult } from '../../../shared/types';
 import SecretCharacterScreen from '../components/SecretCharacterScreen';
 import { SecretRoleCard } from '../components/SecretRoleCard';
+import { ClassEmblem } from '../components/ClassEmblem';
 import type { Game } from '../state/useGame';
 import { Button, FONT_DISPLAY, HelpButton, HpBar, Label } from '../ui/kit';
 
@@ -22,7 +22,6 @@ export function GameScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: () 
   const me = game.me!;
   const scene = room.scene!;
   const phase = room.phase;
-  const classDef = me.classId ? CLASSES[me.classId] : null;
 
   const pending = room.pendingRoll;
   const roller = pending ? room.players.find((p) => p.id === pending.rollerPlayerId) ?? null : null;
@@ -42,7 +41,6 @@ export function GameScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: () 
   return (
     <SecretCharacterScreen
       characterClass={me.classId ?? '—'}
-      classSigil={classDef?.sigil ?? '·'}
       playerName={me.hp <= 0 ? `${me.name} · baygın` : me.name}
       hp={me.hp}
       maxHp={me.maxHp}
@@ -147,7 +145,7 @@ function PartyStrip({ room, meId, onHelp }: { room: PublicRoomState; meId: strin
             title={`${p.name} · ${p.classId ?? ''}`}
           >
             <div className="relative mx-auto grid h-8 w-8 place-items-center rounded-full bg-[#2a1235] text-[#e8c66a]">
-              {p.classId ? CLASSES[p.classId].sigil : '·'}
+              <ClassEmblem classId={p.classId} className="h-6 w-6" />
               {choosing && p.hasChosen && (
                 <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-[#2f7a45] text-[9px] text-white" aria-label="oy verdi">
                   ✓
@@ -258,7 +256,7 @@ function ChoiceList({
                       <span className="rounded-full border border-white/15 px-2 py-0.5 text-[#c9b48a]">Herkes</span>
                     ) : (
                       <span className={`rounded-full border px-2 py-0.5 ${mine ? 'border-[#9be29b]/60 text-[#9be29b]' : 'border-[#b9a4ff]/40 text-[#b9a4ff]'}`}>
-                        {CLASSES[a.required_class].sigil} {mine ? 'Zarı sen atarsın (+2)' : `${a.required_class}: ${owner?.name ?? ''} atar (+2)`}
+                        <ClassEmblem classId={a.required_class} className="mr-1 h-5 w-5" /> {mine ? 'Zarı sen atarsın (+2)' : `${a.required_class}: ${owner?.name ?? ''} atar (+2)`}
                       </span>
                     )}
                   </span>

@@ -293,7 +293,7 @@ useEffect(() => {
 
 const me = state?.players.find(p => p.id === myPlayerId);
 <SecretCharacterScreen
-  characterClass={me.classId} classSigil={CLASSES[me.classId].sigil} playerName={me.name}
+  characterClass={me.classId} playerName={me.name}
   hp={me.hp} maxHp={me.maxHp}
   phaseEndsAt={state.phaseEndsAt} totalSeconds={90}
   secretHint={hint?.hint ?? null}
@@ -320,6 +320,12 @@ Uzun metinler cihazın sistem yazı tipini kullanır; dışarıdan font indirilm
 Hikâye, ipucu ve rehber metinleri 18 px ve 1.8 satır aralığıyla gösterilir.
 Üstteki **Büyük yazı** düğmesi metinleri 21 px yapar; tercih cihazda kaydedilir.
 Başlıklarda Georgia/serif kullanılır; düğmeler sade yazı tipiyle gösterilir.
+
+Karakter armaları `client/src/components/ClassEmblem.tsx` içinde çizilen ortak
+SVG setidir: hilal, fener, kitap, iksir, yay, anahtar/çekiç, kalkan, otlu havan,
+büyü mührü, kehanet kartı, tüy kalem/parşömen ve av mızrakları. Lobi, sınıf
+rehberi, ekip önerileri, oyun ve sonuç ekranlarında aynı altın çizgi stili
+kullanılır. Simgeler emoji yazı tiplerine veya harici resim dosyalarına bağlı değildir.
 
 ## Production'a çıkarken
 

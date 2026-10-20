@@ -2,6 +2,8 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useCountdown } from '../hooks/useCountdown';
 import { useDiceRoll, type DiceOutcome } from '../hooks/useDiceRoll';
 import { FONT_BODY, FONT_DISPLAY } from '../ui/kit';
+import { ClassEmblem } from './ClassEmblem';
+import { isClassId } from '../../../shared/classes';
 
 /**
  * Tales of Ravenwood — Gizli Karakter Ekranı
@@ -14,7 +16,6 @@ import { FONT_BODY, FONT_DISPLAY } from '../ui/kit';
 
 export interface SecretCharacterScreenProps {
   characterClass: string; // ör. "Medyum"
-  classSigil: string; // ör. "☾" — logo yerine ya da yanında
   classLogoUrl?: string;
   playerName: string;
   hp: number;
@@ -53,7 +54,6 @@ export interface SecretCharacterScreenProps {
 export default function SecretCharacterScreen(props: SecretCharacterScreenProps) {
   const {
     characterClass,
-    classSigil,
     classLogoUrl,
     playerName,
     hp,
@@ -90,7 +90,6 @@ export default function SecretCharacterScreen(props: SecretCharacterScreenProps)
       <main className="relative mx-auto flex min-h-dvh w-full max-w-md flex-col gap-5 px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:max-w-lg">
         <Header
           characterClass={characterClass}
-          sigil={classSigil}
           logoUrl={classLogoUrl}
           playerName={playerName}
           hp={hp}
@@ -129,7 +128,6 @@ export default function SecretCharacterScreen(props: SecretCharacterScreenProps)
 
 function Header(p: {
   characterClass: string;
-  sigil: string;
   logoUrl?: string;
   playerName: string;
   hp: number;
@@ -145,9 +143,7 @@ function Header(p: {
         {p.logoUrl ? (
           <img src={p.logoUrl} alt="" className="h-9 w-9 object-contain" />
         ) : (
-          <span className="text-2xl leading-none text-[#e8c66a] drop-shadow-[0_0_6px_rgba(232,198,106,0.6)]" aria-hidden>
-            {p.sigil}
-          </span>
+          <ClassEmblem classId={isClassId(p.characterClass) ? p.characterClass : null} className="h-10 w-10" />
         )}
       </div>
 

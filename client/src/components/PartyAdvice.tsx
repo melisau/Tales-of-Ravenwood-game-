@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CLASSES } from '../../../shared/classes';
+import { ClassEmblem } from './ClassEmblem';
 import type { ClassId } from '../../../shared/types';
 
 // Editorial starter teams for the current story; every class remains optional.
@@ -38,7 +38,7 @@ export function PartyAdvice({ playerCount, takenClasses = [] }: { playerCount?: 
       <ul className="mt-3 space-y-2 text-sm">
         {STARTER_ORDER.slice(0, count).map(({ id, reason }) => (
           <li key={id}>
-            <span className="font-bold text-[#f3dfa6]">{CLASSES[id].sigil} {id}</span>
+            <span className="inline-flex items-center gap-2 font-bold text-[#f3dfa6]"><ClassEmblem classId={id} className="h-6 w-6" /> {id}</span>
             {takenClasses.includes(id) && <span className="ml-2 text-xs text-[#c9a24a]">Seçildi</span>}
             <span className="block text-[#c9b48a]">{reason}</span>
           </li>

@@ -1,4 +1,4 @@
-import { CLASSES } from '../../../shared/classes';
+import { ClassEmblem } from '../components/ClassEmblem';
 import type { Game } from '../state/useGame';
 import { Backdrop, Button, FONT_DISPLAY, HpBar, Label, Panel } from '../ui/kit';
 
@@ -44,7 +44,7 @@ export function GameOverScreen({ game }: { game: Game }) {
             {room.players.map((p) => (
               <li key={p.id} className="flex items-center gap-3 py-2">
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#2a1235] text-[#e8c66a]">
-                  {p.classId ? CLASSES[p.classId].sigil : '·'}
+                  <ClassEmblem classId={p.classId} className="h-6 w-6" />
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[16px]">
