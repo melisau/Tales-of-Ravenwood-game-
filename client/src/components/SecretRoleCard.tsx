@@ -11,7 +11,7 @@ export function SecretRoleCard({ game }: { game: Game }) {
   return (
     <details className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[#e4d6b8]">
       <summary className="cursor-pointer font-bold text-[#f3dfa6]">Gizli bağlılığını aç — yalnızken bak</summary>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed">
+      <div className="rw-reading mt-3 space-y-3 text-[#f1e7d6]">
         <p className="text-lg font-bold text-[#f3dfa6]">{traitor ? 'Karanlığın Hizmetkârı' : 'Maceracı'}</p>
         <p>{traitor
           ? 'Konağın kötü gücüyle anlaşma yaptın. Hikâye yenilgiyle biterse sen kazanırsın; zafer veya buruk sonla biterse kaybedersin. Sınıfın kimliğinin örtüsü. İpucunu saklayabilir, çarpıtabilir ve tehlikeli hamleleri savunabilirsin.'
@@ -29,7 +29,7 @@ export function SecretRoleCard({ game }: { game: Game }) {
             {role.curseQueued ? 'Bu sahne için lanet hazır' : 'Karanlıkla anlaş: lanet kullan'}
           </Button>
         </>}
-        <p className="text-xs text-[#a893b3]">Rolün oyun bitene kadar başkalarına gönderilmez. Telefonunu göstermek rolünü ele verebilir. Suçlama, oyuncu çıkarma veya başka birinin rolünü açma düğmesi yoktur; karşı hamleniz tartışma ve oylamadır.</p>
+        <p className="text-xs text-[#c7b9d0]">Rolün oyun bitene kadar başkalarına gönderilmez. Telefonunu göstermek rolünü ele verebilir. Suçlama, oyuncu çıkarma veya başka birinin rolünü açma düğmesi yoktur; karşı hamleniz tartışma ve oylamadır.</p>
       </div>
     </details>
   );

@@ -22,11 +22,11 @@ export function GameOverScreen({ game }: { game: Game }) {
         <div className={`text-6xl ${s.color} ${s.glow}`} aria-hidden>
           {s.sigil}
         </div>
-        <p className="mt-4 text-[12px] uppercase tracking-[0.35em] text-[#c9a24a]/85">{s.kicker}</p>
+        <p className="mt-4 text-[14px] uppercase tracking-[0.35em] text-[#c9a24a]/85">{s.kicker}</p>
         <h1 className={`mt-2 text-4xl font-bold ${s.color}`} style={FONT_DISPLAY}>
           {over.title}
         </h1>
-        <p className="mx-auto mt-5 max-w-sm text-[17px] italic leading-[1.7] text-[#e4d6b8]">{over.reason}</p>
+        <p className="rw-copy mx-auto mt-5 text-left text-[#f1e7d6]">{over.reason}</p>
       </section>
 
       <div className="space-y-4">
@@ -38,7 +38,7 @@ export function GameOverScreen({ game }: { game: Game }) {
         <Panel>
           <div className="flex items-baseline justify-between">
             <Label>Gecenin özeti</Label>
-            <span className="text-[12.5px] text-[#a893b3]">{room.sceneNumber} sahne</span>
+            <span className="text-[14px] text-[#c7b9d0]">{room.sceneNumber} sahne</span>
           </div>
           <ul className="mt-2 divide-y divide-white/5">
             {room.players.map((p) => (
@@ -47,12 +47,12 @@ export function GameOverScreen({ game }: { game: Game }) {
                   {p.classId ? CLASSES[p.classId].sigil : '·'}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[14.5px]">
-                    {p.name} <span className="text-[12px] text-[#a893b3]">· {p.classId}</span>
+                  <span className="block truncate text-[16px]">
+                    {p.name} <span className="text-[14px] text-[#c7b9d0]">· {p.classId}</span>
                   </span>
                   <HpBar hp={p.hp} maxHp={p.maxHp} size="sm" />
                 </span>
-                <span className="w-12 text-right text-[12.5px] tabular-nums text-[#c9b48a]">
+                <span className="w-12 text-right text-[14px] tabular-nums text-[#c9b48a]">
                   {p.hp}/{p.maxHp}
                 </span>
               </li>
@@ -63,7 +63,7 @@ export function GameOverScreen({ game }: { game: Game }) {
         {me.isHost ? (
           <Button onClick={() => void game.advance()}>Aynı Masayla Yeniden Oyna</Button>
         ) : (
-          <p className="text-center text-[14px] italic text-[#c9b48a]">Host yeni bir geceyi başlatabilir…</p>
+          <p className="text-center text-[16px] not-italic text-[#c9b48a]">Host yeni bir geceyi başlatabilir…</p>
         )}
         <Button variant="ghost" onClick={() => void game.leave()}>
           Ana menüye dön

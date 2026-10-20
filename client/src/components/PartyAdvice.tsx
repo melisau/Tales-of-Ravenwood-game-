@@ -44,7 +44,7 @@ export function PartyAdvice({ playerCount, takenClasses = [] }: { playerCount?: 
           </li>
         ))}
       </ul>
-      <p className="mt-3 text-xs leading-relaxed text-[#a893b3]">Mevcut hikâye için başlangıç önerisidir; zorunlu veya kazanmayı garantileyen bir ekip değildir. Her sınıf yalnızca bir oyuncuda olabilir. İstediğiniz sınıfı seçebilirsiniz; herkese açık seçeneklerle her ekip ilerleyebilir. Sınıf yetenekleri ilgili sahne seçeneklerinde çalışır, sürekli etkin bir güç değildir.</p>
+      <p className="mt-3 text-xs leading-relaxed text-[#c7b9d0]">Mevcut hikâye için başlangıç önerisidir; zorunlu veya kazanmayı garantileyen bir ekip değildir. Her sınıf yalnızca bir oyuncuda olabilir. İstediğiniz sınıfı seçebilirsiniz; herkese açık seçeneklerle her ekip ilerleyebilir. Sınıf yetenekleri ilgili sahne seçeneklerinde çalışır, sürekli etkin bir güç değildir.</p>
     </section>
   );
 }

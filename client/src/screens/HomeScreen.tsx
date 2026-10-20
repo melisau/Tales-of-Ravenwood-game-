@@ -30,9 +30,9 @@ export function HomeScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: (ta
   return (
     <Backdrop>
       <header className="pb-6 pt-6 text-center">
-        <p className="text-[11px] uppercase tracking-[0.35em] text-[#c9a24a]/80">Cadılar Bayramı · Co-op FRP</p>
+        <p className="text-[13px] uppercase tracking-[0.35em] text-[#c9a24a]/80">Cadılar Bayramı · Co-op FRP</p>
         <Title className="mt-2 text-4xl">Tales of Ravenwood</Title>
-        <p className="mx-auto mt-3 max-w-xs text-[15px] italic leading-relaxed text-[#d9c9a6]">
+        <p className="mx-auto mt-3 max-w-xs text-[17px] not-italic leading-relaxed text-[#d9c9a6]">
           Blackthorne Konağı'nın mahzeninde bir ninni çalıyor. 2–12 kişi, tek masa, herkes kendi telefonunda.
         </p>
       </header>
@@ -55,7 +55,7 @@ export function HomeScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: (ta
 
         <Panel>
           <Label>Yeni bir gece</Label>
-          <p className="mt-1 text-[14px] text-[#d9c9a6]">Oda kur, kodu masadakilere söyle. Odayı kuran Host olur.</p>
+          <p className="mt-1 text-[16px] text-[#d9c9a6]">Oda kur, kodu masadakilere söyle. Odayı kuran Host olur.</p>
           <Button className="mt-3" onClick={create} disabled={!nameOk || !online || busy !== null}>
             {busy === 'create' ? 'Kapı açılıyor…' : 'Oda Kur'}
           </Button>
@@ -82,7 +82,7 @@ export function HomeScreen({ game, onOpenGuide }: { game: Game; onOpenGuide: (ta
                 {busy === 'join' ? '…' : 'Katıl'}
               </Button>
             </div>
-            {!nameOk && code.length > 0 && <p className="mt-2 text-[12.5px] text-[#ff9a9e]">Önce adını yaz.</p>}
+            {!nameOk && code.length > 0 && <p className="mt-2 text-[14px] text-[#ff9a9e]">Önce adını yaz.</p>}
           </form>
         </Panel>
 

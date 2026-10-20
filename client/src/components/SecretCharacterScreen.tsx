@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useCountdown } from '../hooks/useCountdown';
 import { useDiceRoll, type DiceOutcome } from '../hooks/useDiceRoll';
+import { FONT_BODY, FONT_DISPLAY } from '../ui/kit';
 
 /**
  * Tales of Ravenwood — Gizli Karakter Ekranı
@@ -8,7 +9,7 @@ import { useDiceRoll, type DiceOutcome } from '../hooks/useDiceRoll';
  *
  * Tailwind config gerektirmez: renkler arbitrary value, animasyonlar
  * bileşenle birlikte gelen <style> bloğundadır.
- * Önerilen fontlar (index.html): Cinzel + IM Fell English (Google Fonts).
+ * Long-form reading uses the shared system font and optional larger text size.
  */
 
 export interface SecretCharacterScreenProps {
@@ -48,8 +49,6 @@ export interface SecretCharacterScreenProps {
   spectator?: { rolling: boolean; outcome: DiceOutcome | null };
 }
 
-const FONT_DISPLAY = { fontFamily: "'Cinzel', 'Trajan Pro', Georgia, serif" };
-const FONT_BODY = { fontFamily: "'IM Fell English', 'Iowan Old Style', Georgia, serif" };
 
 export default function SecretCharacterScreen(props: SecretCharacterScreenProps) {
   const {
@@ -153,7 +152,7 @@ function Header(p: {
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="truncate text-[11px] uppercase tracking-[0.25em] text-[#c9a24a]/80">{p.playerName}</p>
+        <p className="truncate text-[13px] uppercase tracking-[0.25em] text-[#c9a24a]/80">{p.playerName}</p>
         <h1 className="truncate text-xl font-bold tracking-wide text-[#f3dfa6]" style={FONT_DISPLAY}>
           {p.characterClass}
         </h1>
@@ -170,7 +169,7 @@ function HpBar({ hp, maxHp }: { hp: number; maxHp: number }) {
   const critical = pct <= 30;
   return (
     <div className="mt-1.5">
-      <div className="mb-0.5 flex items-baseline justify-between text-[11px]">
+      <div className="mb-0.5 flex items-baseline justify-between text-[13px]">
         <span className="uppercase tracking-widest text-[#b98a8a]">Can</span>
         <span className={`tabular-nums ${critical ? 'text-[#ff6b6b]' : 'text-[#efe3c8]'}`}>
           {hp} / {maxHp}
@@ -245,29 +244,27 @@ function SecretHintCard({ hint }: { hint: string | null }) {
   return (
     <section aria-labelledby="secret-hint-title" className="relative">
       <div className={`rw-glow-border rounded-2xl p-[1.5px] ${hasHint && !revealed ? 'rw-glow-anim' : ''}`}>
-        <div className="relative overflow-hidden rounded-[15px] bg-[#e9d9b4] text-[#2b1a10] shadow-[inset_0_0_40px_rgba(92,52,20,0.55)]">
+        <div className="relative overflow-hidden rounded-[15px] bg-[#f3e6c9] text-[#2b1a10]">
           {/* Parşömen dokusu */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_10%,rgba(255,255,255,0.35),transparent_50%),radial-gradient(ellipse_at_80%_90%,rgba(110,60,20,0.35),transparent_55%)]" />
-          <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:repeating-linear-gradient(0deg,#5a3a1a_0px,#5a3a1a_1px,transparent_1px,transparent_3px)]" />
 
           <div className="relative p-4">
             <div className="flex items-center justify-between gap-2">
               <h2 id="secret-hint-title" className="text-sm font-bold uppercase tracking-[0.2em] text-[#5c0612]" style={FONT_DISPLAY}>
                 Gizli İpucu
               </h2>
-              <span className="inline-flex items-center gap-1 rounded-full border border-[#5c0612]/40 px-2 py-0.5 text-[10px] uppercase tracking-widest text-[#5c0612]">
+              <span className="inline-flex items-center gap-1 rounded-full border border-[#5c0612]/40 px-2 py-0.5 text-[12px] uppercase tracking-widest text-[#5c0612]">
                 <LockIcon open={revealed} /> Sadece sen
               </span>
             </div>
 
             {!hasHint ? (
-              <p className="mt-3 text-[15px] italic leading-relaxed text-[#4a3424]">
+              <p className="mt-3 text-[17px] not-italic leading-relaxed text-[#4a3424]">
                 Bu sahnede sezgilerin sessiz. Diğerlerini dinle — belki onlar senin göremediğini görüyor.
               </p>
             ) : (
               <div className="relative mt-3 min-h-[7.5rem]">
                 <p
-                  className={`text-[16px] leading-relaxed transition-[filter,opacity] duration-500 ${revealed ? 'opacity-100 blur-0' : 'select-none opacity-60 blur-[7px]'}`}
+                  className={`rw-copy transition-[filter,opacity] duration-500 ${revealed ? 'opacity-100 blur-0' : 'select-none opacity-60 blur-[7px]'}`}
                   aria-hidden={!revealed}
                 >
                   {hint}
@@ -293,14 +290,14 @@ function SecretHintCard({ hint }: { hint: string | null }) {
 
             <div className="mt-3 flex items-start gap-2 border-t border-dashed border-[#5c0612]/30 pt-3">
               <span aria-hidden className="mt-0.5 text-[#7a0e1a]">✦</span>
-              <p className="text-[12.5px] leading-snug text-[#4a3424]">
+              <p className="text-[14px] leading-snug text-[#4a3424]">
                 Masadaki arkadaşlarınla paylaşabilir veya saklayabilirsin.
               </p>
               {hasHint && revealed && (
                 <button
                   type="button"
                   onClick={() => setRevealed(false)}
-                  className="ml-auto shrink-0 rounded-md border border-[#5c0612]/40 px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#5c0612] active:scale-95"
+                  className="ml-auto shrink-0 rounded-md border border-[#5c0612]/40 px-2 py-1 text-[13px] font-semibold uppercase tracking-wider text-[#5c0612] active:scale-95"
                 >
                   Gizle
                 </button>
@@ -382,14 +379,14 @@ function DiceArea(p: {
       className="rounded-3xl border border-[#c9a24a]/25 bg-[#160b1d]/85 p-4 shadow-[0_-10px_40px_-20px_rgba(122,14,26,0.8)] backdrop-blur-sm"
     >
       {p.actionLabel && (
-        <p className="mb-3 text-center text-[13px] italic leading-snug text-[#d9c9a6]/85">“{p.actionLabel}”</p>
+        <p className="mb-3 text-center text-[14px] not-italic leading-snug text-[#d9c9a6]/85">“{p.actionLabel}”</p>
       )}
 
       <div className="flex items-center justify-center gap-5">
         <D20 face={shownFace} rolling={isRolling} tone={isRolling ? 'neutral' : tone} />
         <div className="min-w-[5.5rem] text-left" aria-live="polite">
           {p.dc !== undefined && (
-            <p className="text-[11px] uppercase tracking-[0.25em] text-[#c9a24a]/80">
+            <p className="text-[13px] uppercase tracking-[0.25em] text-[#c9a24a]/80">
               Zorluk <span className="text-lg font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>{p.dc}</span>
             </p>
           )}
@@ -436,7 +433,7 @@ function DiceArea(p: {
       </button>
 
       {!p.canRoll && dice.phase === 'idle' && !o && !isRolling && p.rollerLabel && (
-        <p className="mt-2 text-center text-xs text-[#a893b3]">Zarı {p.rollerLabel} atacak. Masaya bak, nefesini tut.</p>
+        <p className="mt-2 text-center text-xs text-[#c7b9d0]">Zarı {p.rollerLabel} atacak. Masaya bak, nefesini tut.</p>
       )}
       {error && (
         <p role="alert" className="mt-2 text-center text-xs text-[#ff7a7f]">

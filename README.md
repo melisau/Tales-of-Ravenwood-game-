@@ -316,7 +316,10 @@ const me = state?.players.find(p => p.id === myPlayerId);
   onSelectClass={(classId) => socket.emit('class:select', { classId }, ack)} />
 ```
 
-Fontlar için `index.html`'e: `Cinzel` ve `IM Fell English` (Google Fonts). Bileşen Tailwind v4 ile config dosyası gerektirmeden çalışır.
+Uzun metinler cihazın sistem yazı tipini kullanır; dışarıdan font indirilmez.
+Hikâye, ipucu ve rehber metinleri 18 px ve 1.8 satır aralığıyla gösterilir.
+Üstteki **Büyük yazı** düğmesi metinleri 21 px yapar; tercih cihazda kaydedilir.
+Başlıklarda Georgia/serif kullanılır; düğmeler sade yazı tipiyle gösterilir.
 
 ## Production'a çıkarken
 

@@ -31,7 +31,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
   return (
     <Backdrop>
       <div className="flex items-center justify-between">
-        <button type="button" onClick={() => void game.leave()} className="text-[13px] text-[#a893b3] underline-offset-4 active:underline">
+        <button type="button" onClick={() => void game.leave()} className="text-[14px] text-[#c7b9d0] underline-offset-4 active:underline">
           ← Ayrıl
         </button>
         <HelpButton onClick={onOpenGuide} />
@@ -51,7 +51,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
             </span>
           ))}
         </div>
-        <button type="button" onClick={share} className="mt-3 text-[13px] text-[#c9a24a] underline underline-offset-4">
+        <button type="button" onClick={share} className="mt-3 text-[14px] text-[#c9a24a] underline underline-offset-4">
           Kodu paylaş
         </button>
       </section>
@@ -64,7 +64,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
             {ADVENTURES.map((a) => <option key={a.id} value={a.id}>{a.title}</option>)}
           </select>
           <p className="mt-2 text-sm leading-relaxed text-[#c9b48a]">{ADVENTURES.find((a) => a.id === room.adventureId)?.description}</p>
-          <p className="mt-2 text-xs text-[#a893b3]">Her macera farklı yollara ve sonlara ayrılır. Zar başarısı hamlenin uygulandığını gösterir; kötü bir ritüelin başarıyla yapılması da mümkün.</p>
+          <p className="mt-2 text-xs text-[#c7b9d0]">Her macera farklı yollara ve sonlara ayrılır. Zar başarısı hamlenin uygulandığını gösterir; kötü bir ritüelin başarıyla yapılması da mümkün.</p>
         </Panel>
         <Panel>
           <label htmlFor="game-mode"><Label>Oyun modu</Label></label>
@@ -76,7 +76,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
           <p className="mt-2 text-sm leading-relaxed text-[#c9b48a]">{room.mode === 'betrayal'
             ? 'Rastgele bir kişi karanlığın hizmetkârı olur. Hain yenilgide, maceracılar zafer veya buruk sonda kazanır. Hainin iki gizli laneti vardır; herkesin sınıfı aynı kalır. Roller finalde açılır.'
             : 'Herkes aynı tarafta. Zafer veya buruk sonda birlikte kazanırsınız; yenilgide birlikte kaybedersiniz.'}</p>
-          <p className="mt-2 text-xs text-[#a893b3]">Süre sınırı yok. Her aşamada bağlı oyuncular hazır olduğunu onaylayınca ilerlenir; zar elle atılır. Modu yalnızca Host lobide değiştirir.</p>
+          <p className="mt-2 text-xs text-[#c7b9d0]">Süre sınırı yok. Her aşamada bağlı oyuncular hazır olduğunu onaylayınca ilerlenir; zar elle atılır. Modu yalnızca Host lobide değiştirir.</p>
         </Panel>
         {/* Benim sınıfım */}
         <Panel>
@@ -90,11 +90,11 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
                 <p className="text-lg font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
                   {me.classId}
                 </p>
-                <p className="text-[13.5px] leading-snug text-[#d9c9a6]">{CLASSES[me.classId].duty}</p>
+                <p className="text-[15px] leading-snug text-[#d9c9a6]">{CLASSES[me.classId].duty}</p>
               </div>
             </div>
           ) : (
-            <p className="mt-1 text-[14px] text-[#d9c9a6]">Henüz seçmedin. Her sınıf odada yalnızca bir kez alınabilir.</p>
+            <p className="mt-1 text-[16px] text-[#d9c9a6]">Henüz seçmedin. Her sınıf odada yalnızca bir kez alınabilir.</p>
           )}
           <Button className="mt-3" variant={me.classId ? 'secondary' : 'primary'} onClick={onPickClass}>
             {me.classId ? 'Sınıfı Değiştir' : 'Sınıfını Seç'}
@@ -107,7 +107,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
         <Panel>
           <div className="flex items-baseline justify-between">
             <Label>Masadakiler</Label>
-            <span className="text-[12px] text-[#a893b3]">
+            <span className="text-[14px] text-[#c7b9d0]">
               {players.length} / {MAX_PLAYERS}
             </span>
           </div>
@@ -118,17 +118,17 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
                   {p.classId ? CLASSES[p.classId].sigil : '·'}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[15px] text-[#efe3c8]">
+                  <span className="block truncate text-[17px] text-[#efe3c8]">
                     {p.name}
-                    {p.id === me.id && <span className="ml-1.5 text-[12px] text-[#c9a24a]">(sen)</span>}
+                    {p.id === me.id && <span className="ml-1.5 text-[14px] text-[#c9a24a]">(sen)</span>}
                   </span>
-                  <span className="block text-[12.5px] text-[#a893b3]">
+                  <span className="block text-[14px] text-[#c7b9d0]">
                     {p.classId ?? 'Sınıf seçiyor…'}
                     {!p.connected && ' · bağlantı koptu'}
                   </span>
                 </span>
                 {p.isHost && (
-                  <span className="rounded-full border border-[#e8c66a]/50 px-2 py-0.5 text-[10px] uppercase tracking-widest text-[#e8c66a]">Host</span>
+                  <span className="rounded-full border border-[#e8c66a]/50 px-2 py-0.5 text-[12px] uppercase tracking-widest text-[#e8c66a]">Host</span>
                 )}
               </li>
             ))}
@@ -136,7 +136,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
         </Panel>
 
         {balance && (
-          <p className="px-1 text-center text-[13px] italic text-[#c9b48a]">
+          <p className="px-1 text-center text-[14px] not-italic text-[#c9b48a]">
             {players.length} oyuncu: {balance}
           </p>
         )}
@@ -148,7 +148,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
               Geceyi Başlat
             </Button>
             {!canStart && (
-              <p className="text-center text-[13px] text-[#a893b3]">
+              <p className="text-center text-[14px] text-[#c7b9d0]">
                 {players.length < minimum
                   ? `Bu modda en az ${minimum} oyuncu gerekli. Kodu masadakilere söyle.`
                   : `Sınıf seçmesi beklenenler: ${missingClass.map((p) => p.name).join(', ')}`}
@@ -156,7 +156,7 @@ export function LobbyScreen({ game, onPickClass, onOpenGuide }: { game: Game; on
             )}
           </div>
         ) : (
-          <p className="pt-2 text-center text-[14px] italic text-[#c9b48a]">Host'un geceyi başlatması bekleniyor…</p>
+          <p className="pt-2 text-center text-[16px] not-italic text-[#c9b48a]">Host'un geceyi başlatması bekleniyor…</p>
         )}
       </div>
     </Backdrop>

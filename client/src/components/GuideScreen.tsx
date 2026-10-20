@@ -3,6 +3,7 @@ import { ARCHETYPES, CLASSES } from '../../../shared/classes';
 import type { ClassArchetype, ClassDefinition, ClassId } from '../../../shared/types';
 import { CLASS_IDS } from '../../../shared/types';
 import { PartyAdvice } from './PartyAdvice';
+import { FONT_BODY, FONT_DISPLAY } from '../ui/kit';
 
 /**
  * Tales of Ravenwood — Başlangıç Rehberi
@@ -26,8 +27,6 @@ export interface GuideScreenProps {
   playerCount?: number;
 }
 
-const FONT_DISPLAY = { fontFamily: "'Cinzel', 'Trajan Pro', Georgia, serif" };
-const FONT_BODY = { fontFamily: "'IM Fell English', 'Iowan Old Style', Georgia, serif" };
 
 export default function GuideScreen({
   initialTab = 'howto',
@@ -47,7 +46,7 @@ export default function GuideScreen({
       <div className="relative mx-auto flex min-h-dvh w-full max-w-md flex-col sm:max-w-2xl">
         {/* Başlık */}
         <header className="px-4 pb-3 pt-[max(1.25rem,env(safe-area-inset-top))] text-center">
-          <p className="text-[11px] uppercase tracking-[0.35em] text-[#c9a24a]/80">Cadılar Bayramı · Co-op FRP</p>
+          <p className="text-[13px] uppercase tracking-[0.35em] text-[#c9a24a]/80">Cadılar Bayramı · Co-op FRP</p>
           <h1 className="mt-1 text-3xl font-bold tracking-wide text-[#f3dfa6] drop-shadow-[0_0_12px_rgba(201,162,74,0.35)]" style={FONT_DISPLAY}>
             Tales of Ravenwood
           </h1>
@@ -69,7 +68,7 @@ export default function GuideScreen({
 
         <main className="flex-1 px-4 pb-32 pt-5">
           {tab === 'howto' ? (
-            <section role="tabpanel" id="panel-howto" aria-labelledby="tab-howto">
+            <section className="rw-reading" role="tabpanel" id="panel-howto" aria-labelledby="tab-howto">
               <HowToPlay onShowClasses={() => setTab('classes')} />
             </section>
           ) : (
@@ -106,7 +105,7 @@ function TabButton({ active, onClick, id, children }: { active: boolean; onClick
       aria-selected={active}
       aria-controls={`panel-${id}`}
       onClick={onClick}
-      className={`rounded-xl px-2 py-2.5 text-[12.5px] font-bold uppercase tracking-[0.08em] whitespace-nowrap transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c66a] ${
+      className={`rounded-xl px-2 py-2.5 text-[14px] font-bold uppercase tracking-[0.08em] whitespace-nowrap transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c66a] ${
         active
           ? 'bg-gradient-to-b from-[#c9a24a] to-[#8f6d25] text-[#1a0c22] shadow-[0_0_14px_-4px_rgba(232,198,106,0.8)]'
           : 'text-[#c9b48a] active:bg-white/5'
@@ -195,11 +194,11 @@ const STEPS: ReadonlyArray<{ icon: string; title: string; body: ReactNode }> = [
 function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
   return (
     <div className="space-y-6">
-      <p className="text-center text-[15px] italic leading-relaxed text-[#d9c9a6]">
+      <p className="text-center text-[17px] not-italic leading-relaxed text-[#d9c9a6]">
         Ravenwood'da Cadılar Bayramı gecesi. Birlikte girdiniz; ancak birlikte çıkabilirsiniz.
       </p>
 
-      <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
+      <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[16px] leading-relaxed">
         <h2 className="text-lg font-bold text-[#f3dfa6]">Amacınız ve oyunun sonu</h2>
         <p className="mt-2">Blackthorne Konağı'nın sırrını çözün, tehlikelerden kurtulun ve mümkünse tutsak ruhu özgür bırakın. Host lobide Karanlık Mahzen, Yankı Mağaraları veya On Üçüncü Nota macerasını seçer. İki mod vardır: <b>Birlikte hayatta kal</b> (2–12 kişi, herkes aynı tarafta) veya <b>Gizli Hain</b> (4–12 kişi, rastgele bir kişi kötü güçle işbirliği yapar). Hain herhangi bir sınıftan olabilir; Host da hain olabilir.</p>
         <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -212,11 +211,11 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
         </ul>
       </section>
 
-      <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[14px] leading-relaxed">
+      <section className="rounded-2xl border border-[#c9a24a]/30 bg-[#1b0f24] p-4 text-[16px] leading-relaxed">
         <h2 className="text-lg font-bold text-[#f3dfa6]">İpucumu ne zaman paylaşmalıyım?</h2>
         <p className="mt-2">Birlikte oynarken tehlike uyarılarını paylaşmak grubu korur. Gizli Hain modunda ise güven bir karardır: hain doğru ipucunu saklayabilir veya tersini söyleyerek sizi tuzağa yöneltebilir. Maceracı olarak bilgini önce güvendiğin biriyle konuşabilir, başka birinin anlatımıyla karşılaştırabilir veya tartışmada açıklayabilirsin.</p>
         <p className="mt-2">“Metinde bu yazıyor” ile “bence bu anlama geliyor” ayrımını yapın. Susmak tek başına hainlik kanıtı değildir. Birini oyundan çıkarma veya rolünü zorla açma yok; çelişkileri sorgulayıp güvenmediğiniz öneriye oy vermeyebilirsiniz. İpucu saklamak doğrudan puan kazandırmaz; hainin amacı sizi yenilgiye götürmektir.</p>
-        <p className="mt-2 italic text-[#c9b48a]">Örnek: Simyacı “Buhar yanıcı, ateş kullanmayalım” der; Bilgin “Mühür gönüllü kanla açılıyor” diye tamamlar. Sonra grup seçenekleri değerlendirir. Doğru yorum başarıyı garanti etmez; zar yine atılır.</p>
+        <p className="mt-2 not-italic text-[#c9b48a]">Örnek: Simyacı “Buhar yanıcı, ateş kullanmayalım” der; Bilgin “Mühür gönüllü kanla açılıyor” diye tamamlar. Sonra grup seçenekleri değerlendirir. Doğru yorum başarıyı garanti etmez; zar yine atılır.</p>
       </section>
 
       {/* Adımlar — dikey zaman çizelgesi */}
@@ -227,11 +226,11 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
               <span aria-hidden>{s.icon}</span>
             </span>
             <div className="flex-1 rounded-xl border border-white/5 bg-[#1b0f24]/70 p-3">
-              <h3 className="text-[15px] font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
+              <h3 className="text-[17px] font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
                 <span className="mr-1.5 text-[#c9a24a]/70">{i + 1}.</span>
                 {s.title}
               </h3>
-              <p className="mt-1 text-[14.5px] leading-relaxed text-[#e4d6b8]">{s.body}</p>
+              <p className="mt-1 text-[16px] leading-relaxed text-[#e4d6b8]">{s.body}</p>
             </div>
           </li>
         ))}
@@ -239,7 +238,7 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
 
       {/* Zar kuralları */}
       <Parchment title="Zarın Kanunu">
-        <ul className="space-y-1.5 text-[14px] leading-snug">
+        <ul className="space-y-1.5 text-[16px] leading-snug">
           <li>
             <b className="text-[#5c0612]">Doğal 20</b> — Ne olursa olsun başarı. Kader seni seçti.
           </li>
@@ -258,8 +257,8 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
           Grup büyüklüğü dengeyi değiştirir
         </h3>
         <div className="overflow-hidden rounded-xl border border-[#c9a24a]/20">
-          <table className="w-full text-left text-[13.5px]">
-            <thead className="bg-[#2a1235] text-[11px] uppercase tracking-wider text-[#c9a24a]">
+          <table className="w-full text-left text-[15px]">
+            <thead className="bg-[#2a1235] text-[13px] uppercase tracking-wider text-[#c9a24a]">
               <tr>
                 <th className="px-3 py-2 font-semibold">Oyuncu</th>
                 <th className="px-3 py-2 font-semibold">Zorluk</th>
@@ -292,7 +291,7 @@ function HowToPlay({ onShowClasses }: { onShowClasses: () => void }) {
         <h3 className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-[#ff9a9e]" style={FONT_DISPLAY}>
           Unutma
         </h3>
-        <ul className="list-disc space-y-1.5 pl-5 text-[14px] leading-snug text-[#e4d6b8] marker:text-[#7a0e1a]">
+        <ul className="list-disc space-y-1.5 pl-5 text-[16px] leading-snug text-[#e4d6b8] marker:text-[#7a0e1a]">
           <li>Birlikte modunda herkes aynı tarafta; Gizli Hain modunda bir kişi karanlık için çalışır.</li>
           <li>Kimse tüm resmi görmez. Bir sınıfın ipucu, diğerininkinin eksik parçası olabilir.</li>
           <li>Telefonlarınızı birbirinize göstermek yerine ipuçlarını sözlü aktarın; amaç bilgileri birlikte anlamlandırmaktır.</li>
@@ -334,7 +333,7 @@ function ClassCodex({
 
   return (
     <div className="space-y-4">
-      <p className="text-center text-[15px] italic leading-relaxed text-[#d9c9a6]">
+      <p className="text-center text-[17px] not-italic leading-relaxed text-[#d9c9a6]">
         Her sınıf hikayenin farklı bir yüzünü görür. Hiçbiri tek başına yeterli değil.
       </p>
 
@@ -346,15 +345,15 @@ function ClassCodex({
             type="button"
             onClick={() => setFilter(f)}
             aria-pressed={filter === f}
-            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-wider transition ${
-              filter === f ? 'border-[#c9a24a] bg-[#c9a24a]/15 text-[#f3dfa6]' : 'border-white/10 text-[#a893b3]'
+            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[14px] font-semibold uppercase tracking-wider transition ${
+              filter === f ? 'border-[#c9a24a] bg-[#c9a24a]/15 text-[#f3dfa6]' : 'border-white/10 text-[#c7b9d0]'
             }`}
           >
             {f === 'Tümü' ? 'Tümü' : ARCHETYPES.find((a) => a.id === f)!.label}
           </button>
         ))}
       </div>
-      {activeArchetype && <p className="text-[13.5px] text-[#c9b48a]">{activeArchetype.blurb}</p>}
+      {activeArchetype && <p className="text-[15px] text-[#c9b48a]">{activeArchetype.blurb}</p>}
 
       <ul className="grid gap-3 sm:grid-cols-2">
         {list.map((c) => (
@@ -420,11 +419,11 @@ function ClassCard({
             <span className="text-[17px] font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
               {def.title}
             </span>
-            <span className={`rounded-full border px-1.5 py-px text-[10px] uppercase tracking-wider ${ARCHETYPE_COLOR[def.archetype]}`}>
+            <span className={`rounded-full border px-1.5 py-px text-[12px] uppercase tracking-wider ${ARCHETYPE_COLOR[def.archetype]}`}>
               {def.archetype}
             </span>
           </span>
-          <span className="mt-0.5 block text-[13.5px] leading-snug text-[#d9c9a6]">{def.duty}</span>
+          <span className="mt-0.5 block text-[15px] leading-snug text-[#d9c9a6]">{def.duty}</span>
         </span>
         <span aria-hidden className={`shrink-0 text-[#c9a24a] transition-transform ${open ? 'rotate-180' : ''}`}>
           ▾
@@ -433,14 +432,14 @@ function ClassCard({
 
       {open && (
         <div id={panelId} className="space-y-3 border-t border-white/5 px-3 pb-3 pt-3">
-          <p className="text-[14px] italic text-[#c9b48a]">{def.description}</p>
+          <p className="text-[16px] not-italic text-[#c9b48a]">{def.description}</p>
           <Detail icon="👁" label="Gizli ipucunda ne görür">
             {def.sees}
           </Detail>
           <Detail icon="🎲" label={`Zar attığı anlar (+${def.rollBonus})`}>
             {def.rollsFor}
           </Detail>
-          <div className="rounded-lg bg-[#e9d9b4] p-2.5 text-[13.5px] leading-snug text-[#2b1a10]">
+          <div className="rounded-lg bg-[#e9d9b4] p-2.5 text-[15px] leading-snug text-[#2b1a10]">
             <b className="text-[#5c0612]">Masa tavsiyesi: </b>
             {def.tip}
           </div>
@@ -477,8 +476,8 @@ function Detail({ icon, label, children }: { icon: string; label: string; childr
         {icon}
       </span>
       <div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#c9a24a]">{label}</p>
-        <p className="text-[14px] leading-snug text-[#e4d6b8]">{children}</p>
+        <p className="text-[13px] font-semibold uppercase tracking-[0.15em] text-[#c9a24a]">{label}</p>
+        <p className="text-[16px] leading-snug text-[#e4d6b8]">{children}</p>
       </div>
     </div>
   );
@@ -497,7 +496,7 @@ function Parchment({ title, children }: { title: string; children: ReactNode }) 
 
 function Code({ children }: { children: ReactNode }) {
   return (
-    <span className="rounded border border-[#c9a24a]/50 bg-[#2a1235] px-1.5 py-px font-mono text-[13px] tracking-[0.2em] text-[#f3dfa6]">
+    <span className="rounded border border-[#c9a24a]/50 bg-[#2a1235] px-1.5 py-px font-mono text-[14px] tracking-[0.2em] text-[#f3dfa6]">
       {children}
     </span>
   );

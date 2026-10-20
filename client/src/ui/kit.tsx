@@ -1,8 +1,8 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 /** Ortak görsel dil: gotik mor zemin, kan kırmızısı, altın ve parşömen. */
-export const FONT_DISPLAY = { fontFamily: "'Cinzel', 'Trajan Pro', Georgia, serif" };
-export const FONT_BODY = { fontFamily: "'IM Fell English', 'Iowan Old Style', Georgia, serif" };
+export const FONT_DISPLAY = { fontFamily: 'var(--font-display)' };
+export const FONT_BODY = { fontFamily: 'var(--font-body)' };
 
 export function Backdrop({ children }: { children: ReactNode }) {
   return (
@@ -25,7 +25,7 @@ export function Button({
   ...rest
 }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant }) {
   const base =
-    'w-full rounded-2xl px-5 py-3.5 text-[15px] font-bold uppercase tracking-[0.16em] transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c66a] disabled:cursor-not-allowed disabled:active:scale-100';
+    'w-full rounded-2xl px-5 py-3.5 text-[17px] font-semibold transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c66a] disabled:cursor-not-allowed disabled:active:scale-100';
   const styles: Record<Variant, string> = {
     primary:
       'border border-[#e8c66a]/70 bg-gradient-to-b from-[#9e1424] to-[#5c0612] text-[#fbe7b0] shadow-[0_0_22px_-6px_rgba(224,48,60,0.8)] disabled:border-[#3b2148] disabled:from-[#211029] disabled:to-[#211029] disabled:text-[#8d7a96] disabled:shadow-none',
@@ -48,7 +48,7 @@ export function Panel({ children, className = '' }: { children: ReactNode; class
 }
 
 export function Label({ children }: { children: ReactNode }) {
-  return <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#c9a24a]/85">{children}</p>;
+  return <p className="text-[14px] font-semibold tracking-[0.04em] text-[#ebce8f]">{children}</p>;
 }
 
 export function Title({ children, className = '' }: { children: ReactNode; className?: string }) {
@@ -80,7 +80,7 @@ export function Toast({ message, onClose }: { message: string; onClose: () => vo
     <div role="alert" className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
       <div className="flex items-start gap-3 rounded-2xl border border-[#e0303c]/60 bg-[#2a0d12]/95 p-3 shadow-[0_0_30px_-8px_rgba(224,48,60,0.8)] backdrop-blur">
         <span aria-hidden className="text-[#ff7a7f]">✦</span>
-        <p className="flex-1 text-[14px] leading-snug text-[#ffd9db]">{message}</p>
+        <p className="flex-1 text-[16px] leading-snug text-[#ffd9db]">{message}</p>
         <button type="button" onClick={onClose} className="text-[#ff9a9e]" aria-label="Kapat">
           ✕
         </button>
@@ -93,7 +93,7 @@ export function Toast({ message, onClose }: { message: string; onClose: () => vo
 export function ConnectionBanner({ state }: { state: 'connecting' | 'online' | 'offline' }) {
   if (state === 'online') return null;
   return (
-    <div className="fixed inset-x-0 top-0 z-50 bg-[#5c0612] px-4 py-1.5 text-center text-[12.5px] text-[#fbe7b0]" role="status">
+    <div className="fixed inset-x-0 top-0 z-50 bg-[#5c0612] px-4 py-1.5 text-center text-[14px] text-[#fbe7b0]" role="status">
       {state === 'connecting' ? 'Ravenwood\'a bağlanılıyor…' : 'Bağlantı koptu — yeniden bağlanılıyor…'}
     </div>
   );

@@ -113,7 +113,7 @@ function ReadyControl({ game, label, disabled = false }: { game: Game; label: st
         {me.ready ? 'Hazırım · durumu yeniden kontrol et' : label}
       </Button>
       {me.ready && <Button variant="ghost" onClick={() => void game.ready(false, room.phase, room.sceneNumber)}>Hazır değilim, bekleyin</Button>}
-      <p className="text-center text-xs text-[#a893b3]">Süre sınırı yok. {waiting.length ? `Beklenenler: ${waiting.map((p) => p.name).join(', ')}` : 'Herkes hazır; devam etmek için onayla.'}</p>
+      <p className="text-center text-xs text-[#c7b9d0]">Süre sınırı yok. {waiting.length ? `Beklenenler: ${waiting.map((p) => p.name).join(', ')}` : 'Herkes hazır; devam etmek için onayla.'}</p>
     </div>
   );
 }
@@ -127,7 +127,7 @@ function PartyStrip({ room, meId, onHelp }: { room: PublicRoomState; meId: strin
     <section className="rounded-2xl border border-white/5 bg-[#140a1a]/70 p-3">
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
-          <div className="mb-1 flex items-baseline justify-between text-[11px] uppercase tracking-widest">
+          <div className="mb-1 flex items-baseline justify-between text-[13px] uppercase tracking-widest">
             <span className="text-[#b98a8a]">Grubun canı</span>
             <span className="tabular-nums text-[#efe3c8]">
               {room.partyHp} / {room.partyMaxHp}
@@ -154,7 +154,7 @@ function PartyStrip({ room, meId, onHelp }: { room: PublicRoomState; meId: strin
                 </span>
               )}
             </div>
-            <p className="mt-1 truncate text-[11px] text-[#efe3c8]">{p.name}</p>
+            <p className="mt-1 truncate text-[13px] text-[#efe3c8]">{p.name}</p>
             <div className="mt-1">
               <HpBar hp={p.hp} maxHp={p.maxHp} size="sm" />
             </div>
@@ -162,7 +162,7 @@ function PartyStrip({ room, meId, onHelp }: { room: PublicRoomState; meId: strin
         ))}
       </ul>
       {choosing && (
-        <p className="mt-1 text-center text-[12px] text-[#a893b3]">
+        <p className="mt-1 text-center text-[14px] text-[#c7b9d0]">
           {voted} / {room.players.filter((p) => p.connected).length} kişi oy verdi
         </p>
       )}
@@ -180,9 +180,9 @@ function SceneCard({ room, collapsed }: { room: PublicRoomState; collapsed: bool
       <h2 className="mt-1 text-2xl font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
         {scene.title}
       </h2>
-      <p className={`mt-3 whitespace-pre-line text-[16px] leading-[1.7] text-[#e4d6b8] ${open ? '' : 'line-clamp-3'}`}>{scene.public_text}</p>
+      <p className={`rw-copy mt-4 whitespace-pre-line text-[#f1e7d6] ${open ? '' : 'line-clamp-3'}`}>{scene.public_text}</p>
       {collapsed && (
-        <button type="button" onClick={() => setOpen(!open)} className="mt-2 text-[13px] text-[#c9a24a] underline underline-offset-4">
+        <button type="button" onClick={() => setOpen(!open)} className="mt-2 text-[14px] text-[#c9a24a] underline underline-offset-4">
           {open ? 'Kısalt' : 'Sahnenin tamamını oku'}
         </button>
       )}
@@ -200,10 +200,10 @@ function PhaseBanner({ phase, roller, meId }: { phase: GamePhase; roller: Public
   if (!body) return null;
   return (
     <div className="rounded-xl border border-[#7a0e1a]/40 bg-[#2a0d12]/50 px-4 py-3 text-center">
-      <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#ff9a9e]" style={FONT_DISPLAY}>
+      <p className="text-[14px] font-bold uppercase tracking-[0.2em] text-[#ff9a9e]" style={FONT_DISPLAY}>
         {copy.title}
       </p>
-      <p className="mt-1 text-[14px] leading-snug text-[#e4d6b8]">{body}</p>
+      <p className="mt-1 text-[16px] leading-snug text-[#e4d6b8]">{body}</p>
     </div>
   );
 }
@@ -243,7 +243,7 @@ function ChoiceList({
             >
               <div className="flex items-start gap-3">
                 <span
-                  className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border text-[12px] ${
+                  className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border text-[14px] ${
                     selected ? 'border-[#e8c66a] bg-[#e8c66a] text-[#1a0c22]' : 'border-[#c9a24a]/50 text-transparent'
                   }`}
                   aria-hidden
@@ -251,8 +251,8 @@ function ChoiceList({
                   ✓
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-[16px] leading-snug text-[#f3dfa6]">{a.button_text}</span>
-                  <span className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11.5px]">
+                  <span className="rw-copy block text-[#f5e8c6]">{a.button_text}</span>
+                  <span className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[13px]">
                     <span className="rounded-full border border-[#c9a24a]/40 px-2 py-0.5 text-[#e8c66a]">Zorluk {a.dc}</span>
                     {a.required_class === ANY_CLASS ? (
                       <span className="rounded-full border border-white/15 px-2 py-0.5 text-[#c9b48a]">Herkes</span>
@@ -268,7 +268,7 @@ function ChoiceList({
           </li>
         );
       })}
-      {me.hp <= 0 && <p className="text-center text-[12.5px] italic text-[#a893b3]">Baygınsın ama sesin hâlâ duyuluyor: oy verebilirsin.</p>}
+      {me.hp <= 0 && <p className="text-center text-[14px] not-italic text-[#c7b9d0]">Baygınsın ama sesin hâlâ duyuluyor: oy verebilirsin.</p>}
     </ul>
   );
 }
@@ -289,18 +289,18 @@ function ResultCard({ result, room }: { result: SceneResult; room: PublicRoomSta
         <p className={`text-xl font-bold uppercase tracking-[0.15em] ${head.c}`} style={FONT_DISPLAY}>
           {head.t}
         </p>
-        <p className="text-[13px] tabular-nums text-[#c9b48a]">
+        <p className="text-[14px] tabular-nums text-[#c9b48a]">
           {result.roll}
           {result.bonus > 0 && ` + ${result.bonus}`} = {result.total} / {result.dc}
         </p>
       </div>
-      <p className="mt-3 text-[16px] leading-[1.7] text-[#e4d6b8]">{result.text}</p>
+      <p className="rw-copy mt-4 text-[#f1e7d6]">{result.text}</p>
       {deltas.length > 0 && (
         <ul className="mt-3 flex flex-wrap gap-2">
           {deltas.map(({ p, d }) => (
             <li
               key={p?.id ?? Math.random()}
-              className={`rounded-full px-2.5 py-1 text-[12.5px] ${d < 0 ? 'bg-[#5c0612]/60 text-[#ffd9db]' : 'bg-[#173022] text-[#c9f5c9]'}`}
+              className={`rounded-full px-2.5 py-1 text-[14px] ${d < 0 ? 'bg-[#5c0612]/60 text-[#ffd9db]' : 'bg-[#173022] text-[#c9f5c9]'}`}
             >
               {p?.name ?? '?'} {d > 0 ? `+${d}` : d} can
             </li>

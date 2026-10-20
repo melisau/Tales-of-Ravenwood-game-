@@ -66,7 +66,7 @@ export default function App() {
         <div className="grid flex-1 place-items-center text-center">
           <div>
             <Title>Tales of Ravenwood</Title>
-            <p className="mt-4 italic text-[#c9b48a]">Masana geri dönülüyor…</p>
+            <p className="mt-4 not-italic text-[#c9b48a]">Masana geri dönülüyor…</p>
           </div>
         </div>
       </Backdrop>
