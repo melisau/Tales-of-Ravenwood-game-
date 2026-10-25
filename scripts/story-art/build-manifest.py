@@ -18,15 +18,8 @@ FOLDERS = [('mahzen_', 'mahzen'), ('konak_', 'mahzen'), ('yanki_', 'yankilar'), 
 
 # Kontrolde sorun çıkan, yeniden üretilecek görseller ve nedeni
 REDO = {
-    'mahzen_01_karanlik_mahzen/bilgin_muhru_coz_success':
-        'Önceki sürümde mühür ve kemer üzerinde okunabilir Latince yazı vardı. Hiçbir yüzeyde okunabilir harf olmasın; '
-        'mühür yalnızca okunamayan, soyut rün benzeri işaretlerle çizilsin.',
-    'mahzen_01_karanlik_mahzen/dedektif_tuzagi_etkisizlestir_fail':
-        'Önceki sürüm başarı karesiyle neredeyse aynıydı. Bu kare açıkça BAŞARISIZLIK anı olmalı: tuzak tetiklenmiş, '
-        'mekanizma boşalmış, dedektif geri savruluyor; başarı karesinden kompozisyon ve ışıkla belirgin biçimde ayrışsın.',
-    'mahzen_01_karanlik_mahzen/bilgin_muhru_coz_fail':
-        'Önceki sürümde yerde belirgin kan izleri vardı. Kan gösterme; tehlikeyi soğuk mor ışık, savrulan toz, '
-        'kararmış mühür ve gölgelerle anlat.',
+    # 'mahzen_01_karanlik_mahzen/bilgin_muhru_coz_success': 'düzeltme notu',
+    # (25.10.2026: yazı, aynı görünen başarısızlık ve kan düzeltmeleri yapıldı)
 }
 
 STYLE = (
