@@ -118,6 +118,7 @@
       "Muhafız": "'Biriniz kalırsa' derken yalan söylemiyor. Bir anlaşma teklif ediyor. Kabul edersen diğerleri gerçekten çıkar. Bunu sadece sen biliyorsun.",
       "Şifacı": "Grubun canı azalıyor; bu odanın havası bile emiyor. Uzun bir savaşı kaldıramazsınız: tek, kesin bir hamle gerek."
     },
+    "story_role": {"title":"Sunağın Elçisi","intro":"Morvaine zinciri çektiğinde {player}’ın avucunda soğuk bir anahtar beliriyor. Elspeth bakışlarını sana çevirip adsız bir cümle fısıldıyor.","prompt":"Sunağın elçisi olarak Elspeth’in fısıltısını kendi sözlerinle gruba aktar; ne pahasına olursa olsun hangi sınırı koruyacaksın?"},
     "actions": [
       {
         "action_id": "medyum_adini_soyle",

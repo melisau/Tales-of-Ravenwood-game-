@@ -17,6 +17,7 @@
         "nota_on_uc_kez_kur"
       ]
     },
+    "story_role": {"title":"Kurma Kolunun Bekçisi","intro":"Müzik kutusu on ikinci notada duruyor. {player}’ın gölgesi kurma kolunda küçük bir el gibi beliriyor ve kutudan “Beni uyandırmalı mıyım?” sorusu geliyor.","prompt":"Kurma kolunun bekçisi olarak kutuya cevap ver; Ada’yı uyandırmanın güvenli olup olmadığını düşündüğünü grupla paylaş."},
     "actions": [
       {
         "action_id": "nota_servisi_ac",
@@ -217,6 +218,7 @@
         "nota_yuz_ciz"
       ]
     },
+    "story_role": {"title":"Boş Çerçevenin Konuğu","intro":"Ortadaki boş portrede önce {player}’ın yüzü beliriyor. Çerçevenin altındaki yazı değişiyor: “Bir yüz ver, bir anını bırak.”","prompt":"Boş çerçevenin konuğu olarak portreye hangi anının yakışacağını anlat; anını paylaşmak isteyip istemediğine karar ver."},
     "actions": [
       {
         "action_id": "nota_cerceveyi_ort",
@@ -522,6 +524,7 @@
         "nota_taci_tamamla"
       ]
     },
+    "story_role": {"title":"Son Notaların Sesi","intro":"Bütün kollar susuyor. Ada’nın sesi bu kez {player}’ın yanından geliyor: “Beni ezgi olarak değil, adımla hatırlayın.”","prompt":"Son notaların sesi olarak Ada’ya kısa bir veda cümlesi söyle; gruba hangi kolun bu isteğe uyduğunu düşünüyorsun?"},
     "actions": [
       {
         "action_id": "nota_guneste_durdur",

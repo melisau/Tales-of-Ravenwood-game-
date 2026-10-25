@@ -61,6 +61,18 @@ export interface DarknessClue {
   favored_action_ids: string[];
 }
 
+/** Temporary public role for a player in a particular story scene. */
+export interface StoryRole {
+  title: string;
+  intro: string;
+  prompt: string;
+}
+
+export interface FeaturedStoryRole extends StoryRole {
+  playerId: string;
+  playerName: string;
+}
+
 /** Only delivered to this player's socket. Never stored in public room state. */
 export interface PrivateRole {
   allegiance: Allegiance;
@@ -102,6 +114,7 @@ export interface StoryAction {
 export interface StoryNode {
   ambience?: AudioCue;
   darkness?: DarknessClue;
+  story_role?: StoryRole;
   node_id: string;
   title: string;
   public_text: string;
@@ -181,6 +194,7 @@ export interface PublicScene {
   title: string;
   public_text: string;
   actions: PublicActionView[];
+  featuredRole: FeaturedStoryRole | null;
 }
 
 export interface PendingRoll {

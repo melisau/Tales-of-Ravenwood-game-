@@ -11,6 +11,7 @@
     "Avcı": "Demir kapının alt kısmında, diz hizasında dört paralel tırmık izi var; insan tırnağı değil, bir ghoul'un pençesi. Bu yaratıklar ışıktan değil sesten avlanır ve tuz çizgisini geçemez. Çantandaki tuz kesesi kapı eşiği için yeterli.",
     "Günlükçü": "Ravenwood kayıtlarına göre Blackthorne ailesi bu mahzeni 31 Ekim 1892 gecesi duvarla ördürdü; aynı gece ailenin en küçük kızı Elspeth kayıplara karıştı. Kayıtta bir not düşülmüş: 'Mahzendeki şey ancak adını bilen biri tarafından geri gönderilebilir.' Adın yazıldığı sayfa yırtılmış."
   },
+  "story_role": {"title":"Elspeth’in İlk Tanığı","intro":"Duvarın içinden bir çocuk sesi yalnızca {player} adını fısıldıyor. Kırmızı ipli eski bir düğme taş zeminde dönüp ayağına değiyor.","prompt":"Elspeth’in ilk tanığı olarak duyduğun ilk hissi grupla paylaş; bu konağın içinde ilk kime güveneceksin?"},
   "actions": [
     {
       "action_id": "dedektif_tuzagi_etkisizlestir",

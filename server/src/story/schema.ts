@@ -3,6 +3,12 @@ import { ANY_CLASS, CLASS_IDS } from '../../../shared/types';
 
 const classIdSchema = z.enum(CLASS_IDS);
 
+const storyRoleSchema = z.object({
+  title: z.string().min(1).max(60),
+  intro: z.string().min(1).max(300).refine((text) => text.includes('{player}'), 'intro {player} alanı içermeli'),
+  prompt: z.string().min(1).max(240),
+});
+
 const outcomeSchema = z.object({
   text: z.string().min(1),
   hp_change: z.number().int().min(-10).max(10),
@@ -27,6 +33,7 @@ export const storyNodeSchema = z
     title: z.string().min(1),
     public_text: z.string().min(1),
     ambience: z.enum(['cave_wind', 'scary_cave', 'droplets', 'music_box']).optional(),
+    story_role: storyRoleSchema.optional(),
     darkness: z.object({ hint: z.string().min(1), favored_action_ids: z.array(z.string()).min(1) }).optional(),
     class_hints: z.record(classIdSchema, z.string().min(1)),
     actions: z.array(storyActionSchema).min(1),

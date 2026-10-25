@@ -11,6 +11,7 @@ import type {
   SceneResult,
   ScalingInfo,
   ServerToClientEvents,
+  FeaturedStoryRole,
   StoryAction,
   StoryNode,
 } from '../../../shared/types';
@@ -80,6 +81,9 @@ export class GameEngine {
   private gameOver: GameOverInfo | null = null;
   private phaseDurationMs: number | null = null;
   private sceneNumber = 0;
+  private storyRoleCursor = 0;
+  private storyRoleOffset = 0;
+  private featuredRole: FeaturedStoryRole | null = null;
 
   constructor(
     private readonly room: Room,
@@ -133,6 +137,10 @@ export class GameEngine {
     if (this.room.mode === 'betrayal' && players.length < 4) {
       throw new GameError('NOT_ENOUGH_PLAYERS', 'Gizli Hain modu için en az 4 oyuncu gerekli');
     }
+    const rolePlayers = this.room.connectedPlayers();
+    this.storyRoleCursor = 0;
+    this.storyRoleOffset = rolePlayers.length ? randomInt(rolePlayers.length) : 0;
+    this.featuredRole = null;
     const traitorIndex = this.room.mode === 'betrayal'
       ? (this.deps.chooseTraitorIndex ?? ((count: number) => randomInt(count)))(players.length)
       : -1;
@@ -255,6 +263,15 @@ export class GameEngine {
     }
     this.transition(GamePhase.SCENE_TEXT);
     this.node = node;
+    this.featuredRole = null;
+    if (node.story_role) {
+      const players = this.room.connectedPlayers();
+      const player = players.length ? players[(this.storyRoleOffset + this.storyRoleCursor) % players.length] : null;
+      if (player) {
+        this.storyRoleCursor++;
+        this.featuredRole = { ...node.story_role, playerId: player.id, playerName: player.name };
+      }
+    }
     this.sceneNumber++;
     this.actions = this.computeVisibleActions(node);
     this.pendingRoll = null;
@@ -371,6 +388,7 @@ export class GameEngine {
   private resetToLobby(): void {
     this.transition(GamePhase.LOBBY);
     this.node = null;
+    this.featuredRole = null;
     this.actions = [];
     this.scaling = null;
     this.pendingRoll = null;
@@ -521,7 +539,16 @@ export class GameEngine {
       partyMaxHp: players.reduce((s, p) => s + p.maxHp, 0),
       scaling: this.scaling,
       scene: this.node
-        ? { node_id: this.node.node_id, title: this.node.title, public_text: this.node.public_text, ambience: this.node.ambience ?? null, actions }
+        ? {
+            node_id: this.node.node_id,
+            title: this.node.title,
+            public_text: this.featuredRole
+              ? `${this.node.public_text}\n\n${this.featuredRole.intro.replaceAll('{player}', this.featuredRole.playerName)}`
+              : this.node.public_text,
+            ambience: this.node.ambience ?? null,
+            actions,
+            featuredRole: this.featuredRole,
+          }
         : null,
       phaseEndsAt: this.phaseEndsAt,
       phaseDurationMs: this.phaseDurationMs,

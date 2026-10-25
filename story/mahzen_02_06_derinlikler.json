@@ -365,6 +365,7 @@
       "Şifacı": "Raflarda Agatha'nın şişeleri var: tentürdiyot, laudanum, tuzlu merhem. Çoğu bozulmuş ama işe yarayanları seçebilirsin.",
       "Falcı": "Mum alevleri hep aynı yöne eğiliyor: karşı duvardaki geçide. Kartların söylediği tek şey: 'Son sahne orada.'"
     },
+    "story_role": {"title":"Mührün Okuyucusu","intro":"Mum alevleri {player}’a doğru eğiliyor. Kan oluğundaki yazı değişip tek bir cümle oluyor: “Bu gece kapıyı açacak el, adını bilen eldir.”","prompt":"Mührün okuyucusu olarak yazının ne istediğine dair yorumunu söyle; hangi izi önce incelemeyi öneriyorsun?"},
     "actions": [
       {
         "action_id": "gunlukcu_defteri_oku",

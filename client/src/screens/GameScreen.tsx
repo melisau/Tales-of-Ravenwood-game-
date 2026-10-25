@@ -182,6 +182,14 @@ function SceneCard({ room, collapsed }: { room: PublicRoomState; collapsed: bool
       <div className="mt-4">
         <SceneIllustration sceneId={scene.node_id} title={scene.title} ambience={scene.ambience} />
       </div>
+      {scene.featuredRole && (
+        <aside className="mt-4 rounded-xl border border-[#c9a24a]/40 bg-[#2b1a2a]/80 p-3" aria-label="Bu sahnenin oyuncu rolü">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e8c66a]">Sahne rolü · {scene.featuredRole.playerName}</p>
+          <p className="mt-1 font-semibold text-[#f3dfa6]" style={FONT_DISPLAY}>{scene.featuredRole.title}</p>
+          <p className="mt-1 text-sm leading-relaxed text-[#e4d6b8]">{scene.featuredRole.prompt}</p>
+          <p className="mt-1 text-xs text-[#c9b48a]">Bu, yalnızca bu sahne için verilen hikâye rolüdür.</p>
+        </aside>
+      )}
       <p className={`rw-copy mt-4 whitespace-pre-line text-[#f1e7d6] ${open ? '' : 'line-clamp-3'}`}>{scene.public_text}</p>
       {collapsed && (
         <button type="button" onClick={() => setOpen(!open)} className="mt-2 text-[14px] text-[#c9a24a] underline underline-offset-4">

@@ -16,6 +16,7 @@
         "yanki_taca_vur"
       ]
     },
+    "story_role": {"title":"Yol Ayrımının Rehberi","intro":"Sallanan fener, {player}’ın adımıyla aynı ritimde hareket ediyor. Duvarın bir tarafında serin rüzgâr, diğerinde üç vuruş yankılanıyor.","prompt":"Yol ayrımının rehberi olarak iki işareti karşılaştır; gruba hangi yolu neden önerdiğini anlat."},
     "actions": [
       {
         "action_id": "yanki_ruzgar_izle",
@@ -316,6 +317,7 @@
         "yanki_tac_vanasi"
       ]
     },
+    "story_role": {"title":"Damlaların Sayıcısı","intro":"Sarnıcın yüzeyinde {player}’ın adı halkalarla beliriyor. Her damla düştüğünde halkalardan biri siliniyor ve suyun altındaki taş kapak aralanıyor.","prompt":"Damlaların sayıcısı olarak ritmi dinle ve gördüğün işareti tarif et; gruba hangi anı beklemesini söyleyeceksin?"},
     "actions": [
       {
         "action_id": "yanki_acik_vana",
@@ -526,6 +528,7 @@
         "yanki_taca_fener"
       ]
     },
+    "story_role": {"title":"Yankıların Sesi","intro":"Taş kalp atınca {player}’ın sesi mağaranın her duvarından geri dönüyor; yankılardan biri henüz söylenmemiş bir adı tekrar ediyor.","prompt":"Yankıların sesi olarak bu adı açıkla ya da sakla. Gruba sesin güvenilir olup olmadığını düşündüğünü söyle."},
     "actions": [
       {
         "action_id": "yanki_cani_kir",
