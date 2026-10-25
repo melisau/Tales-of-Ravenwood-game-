@@ -1,0 +1,188 @@
+<title>Ravenwood Görsel İstemleri</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: tek sütun çalışma listesi; yapışkan araç çubuğu, macera > sahne > görsel kartı hiyerarşisi */
+:root {
+  --bg: #eeecef; --panel: #ffffff; --ink: #231a24; --muted: #6a5f6b; --line: #d8d2da;
+  --accent: #7a4a0f; --accent-ink: #ffffff; --plum: #5b2e50; --ok: #2f6b3a; --bad: #9c2f2c;
+  --chip-ok: #e1efe2; --chip-bad: #f6e1df; --chip-scene: #efe2ec;
+  --display: "IM Fell English", "Iowan Old Style", Georgia, serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141117; --panel: #1d1820; --ink: #e8e0d4; --muted: #a39aa5; --line: #342c37;
+  --accent: #d6a548; --accent-ink: #1a1306; --plum: #c99bbd; --ok: #8fc897; --bad: #ee8e88;
+  --chip-ok: #1f2e22; --chip-bad: #3a1f1e; --chip-scene: #33232f; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141117; --panel: #1d1820; --ink: #e8e0d4; --muted: #a39aa5; --line: #342c37;
+  --accent: #d6a548; --accent-ink: #1a1306; --plum: #c99bbd; --ok: #8fc897; --bad: #ee8e88;
+  --chip-ok: #1f2e22; --chip-bad: #3a1f1e; --chip-scene: #33232f; color-scheme: dark; }
+
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; }
+h1 { font: 400 clamp(30px, 6vw, 44px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 400 28px/1.2 var(--display); margin: 0; color: var(--plum); }
+h3 { font: 600 17px/1.3 var(--body); margin: 0; }
+.lede { color: var(--muted); max-width: 62ch; margin: 10px 0 0; }
+.steps { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 22px 0 8px; padding: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; }
+.steps li::before { content: counter(s); font: 400 22px/1 var(--display); color: var(--accent); display: block; margin-bottom: 4px; }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding-block: 12px; margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--panel); }
+.seg button { border: 0; background: transparent; color: var(--ink); font: 600 14px var(--body); padding: 7px 14px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--plum); color: var(--panel); }
+select, .toggle { font: 14px var(--body); color: var(--ink); }
+select { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
+.toggle { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.progress { margin-left: auto; font: 500 13px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.adv { margin-top: 34px; display: grid; gap: 22px; }
+.node { display: grid; gap: 10px; }
+.node-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.node-head code { font: 12.5px var(--mono); color: var(--muted); }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 8px; min-width: 0; }
+.card.done { opacity: .55; }
+.card.scene { border-color: var(--plum); }
+.row { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; min-width: 0; }
+.chip { font: 700 11.5px var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
+.chip.scene { background: var(--chip-scene); color: var(--plum); }
+.chip.success { background: var(--chip-ok); color: var(--ok); }
+.chip.fail { background: var(--chip-bad); color: var(--bad); }
+.hp { font: 12.5px var(--mono); color: var(--muted); }
+.outcome { margin: 0; font-size: 14.5px; color: var(--muted); }
+.file { font: 12.5px var(--mono); background: transparent; color: var(--ink); border: 1px dashed var(--line); border-radius: 6px; padding: 3px 7px; cursor: pointer; overflow-wrap: anywhere; text-align: left; }
+.btn { font: 600 14px var(--body); border-radius: 8px; padding: 7px 12px; cursor: pointer; border: 1px solid var(--line); background: var(--panel); color: var(--ink); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:focus-visible, .seg button:focus-visible, .file:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a { color: var(--accent); }
+.ref { font-size: 14px; }
+.ref.wait { color: var(--muted); }
+details summary { cursor: pointer; font-size: 13.5px; color: var(--muted); }
+details pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 12.5px/1.5 var(--mono); background: var(--bg); border-radius: 8px; padding: 10px; margin: 8px 0 0; max-height: 280px; overflow: auto; }
+.done-box { margin-left: auto; display: inline-flex; gap: 6px; align-items: center; font-size: 14px; cursor: pointer; }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-size: 14px; z-index: 20; }
+.empty { color: var(--muted); padding: 24px 0; }
+@media (prefers-reduced-motion: no-preference) { .card { transition: opacity .2s; } }
+</style>
+
+<div class="wrap">
+  <h1>Ravenwood Görsel İstemleri</h1>
+  <p class="lede">Eksik sahne görselleri için istem metinleri, sahne sahne. Her kartta oyunun beklediği dosya adı, tam istem ve karakter sınırı olan araçlar için kısa istem var.</p>
+  <ol class="steps">
+    <li><b>Ana sahneler önce.</b> “Ana sahneler” sekmesindeki 21 görseli en kaliteli araçla üret. Her sahne yatay 16:9 olmalı.</li>
+    <li><b>Sonra sonuçlar.</b> Sonuç kartındaki “Sahne görselini aç” bağlantısından referansı indir, araca ekle, istemi yapıştır.</li>
+    <li><b>Sohbete yükle.</b> Görseli dosya adıyla birlikte gönder; adı, boyutu ve klasörü ben ayarlarım. Kartı “Üretildi” diye işaretle.</li>
+  </ol>
+
+  <div class="bar" role="toolbar" aria-label="Filtreler">
+    <div class="seg" role="group" aria-label="Görsel türü">
+      <button type="button" id="tab-scene" aria-pressed="true">Ana sahneler</button>
+      <button type="button" id="tab-result" aria-pressed="false">Sonuç görselleri</button>
+    </div>
+    <select id="adv-filter" aria-label="Macera"><option value="">Tüm maceralar</option></select>
+    <label class="toggle"><input type="checkbox" id="hide-done"> Üretilenleri gizle</label>
+    <span class="progress" id="progress"></span>
+  </div>
+
+  <div id="list"></div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const KEY = 'rw-prompt-done-v1';
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch (e) {} };
+let view = 'scene';
+try { view = localStorage.getItem('rw-prompt-view') || 'scene'; } catch (e) {}
+
+const $ = (s) => document.querySelector(s);
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') n.className = v; else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v);
+  }
+  for (const k of kids) if (k != null) n.append(k);
+  return n;
+};
+const fileName = (it) => it.file.split('/').pop();
+const fullPrompt = (it) => DATA.style + '\n\n' + it.moment;
+
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 1800);
+}
+async function copy(text, label, fallbackEl) {
+  try { await navigator.clipboard.writeText(text); toast(label + ' kopyalandı'); }
+  catch (e) {
+    if (fallbackEl) { fallbackEl.closest('details').open = true; const r = document.createRange(); r.selectNodeContents(fallbackEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    toast('Kopyalanamadı; metin seçildi, Ctrl+C ile kopyala');
+  }
+}
+
+for (const [id, name] of DATA.adv) $('#adv-filter').append(el('option', { value: id }, name));
+
+function card(it) {
+  const isScene = it.kind === 'scene';
+  const pre = el('pre', {}, fullPrompt(it));
+  const short = it.short;
+  const box = el('input', { type: 'checkbox', id: 'done-' + it.id.replace(/\W/g, '_') });
+  box.checked = done.has(it.id);
+  const c = el('article', { class: 'card' + (isScene ? ' scene' : '') + (done.has(it.id) ? ' done' : '') });
+  box.addEventListener('change', () => { box.checked ? done.add(it.id) : done.delete(it.id); save(); render(); });
+  c.append(
+    el('div', { class: 'row' },
+      el('span', { class: 'chip ' + it.kind }, isScene ? 'Ana sahne' : it.kind === 'success' ? 'Başarı' : 'Başarısızlık'),
+      el('h3', {}, isScene ? it.title : it.action),
+      isScene ? null : el('span', { class: 'hp' }, 'HP ' + (it.hp > 0 ? '+' : '') + it.hp),
+      el('label', { class: 'done-box', for: box.id }, box, 'Üretildi')),
+    isScene ? null : el('p', { class: 'outcome' }, it.text),
+    el('div', { class: 'row' },
+      el('button', { type: 'button', class: 'btn primary', onclick: () => copy(fullPrompt(it), 'Tam istem', pre) }, 'Tam istemi kopyala'),
+      el('button', { type: 'button', class: 'btn', onclick: () => copy(short, 'Kısa istem', pre) }, `Kısa istem (${short.length} karakter)`),
+      el('button', { type: 'button', class: 'file', title: 'Dosya adını kopyala', onclick: () => copy(fileName(it), 'Dosya adı') }, fileName(it))),
+    isScene ? null : (it.refReady
+      ? el('a', { class: 'ref', href: it.ref, target: '_blank', rel: 'noopener' }, 'Sahne görselini aç (referans olarak ekle)')
+      : el('span', { class: 'ref wait' }, 'Referans: bu sahnenin ana görseli henüz yok, önce onu üret')),
+    el('details', {}, el('summary', {}, 'İstemi göster'), pre));
+  return c;
+}
+
+function render() {
+  $('#tab-scene').setAttribute('aria-pressed', view === 'scene');
+  $('#tab-result').setAttribute('aria-pressed', view === 'result');
+  const adv = $('#adv-filter').value, hide = $('#hide-done').checked;
+  const pool = DATA.items.filter((it) => (view === 'scene') === (it.kind === 'scene'));
+  const shown = pool.filter((it) => (!adv || it.adv === adv) && !(hide && done.has(it.id)));
+  $('#progress').textContent = `${pool.filter((it) => done.has(it.id)).length}/${pool.length} üretildi`;
+  const list = $('#list'); list.replaceChildren();
+  if (!shown.length) { list.append(el('p', { class: 'empty' }, 'Bu filtrede gösterilecek görsel kalmadı.')); return; }
+  for (const [aid, aname] of DATA.adv) {
+    const inAdv = shown.filter((it) => it.adv === aid);
+    if (!inAdv.length) continue;
+    const sec = el('section', { class: 'adv', 'aria-label': aname }, el('h2', {}, aname));
+    const byNode = new Map();
+    for (const it of inAdv) { if (!byNode.has(it.node)) byNode.set(it.node, []); byNode.get(it.node).push(it); }
+    for (const [nid, its] of byNode) {
+      const node = el('div', { class: 'node' });
+      if (view === 'result') node.append(el('div', { class: 'node-head' }, el('h3', {}, its[0].title), el('code', {}, nid), el('span', { class: 'hp' }, its.length + ' görsel')));
+      for (const it of its) node.append(card(it));
+      sec.append(node);
+    }
+    list.append(sec);
+  }
+}
+$('#tab-scene').addEventListener('click', () => { view = 'scene'; try { localStorage.setItem('rw-prompt-view', view); } catch (e) {} render(); });
+$('#tab-result').addEventListener('click', () => { view = 'result'; try { localStorage.setItem('rw-prompt-view', view); } catch (e) {} render(); });
+$('#adv-filter').addEventListener('change', render);
+$('#hide-done').addEventListener('change', render);
+render();
+</script>
