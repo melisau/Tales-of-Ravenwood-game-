@@ -1,14 +1,5 @@
 [
  {
-  "id": "mahzen_03_elspeth_fisiltisi/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03_elspeth_fisiltisi",
-  "output": "mahzen/mahzen_03_elspeth_fisiltisi/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Elspeth'in Fısıltısı\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Fıçıların arasında hava ısınıyor, garip biçimde. Solgun bir ışık yoğunlaşıyor ve küçük bir kız beliriyor: gece elbisesi içinde, yalınayak, saçları ıslak. Elspeth Blackthorne. Size bakıyor ama gözleri sizin arkanızdaki bir şeye kayıp duruyor. Bileğinde, neredeyse görünmez, gümüşi bir iplik var; iplik şarap rafının ardına doğru uzanıyor ve gergin. 'Büyükannem onunla bir anlaşma yaptı,' diyor. 'Beni verdi. Karşılığında konak hiç yanmadı, hiç yıkılmadı.' Sonra fısıldıyor: 'O sadece adını bilen birinden korkar.'\n\nElspeth’in bileğindeki ipliğin dibinde ters taç biçimli bir düğüm, yerdeyse kesik bir açık çember var.\""
- },
- {
   "id": "mahzen_03_elspeth_fisiltisi/medyum_adin_ilk_hecesi_success",
   "adventure": "mahzen",
   "node_id": "mahzen_03_elspeth_fisiltisi",
@@ -139,15 +130,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Elspeth'in Fısıltısı\". Sahne özeti: \"Fıçıların arasında hava ısınıyor, garip biçimde. Solgun bir ışık yoğunlaşıyor ve küçük bir kız beliriyor: gece elbisesi içinde, yalınayak, saçları ıslak. Elspeth Blackthorne. Size bakıyor ama gözleri sizin arkanızdaki bir şeye kayıp duruyor. Bileğinde, neredeyse görünmez, gümüşi bir iplik var; iplik şarap rafının ardına doğru uzanıyor ve gergin. 'Büyükannem onunla bir anlaşma yaptı,' diyor. 'Beni verdi. Karşılığında konak hiç yanmadı, hiç yıkılmadı.' Sonra fısıldıyor: 'O sadece adını bilen birinden korkar.'\n\nElspeth’in bileğindeki ipliğin dibinde ters taç biçimli bir düğüm, yerdeyse kesik bir açık çember var.\"\nEylem: \"İpliğe dokunmadan açık çemberin izini araştır\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: ürkütücü, tehlikeli.\nSonuç metni: \"Raf kayıyor ve kolunuzu sıyırıyor. Arkasındaki geçit açılıyor.\"\nHP değişimi: -1. Sonraki: Gizli Geçit.",
   "action_id": "mahzen_cemberi_izle",
   "outcome": "fail"
- },
- {
-  "id": "mahzen_03b_sahte_ses/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03b_sahte_ses",
-  "output": "mahzen/mahzen_03b_sahte_ses/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Sahte Ses\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.\n\nSesin geldiği rafta ters taç oyulmuş; altında bir ninninin son dizesi yarım bırakılmış.\""
  },
  {
   "id": "mahzen_03b_sahte_ses/muhafiz_koridoru_tut_success",
@@ -282,15 +264,6 @@
   "outcome": "fail"
  },
  {
-  "id": "mahzen_04_kan_muhru/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_04_kan_muhru",
-  "output": "mahzen/mahzen_04_kan_muhru/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Kan Mührünün Ardında\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Kapının ardında küçük bir şapel var. Yüzlerce eriyip donmuş mum, ortada siyah taştan bir sunak ve sunağın önünde, bir çocuk boyunda, kapağı aralık bir tabut. Duvarlarda Blackthorne ailesinin portreleri; hepsinin gözleri kazınmış. Sunağın üzerinde deri ciltli kalın bir defter duruyor, yanında kurumuş kan lekeli bir bıçak. Mumların bazıları kendiliğinden yanıyor. Burada hava ağır ve tatlı; çürümüş bal gibi. Şapelin karşı duvarında bir başka geçit karanlığa açılıyor ve oradan derin, yavaş bir nefes sesi geliyor.\n\nTabutun çevresinde ters taçlı derin bir kan oluğu ile kuru, açık bir çember birbirini kesiyor.\""
- },
- {
   "id": "mahzen_04_kan_muhru/gunlukcu_defteri_oku_success",
   "adventure": "mahzen",
   "node_id": "mahzen_04_kan_muhru",
@@ -421,15 +394,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Kan Mührünün Ardında\". Sahne özeti: \"Kapının ardında küçük bir şapel var. Yüzlerce eriyip donmuş mum, ortada siyah taştan bir sunak ve sunağın önünde, bir çocuk boyunda, kapağı aralık bir tabut. Duvarlarda Blackthorne ailesinin portreleri; hepsinin gözleri kazınmış. Sunağın üzerinde deri ciltli kalın bir defter duruyor, yanında kurumuş kan lekeli bir bıçak. Mumların bazıları kendiliğinden yanıyor. Burada hava ağır ve tatlı; çürümüş bal gibi. Şapelin karşı duvarında bir başka geçit karanlığa açılıyor ve oradan derin, yavaş bir nefes sesi geliyor.\n\nTabutun çevresinde ters taçlı derin bir kan oluğu ile kuru, açık bir çember birbirini kesiyor.\"\nEylem: \"Kan vermeden kuru açık çemberi taşlarla koru\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: ürkütücü, tehlikeli.\nSonuç metni: \"Taşlardan biri ayağınıza düşüyor; dar geçitten ilerliyorsunuz.\"\nHP değişimi: -1. Sonraki: Gizli Geçit.",
   "action_id": "mahzen_kuru_cember",
   "outcome": "fail"
- },
- {
-  "id": "mahzen_04b_uyanan_muhur/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_04b_uyanan_muhur",
-  "output": "mahzen/mahzen_04b_uyanan_muhur/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Uyanan Mühür\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Kemerdeki harfler artık yanmıyor, kanıyor. Mahzenin tavanından toz ve küçük taşlar yağıyor; zemin derin bir yerden gelen bir nabızla titriyor. Fenerlerinizin ışığı kısalıyor, sanki karanlık onu yiyor. Duvarlardaki gölgeler sizinle aynı anda hareket etmiyor; bir saniye geriden geliyorlar, sonra bir saniye önden. Fıçılardan biri patlıyor ve içinden kara bir sıvı değil, fısıltılar akıyor. Bir şey uyanıyor. Ve uyanan şey açlık hissediyor.\n\nYerde kırmızı ışıkla parlayan yarım bir ters taç var. Kenarda beyaz tuzla çizilmiş açık bir halka soluyor.\""
  },
  {
   "id": "mahzen_04b_uyanan_muhur/gizemci_muhru_uyut_success",
@@ -564,15 +528,6 @@
   "outcome": "fail"
  },
  {
-  "id": "mahzen_05_gizli_gecit/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_05_gizli_gecit",
-  "output": "mahzen/mahzen_05_gizli_gecit/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Gizli Geçit\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Tünel dar, alçak ve nemli; duvarlarından soluk yeşil bir ışık sızıyor. Yerde eski oyuncaklar var: bir tahta at, kafası olmayan bir bebek, paslanmış bir zil. Duvara oyulmuş nişlerde küçük kemikler. Biraz ileride tünel ikiye ayrılıyor: soldan taze, serin bir hava geliyor; sağdan mum kokusu ve o yavaş, derin nefes. Ayrımın tam ortasında, bir taşın altına sıkıştırılmış yırtık bir defter sayfası rüzgârda kıpırdıyor. Duvarda paslı bir zincir ve makaradan oluşan eski bir düzenek tavana doğru uzanıyor.\n\nYırtık sayfanın köşesinde ters taç, yanındaki taşta ise çıkışa uzanan açık çember işareti var.\""
- },
- {
   "id": "mahzen_05_gizli_gecit/izci_arka_yolu_sec_success",
   "adventure": "mahzen",
   "node_id": "mahzen_05_gizli_gecit",
@@ -705,15 +660,6 @@
   "outcome": "fail"
  },
  {
-  "id": "mahzen_06_yanan_mahzen/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_06_yanan_mahzen",
-  "output": "mahzen/mahzen_06_yanan_mahzen/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Yanan Mahzen\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Mavi alevler duvar boyunca koşuyor, sonra sararıyor, sonra kızıla dönüyor. Yağ fıçıları birer birer patlıyor; her patlamada tavandan kıvılcım yağıyor. Duman yoğun ve tatlı kokulu; ciğerlerinizi yakıyor. Alevlerin içinde, ateşe hiç aldırmadan duran küçük bir figür var: Elspeth. Ateş ona dokunmuyor. Size bakıp eliyle iki yönü gösteriyor: biri merdivenlerin olduğu, dumanla dolu çıkış; diğeri şarap rafının ardındaki karanlık. Isı her saniye artıyor.\n\nDumanın içinde taçlı bir hava kapağı, zeminde açık çemberle işaretlenmiş alçak bir hat görüyorsunuz.\""
- },
- {
   "id": "mahzen_06_yanan_mahzen/simyaci_atesi_bogar_success",
   "adventure": "mahzen",
   "node_id": "mahzen_06_yanan_mahzen",
@@ -844,15 +790,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Yanan Mahzen\". Sahne özeti: \"Mavi alevler duvar boyunca koşuyor, sonra sararıyor, sonra kızıla dönüyor. Yağ fıçıları birer birer patlıyor; her patlamada tavandan kıvılcım yağıyor. Duman yoğun ve tatlı kokulu; ciğerlerinizi yakıyor. Alevlerin içinde, ateşe hiç aldırmadan duran küçük bir figür var: Elspeth. Ateş ona dokunmuyor. Size bakıp eliyle iki yönü gösteriyor: biri merdivenlerin olduğu, dumanla dolu çıkış; diğeri şarap rafının ardındaki karanlık. Isı her saniye artıyor.\n\nDumanın içinde taçlı bir hava kapağı, zeminde açık çemberle işaretlenmiş alçak bir hat görüyorsunuz.\"\nEylem: \"Islak bezlerle açık çemberin alçak hattından ilerle\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: yıkıcı.\nSonuç metni: \"Bezler kuruyor; öksürerek Elspeth’in açtığı yola kaçıyorsunuz.\"\nHP değişimi: -2. Sonraki: Aç Olan.",
   "action_id": "mahzen_alcak_hat",
   "outcome": "fail"
- },
- {
-  "id": "konak_02_buyuk_salon/scene",
-  "adventure": "mahzen",
-  "node_id": "konak_02_buyuk_salon",
-  "output": "mahzen/konak_02_buyuk_salon/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Büyük Salon\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Konağın büyük salonu buz gibi. Ay ışığı kırık vitraylardan süzülüp parke üzerinde kan rengi lekeler bırakıyor. Duvarlar boyunca Blackthorne portreleri sıralanmış; en büyüğü şöminenin üstünde: siyahlar içinde, gülümseyen yaşlı bir kadın, Agatha. Ön kapı birkaç adım ötede, aralık; dışarıda sis ve sabaha birkaç saat. Ama ayaklarınızın altından, döşemelerin arasından ninni yükseliyor; artık bir çocuk sesi değil, yetişkin, aç bir kadın sesi. Agatha'nın portresindeki gülümseme siz bakarken genişliyor.\n\nAgatha’nın portresinin köşesinde ters taçlı bir ninni dizesi belirmiş: “Söyle, kapı açılsın.”\""
  },
  {
   "id": "konak_02_buyuk_salon/konaktan_kac_success",
@@ -1172,15 +1109,6 @@
   "outcome": "fail"
  },
  {
-  "id": "mahzen_08_son_direnis/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_08_son_direnis",
-  "output": "mahzen/mahzen_08_son_direnis/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Son Direniş\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Mumların hepsi söndü. Tek ışık, sunağın çatlaklarından sızan soğuk mavi bir parıltı. Zincir zeminde yılan gibi kıvrılıyor, ayak bileklerinizi arıyor. Nefesiniz buhar oluyor. Şey artık şekil değiştirmeyi bıraktı: sadece bir ağız, mahzenin tavanını kaplayan dev, karanlık bir ağız. Elspeth, onu kaybetmek üzere olduğunuz yerde, size elini uzatıyor. Bir şansınız daha var. Belki de son şansınız.\n\nSunağın mavi çatlağında ters taç biçimli yarım bir mühür var; zincir o mühürden besleniyor.\""
- },
- {
   "id": "mahzen_08_son_direnis/son_kez_haykir_success",
   "adventure": "mahzen",
   "node_id": "mahzen_08_son_direnis",
@@ -1291,15 +1219,6 @@
   "outcome": "fail"
  },
  {
-  "id": "nota_01_cocuk_odasi/scene",
-  "adventure": "nota",
-  "node_id": "nota_01_cocuk_odasi",
-  "output": "nota/nota_01_cocuk_odasi/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Saat On İkiyi Geçmeyen Oda\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Konağın doğu kanadındaki çocuk odası kırk yıldır kilitliydi. Bu gece kapı açık. Beşiğin üstünde dönen müzik kutusu on iki nota çalıyor, sonra aynı yere dönüyor. Penceredeki yağmur damlası aşağı düşmek yerine tekrar cama çıkıyor. Duvarda küçük Ada'nın resmi, altında “Uyandığında dışarı çıkar” cümlesi var. Kutunun kapağında açık bir güneş, kurma kolunda baş aşağı bir taç bulunuyor. İnce bir ses, eksik on üçüncü notayı tamamlamanızı istiyor. Kutunun altındaki servis çekmecesi, portreler galerisi ve kapıdaki ayna üç ayrı yol sunuyor.\""
- },
- {
   "id": "nota_01_cocuk_odasi/nota_servisi_ac_success",
   "adventure": "nota",
   "node_id": "nota_01_cocuk_odasi",
@@ -1408,15 +1327,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Saat On İkiyi Geçmeyen Oda\". Sahne özeti: \"Konağın doğu kanadındaki çocuk odası kırk yıldır kilitliydi. Bu gece kapı açık. Beşiğin üstünde dönen müzik kutusu on iki nota çalıyor, sonra aynı yere dönüyor. Penceredeki yağmur damlası aşağı düşmek yerine tekrar cama çıkıyor. Duvarda küçük Ada'nın resmi, altında “Uyandığında dışarı çıkar” cümlesi var. Kutunun kapağında açık bir güneş, kurma kolunda baş aşağı bir taç bulunuyor. İnce bir ses, eksik on üçüncü notayı tamamlamanızı istiyor. Kutunun altındaki servis çekmecesi, portreler galerisi ve kapıdaki ayna üç ayrı yol sunuyor.\"\nEylem: \"Ada’nın gerçek kaydını aile defterinde bul\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: ürkütücü, tehlikeli.\nSonuç metni: \"Kopuk sayfa seni yanlış portreye götürüyor. Galeri uyanıyor.\"\nHP değişimi: -1. Sonraki: İsim İsteyen Çerçeveler.",
   "action_id": "nota_ada_kaydi",
   "outcome": "fail"
- },
- {
-  "id": "nota_02_disli/scene",
-  "adventure": "nota",
-  "node_id": "nota_02_disli",
-  "output": "nota/nota_02_disli/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"İki Yay, Tek Ezgi\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Duvarın içinde yürünebilecek kadar büyük bir saat mekanizması var. İki yay karşılıklı gerilmiş: güneş damgalı bronz yay ağır ağır gevşiyor; ters taçlı gümüş yay hiç hareket etmiyor. Ortalarında Ada'nın adının yazılı olduğu porselen bir plaka duruyor. Kutunun ezgisi dişlilerden yayılıyor. Bir işaret “Gümüş yayı tak, kayıp sesi geri al” diyor. Bronz yayda “Sesi değil, adı koru” yazıyor. Aynaya giden küçük kapıyı güneş dişlisi tutuyor; portrelere giden geniş kapı gümüş yayın altında.\""
  },
  {
   "id": "nota_02_disli/nota_bronzu_sabitle_success",
@@ -2027,15 +1937,6 @@
   "outcome": "fail"
  },
  {
-  "id": "yanki_01_esik/scene",
-  "adventure": "yankilar",
-  "node_id": "yanki_01_esik",
-  "output": "yankilar/yanki_01_esik/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Kuyunun Altındaki Rüzgâr\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Blackthorne Konağı'nın kurumuş kuyusundan, kayıp bekçi Neris'in feneri yükseliyor. İp boş; fener kendi kendine sallanıyor. Kuyunun dibine indiğinizde bir mağara ikiye ayrılıyor. Solda yukarı esen serin bir rüzgâr ve duvara çizilmiş açık bir çember var. Sağda sıcak hava, baş aşağı bir taç ve uzaktan gelen üç vuruş. Neris'in defterindeki son cümle yarım: 'Beni sesimle aramayın; ben...' Kuyunun ipi yukarı çekiliyor. Konağa dönebilmek için önce bu tünellerin hangi anıyı sakladığını bulmalısınız.\""
- },
- {
   "id": "yanki_01_esik/yanki_ruzgar_izle_success",
   "adventure": "yankilar",
   "node_id": "yanki_01_esik",
@@ -2144,15 +2045,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Kuyunun Altındaki Rüzgâr\". Sahne özeti: \"Blackthorne Konağı'nın kurumuş kuyusundan, kayıp bekçi Neris'in feneri yükseliyor. İp boş; fener kendi kendine sallanıyor. Kuyunun dibine indiğinizde bir mağara ikiye ayrılıyor. Solda yukarı esen serin bir rüzgâr ve duvara çizilmiş açık bir çember var. Sağda sıcak hava, baş aşağı bir taç ve uzaktan gelen üç vuruş. Neris'in defterindeki son cümle yarım: 'Beni sesimle aramayın; ben...' Kuyunun ipi yukarı çekiliyor. Konağa dönebilmek için önce bu tünellerin hangi anıyı sakladığını bulmalısınız.\"\nEylem: \"Hava akımından mağaranın haritasını çıkar\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: ürkütücü, tehlikeli.\nSonuç metni: \"Yan akımı çıkış sanıyorsun. Harita sizi su galerisine indiriyor.\"\nHP değişimi: 0. Sonraki: Hatırlayan Damlalar.",
   "action_id": "yanki_hava_haritasi",
   "outcome": "fail"
- },
- {
-  "id": "yanki_02_damlalar/scene",
-  "adventure": "yankilar",
-  "node_id": "yanki_02_damlalar",
-  "output": "yankilar/yanki_02_damlalar/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Hatırlayan Damlalar\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Tavandan üç ayrı su ipliği düşüyor: soldaki taş kâseye iki yavaş damla, ortadaki çatlağa üç hızlı damla, sağdaki boşluğa tek damla. Her düşüşte suyun içinde bir insan yüzü belirip siliniyor. Neris'in defter sayfası kâsenin altında: 'Suyun söylediği adlar ödünçtür.' Zeminde açık çember ile ters taç yeniden kazınmış. Ortadaki çatlağın yanında susamış bir çocuk silueti elini uzatıyor. Sağdaki set sarnıca, sol basamaklar köklere iniyor. Damlaları dinleyebilir, düzenlerini değiştirebilir ya da suya hiç dokunmadan ilerleyebilirsiniz.\""
  },
  {
   "id": "yanki_02_damlalar/yanki_damla_say_success",
@@ -2265,15 +2157,6 @@
   "outcome": "fail"
  },
  {
-  "id": "yanki_03_agiz/scene",
-  "adventure": "yankilar",
-  "node_id": "yanki_03_agiz",
-  "output": "yankilar/yanki_03_agiz/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Sizin Sesinizle Konuşan Mağara\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Duvarlar bir ağız gibi açılıp kapanıyor. İçeriden her biriniz kendi sesinizi duyuyorsunuz: 'Korkma, ben yolu buldum.' Tavanda baş aşağı taç biçiminde siyah kristaller var; yerde beyaz taşlardan kurulmuş açık bir halka. Neris, halkanın içinde diz çökmüş. Gözleri kapalı, eli ağzında; konuşmamaya çalışıyor. Bir ses, 'Hepimiz aynı cümleyi söylersek kapı açılacak,' diyor. Halkanın dışında bir dar geçit, kristallerin ardında sarnıca inen merdiven görünüyor.\""
- },
- {
   "id": "yanki_03_agiz/yanki_sessiz_kurtar_success",
   "adventure": "yankilar",
   "node_id": "yanki_03_agiz",
@@ -2382,15 +2265,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Sizin Sesinizle Konuşan Mağara\". Sahne özeti: \"Duvarlar bir ağız gibi açılıp kapanıyor. İçeriden her biriniz kendi sesinizi duyuyorsunuz: 'Korkma, ben yolu buldum.' Tavanda baş aşağı taç biçiminde siyah kristaller var; yerde beyaz taşlardan kurulmuş açık bir halka. Neris, halkanın içinde diz çökmüş. Gözleri kapalı, eli ağzında; konuşmamaya çalışıyor. Bir ses, 'Hepimiz aynı cümleyi söylersek kapı açılacak,' diyor. Halkanın dışında bir dar geçit, kristallerin ardında sarnıca inen merdiven görünüyor.\"\nEylem: \"Beyaz halkanın taşlarını kalkanla sabitle\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: yıkıcı.\nSonuç metni: \"Kalkan çatlıyor. Neris kurtuluyor ama ağız bileğini yakalıyor.\"\nHP değişimi: -2. Sonraki: Adların Sarnıcı.",
   "action_id": "yanki_halkayi_tut",
   "outcome": "fail"
- },
- {
-  "id": "yanki_04_sarnic/scene",
-  "adventure": "yankilar",
-  "node_id": "yanki_04_sarnic",
-  "output": "yankilar/yanki_04_sarnic/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Adların Sarnıcı\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Yeraltı gölünün üstüne düşen her damla, bir adı suyun yüzeyine yazıyor. Neris kuru bir basamakta bekliyor; suyun içine bakmıyor. Gölün ortasında küçük bir fener, altında çan biçimli bir taş var. Kıyıdaki levhada 'Bir ad ver, bir yol al' yazıyor. Bir yanında içe kapanan taç, diğer yanında açık çember bulunan iki vana, gölün su seviyesini yönetiyor. Açık çemberin kolu paslı; taçlı kol yeni yağlanmış. Taş köprü son odaya, kuru kanal ise köklere gidiyor.\""
  },
  {
   "id": "yanki_04_sarnic/yanki_acik_vana_success",
@@ -2503,15 +2377,6 @@
   "outcome": "fail"
  },
  {
-  "id": "yanki_05_kokler/scene",
-  "adventure": "yankilar",
-  "node_id": "yanki_05_kokler",
-  "output": "yankilar/yanki_05_kokler/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Köklerin Tuttuğu Yol\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Bir incir ağacının kökleri mağaranın tavanından sarkıp taş bir merdiveni tutuyor. Yukarıda konağın bahçesindeki rüzgârı duyuyorsunuz. Merdivenin yanında Neris'in eski arkadaşlarının adları var; birinin üstü ters taçla çizilmiş. Tavana bağlı siyah bir ip, merdivenle yeraltındaki fener arasında gerilmiş. İpi kesmek çıkışı açacak gibi görünüyor, fakat kökler de o ipe dolanmış. Köklerin arasından kalbin odasına giden ikinci bir patika var. Bir seçim: hemen kaçış mı, düğümü çözmek mi, mağaranın sesini bütünüyle susturmak mı? Köklerin arasından bekçi Neris çıkıyor; yorgun ama hayatta. “Bana da sizin sesinizle seslendiler,” diyor. Sizi görür görmez aynı taş sete tutunuyor.\""
- },
- {
   "id": "yanki_05_kokler/yanki_dugumu_coz_success",
   "adventure": "yankilar",
   "node_id": "yanki_05_kokler",
@@ -2620,15 +2485,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Köklerin Tuttuğu Yol\". Sahne özeti: \"Bir incir ağacının kökleri mağaranın tavanından sarkıp taş bir merdiveni tutuyor. Yukarıda konağın bahçesindeki rüzgârı duyuyorsunuz. Merdivenin yanında Neris'in eski arkadaşlarının adları var; birinin üstü ters taçla çizilmiş. Tavana bağlı siyah bir ip, merdivenle yeraltındaki fener arasında gerilmiş. İpi kesmek çıkışı açacak gibi görünüyor, fakat kökler de o ipe dolanmış. Köklerin arasından kalbin odasına giden ikinci bir patika var. Bir seçim: hemen kaçış mı, düğümü çözmek mi, mağaranın sesini bütünüyle susturmak mı? Köklerin arasından bekçi Neris çıkıyor; yorgun ama hayatta. “Bana da sizin sesinizle seslendiler,” diyor. Sizi görür görmez aynı taş sete tutunuyor.\"\nEylem: \"Kayıp madencilerin gerçek adlarını kayıttan oku\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: ürkütücü, tehlikeli.\nSonuç metni: \"Silinmiş ad cevap veriyor. Ses sizi son odaya çağırıyor.\"\nHP değişimi: -1. Sonraki: Yankının Kalbi.",
   "action_id": "yanki_kayip_adlari_oku",
   "outcome": "fail"
- },
- {
-  "id": "yanki_06_kalp/scene",
-  "adventure": "yankilar",
-  "node_id": "yanki_06_kalp",
-  "output": "yankilar/yanki_06_kalp/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Yankının Kalbi\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Mağaranın en derin odasında fener, siyah bir taşın üzerinde sallanıyor. Taş bir kalp gibi atıyor; her atışta yüzeyinde tanıdık ağızlar açılıyor. Zeminde yarım kalmış açık çember ve tamamlanmış ters taç var. Neris feneri size uzatıyor: 'Alevi taşın üstüne koyarsanız bütün adlar geri dönecek,' diyor bir ses; bekçinin gerçek ağzıysa kıpırdamıyor. Taşın altında çatlak bir çan, arkanızda yüzeye uzanan bir yarık duruyor. Burada bir kapı açmak ile bir şeyi serbest bırakmak aynı hareket olabilir.\""
  },
  {
   "id": "yanki_06_kalp/yanki_cani_kir_success",
