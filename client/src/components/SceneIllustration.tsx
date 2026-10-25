@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import STORY_ART from 'virtual:story-art';
+import { storyArtKey } from '../../../shared/storyArt';
 import type { AudioCue } from '../../../shared/types';
 
 type SceneArt = { place: 'cellar' | 'cave' | 'hall' | 'nursery' | 'well' | 'cistern' | 'grove'; motif: 'seal' | 'door' | 'spirit' | 'voice' | 'fire' | 'passage' | 'portrait' | 'altar' | 'struggle' | 'musicbox' | 'gears' | 'frames' | 'mirror' | 'drops' | 'note' | 'entrance' | 'echo' | 'mouth' | 'water' | 'roots' | 'heart' };
@@ -30,30 +33,6 @@ const ART: Record<string, SceneArt> = {
 
 const SCENES = Object.values(ART);
 
-const PROVIDED_ART: Record<string, string> = {
-  'mahzen_01_karanlik_mahzen:scene': '/story-art/mahzen/mahzen_01_karanlik_mahzen/scene.webp',
-  'mahzen_01_karanlik_mahzen:dedektif_tuzagi_etkisizlestir:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/dedektif_tuzagi_etkisizlestir_success.webp',
-  'mahzen_01_karanlik_mahzen:dedektif_tuzagi_etkisizlestir:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/dedektif_tuzagi_etkisizlestir_fail.webp',
-  'mahzen_01_karanlik_mahzen:medyum_elspeth_ile_konus:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/medyum_elspeth_ile_konus_success.webp',
-  'mahzen_01_karanlik_mahzen:medyum_elspeth_ile_konus:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/medyum_elspeth_ile_konus_fail.webp',
-  'mahzen_01_karanlik_mahzen:bilgin_muhru_coz:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/bilgin_muhru_coz_success.webp',
-  'mahzen_01_karanlik_mahzen:bilgin_muhru_coz:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/bilgin_muhru_coz_fail.webp',
-  'mahzen_01_karanlik_mahzen:izci_gizli_gecidi_bul:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/izci_gizli_gecidi_bul_success.webp',
-  'mahzen_01_karanlik_mahzen:izci_gizli_gecidi_bul:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/izci_gizli_gecidi_bul_fail.webp',
-  'mahzen_01_karanlik_mahzen:fenerleri_yak_ve_ilerle:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/fenerleri_yak_ve_ilerle_success.webp',
-  'mahzen_01_karanlik_mahzen:fenerleri_yak_ve_ilerle:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/fenerleri_yak_ve_ilerle_fail.webp',
-  'mahzen_01_karanlik_mahzen:merdivenden_geri_cekil:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/merdivenden_geri_cekil_success.webp',
-  'mahzen_01_karanlik_mahzen:merdivenden_geri_cekil:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/merdivenden_geri_cekil_fail.webp',
-  'mahzen_01_karanlik_mahzen:mahzen_taca_fener:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/mahzen_taca_fener_success.webp',
-  'mahzen_01_karanlik_mahzen:mahzen_taca_fener:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/mahzen_taca_fener_fail.webp',
-  'mahzen_02_muhurlu_kapi:scene': '/story-art/mahzen/mahzen_02_muhurlu_kapi/scene.webp',
-  'mahzen_02_muhurlu_kapi:tamirci_mandali_kaldir:success': '/story-art/mahzen/mahzen_02_muhurlu_kapi/tamirci_mandali_kaldir_success.webp',
-  'mahzen_02_muhurlu_kapi:tamirci_mandali_kaldir:fail': '/story-art/mahzen/mahzen_02_muhurlu_kapi/tamirci_mandali_kaldir_fail.webp',
-  'mahzen_02_muhurlu_kapi:dedektif_anahtari_bul:success': '/story-art/mahzen/mahzen_02_muhurlu_kapi/dedektif_anahtari_bul_success.webp',
-  'mahzen_02_muhurlu_kapi:dedektif_anahtari_bul:fail': '/story-art/mahzen/mahzen_02_muhurlu_kapi/dedektif_anahtari_bul_fail.webp',
-  'mahzen_02_muhurlu_kapi:avci_tuz_cizgisi:success': '/story-art/mahzen/mahzen_02_muhurlu_kapi/avci_tuz_cizgisi_success.webp',
-  'mahzen_02_muhurlu_kapi:avci_tuz_cizgisi:fail': '/story-art/mahzen/mahzen_02_muhurlu_kapi/avci_tuz_cizgisi_fail.webp',
-};
 
 /** Storybook-like, original scene art drawn in SVG; no image service or font dependency. */
 export function SceneIllustration({ sceneId, title, ambience, action, actionId, result, success }: {
@@ -66,11 +45,14 @@ export function SceneIllustration({ sceneId, title, ambience, action, actionId, 
   const glint = cold ? '#ee7874' : '#e9c86f';
   const actionMotif = hasResult ? chooseMotif(`${action} ${result}`) : null;
   const resourceId = `rw-${hash(`${sceneId}:${action ?? ''}:${result ?? ''}`)}`;
-  const resultArtKey = hasResult && actionId ? `${sceneId}:${actionId}:${success ? 'success' : 'fail'}` : null;
-  const illustrationUrl = (resultArtKey && PROVIDED_ART[resultArtKey]) || PROVIDED_ART[`${sceneId}:scene`];
+  // Önce bu sonucun görseli, yoksa sahnenin ana görseli, o da yoksa (ya da yüklenemezse) SVG çizim
+  const resultArt = hasResult && actionId ? STORY_ART[storyArtKey(sceneId, actionId, success ? 'success' : 'fail')] : undefined;
+  const candidateUrl = resultArt ?? STORY_ART[storyArtKey(sceneId)];
+  const [brokenUrl, setBrokenUrl] = useState<string | null>(null);
+  const illustrationUrl = candidateUrl && candidateUrl !== brokenUrl ? candidateUrl : undefined;
   return (
     <figure className="rw-scene-art m-0 overflow-hidden rounded-xl border border-[#c9a24a]/35 bg-[#100a17]" aria-label={`${title} sahne çizimi${hasResult ? `: ${action}, ${success ? 'başarılı' : 'başarısız'}` : ''}`}>
-      {illustrationUrl ? <img src={illustrationUrl} alt={`${title}${hasResult ? ` — ${action}, ${success ? 'başarı' : 'başarısızlık'}` : ''}`} className="block max-h-[420px] w-full object-cover" loading="lazy" /> : <svg viewBox="0 0 720 300" role="img" aria-hidden="true" className="block h-auto max-h-[300px] w-full">
+      {illustrationUrl ? <img src={illustrationUrl} alt={`${title}${hasResult ? ` — ${action}, ${success ? 'başarı' : 'başarısızlık'}` : ''}`} className="block max-h-[420px] w-full object-cover" loading="lazy" onError={() => setBrokenUrl(candidateUrl ?? null)} /> : <svg viewBox="0 0 720 300" role="img" aria-hidden="true" className="block h-auto max-h-[300px] w-full">
         <defs>
           <linearGradient id={`${resourceId}-sky`} x2="0" y2="1"><stop stopColor={cold ? '#170f20' : '#251834'} /><stop offset="1" stopColor={art.place === 'nursery' || art.place === 'hall' ? '#392238' : '#101b20'} /></linearGradient>
           <linearGradient id={`${resourceId}-light`} x2="1" y2="1"><stop stopColor={glint} stopOpacity=".4" /><stop offset="1" stopColor={glint} stopOpacity="0" /></linearGradient>
