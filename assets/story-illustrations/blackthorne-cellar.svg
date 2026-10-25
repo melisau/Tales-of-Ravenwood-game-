@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Blackthorne Konağı'nın unutulmuş mahzeni</title>
+  <desc id="desc">On üç taş basamaklı kapanmış mutfak kapağının altındaki mahzen; zincirli demir kapı, eğilen fener alevleri, kaybolan çocuk ayak izleri ve bir damla su.</desc>
+  <defs>
+    <linearGradient id="room" x2=".18" y2="1"><stop stop-color="#171322"/><stop offset=".48" stop-color="#292031"/><stop offset="1" stop-color="#09090f"/></linearGradient>
+    <linearGradient id="stone" x2="0" y2="1"><stop stop-color="#827477"/><stop offset=".36" stop-color="#51484f"/><stop offset="1" stop-color="#211c25"/></linearGradient>
+    <linearGradient id="door" x2="1" y2=".5"><stop stop-color="#15151d"/><stop offset=".48" stop-color="#39323a"/><stop offset="1" stop-color="#17151d"/></linearGradient>
+    <linearGradient id="amber" x2="0" y2="1"><stop stop-color="#fff2be"/><stop offset=".35" stop-color="#e6af59"/><stop offset="1" stop-color="#9d5030"/></linearGradient>
+    <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#241e26"/><stop offset=".6" stop-color="#17151c"/><stop offset="1" stop-color="#09090f"/></linearGradient>
+    <radialGradient id="lanternGlow"><stop stop-color="#dca65e" stop-opacity=".48"/><stop offset="1" stop-color="#dca65e" stop-opacity="0"/></radialGradient>
+    <radialGradient id="damp"><stop stop-color="#596e76" stop-opacity=".42"/><stop offset="1" stop-color="#151820" stop-opacity="0"/></radialGradient>
+    <pattern id="grain" width="67" height="54" patternUnits="userSpaceOnUse"><circle cx="8" cy="10" r="1.4" fill="#e9d9bb" opacity=".13"/><circle cx="46" cy="26" r="1" fill="#d5b88f" opacity=".1"/><path d="M20 46l8-2" stroke="#e9d9bb" opacity=".08"/></pattern>
+    <filter id="soft"><feGaussianBlur stdDeviation="27"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <rect width="1536" height="1024" fill="url(#room)"/>
+  <ellipse cx="779" cy="548" rx="470" ry="400" fill="#a65b3d" opacity=".17" filter="url(#soft)"/>
+  <ellipse cx="404" cy="520" rx="240" ry="245" fill="url(#lanternGlow)"/>
+  <ellipse cx="1190" cy="476" rx="265" ry="270" fill="url(#lanternGlow)" opacity=".7"/>
+
+  <!-- rough masonry and low vaulted ceiling -->
+  <path d="M0 0h1536v182q-172-62-317-10-218-89-454-7-227-96-436-1Q169 95 0 193Z" fill="#0d0c13"/>
+  <path d="M55 0v648M1480 0v649M122 35Q763-104 1413 34" fill="none" stroke="#71616b" stroke-opacity=".26" stroke-width="16"/>
+  <g fill="none" stroke="#88727a" stroke-opacity=".22" stroke-width="5">
+    <path d="M0 238h268v93H0m0 104h225v92H0m1536-288h-275v93h275m0 105h-230v92h230"/>
+    <path d="M109 185v54m92-55v54m-103 146v56m109-57v57m102-252v46m101-53v52m875 0v50m-108 106v53m-113-48v55"/>
+    <path d="M80 298l39-16m169 120 43-16m-55 156 47-14m105-334 42-12m825 132 49-14m110 125 54-17"/>
+  </g>
+  <path d="M52 663V352q9-247 193-247t191 247v309M1100 663V354q9-247 193-247t191 247v309" fill="#0d0c12" stroke="#695963" stroke-width="17" opacity=".8"/>
+  <path d="M84 646V362q12-215 161-215t159 215v284M1131 646V362q12-215 161-215t159 215v284" fill="none" stroke="#a08478" stroke-width="5" opacity=".34"/>
+
+  <!-- wine casks, shelves and the dark corners of the cellar -->
+  <g opacity=".96">
+    <path d="M56 568h310v30H56zm0 88h310v27H56zM1170 565h312v31h-312zm0 91h312v27h-312z" fill="#31232a" stroke="#846954" stroke-width="6"/>
+    <g fill="#422f31" stroke="#947353" stroke-width="6">
+      <ellipse cx="116" cy="492" rx="53" ry="74"/><path d="M63 492q0-69 53-69t53 69v112q-53 51-106 0z"/><ellipse cx="116" cy="492" rx="53" ry="18" fill="#251e25"/>
+      <ellipse cx="255" cy="463" rx="61" ry="83"/><path d="M194 463q0-79 61-79t61 79v128q-61 50-122 0z"/><ellipse cx="255" cy="463" rx="61" ry="19" fill="#251e25"/>
+      <ellipse cx="1288" cy="470" rx="60" ry="80"/><path d="M1228 470q0-76 60-76t60 76v124q-60 49-120 0z"/><ellipse cx="1288" cy="470" rx="60" ry="19" fill="#251e25"/>
+      <ellipse cx="1418" cy="501" rx="52" ry="70"/><path d="M1366 501q0-67 52-67t52 67v110q-52 45-104 0z"/><ellipse cx="1418" cy="501" rx="52" ry="17" fill="#251e25"/>
+    </g>
+    <g fill="none" stroke="#c29b68" stroke-width="5" opacity=".72"><path d="M74 459h84m-84 68h84m-84 37h84M205 422h100m-100 77h100m-100 42h100m935-73h96m-96 75h96m-96 35h96m35-77h83m-83 65h83"/></g>
+  </g>
+
+  <!-- thirteen descending steps and the shut trapdoor high above -->
+  <path d="M551 94h432v126H551z" fill="#17141c" stroke="#8b756b" stroke-width="10"/>
+  <path d="M581 112h372v84H581z" fill="#29202a" stroke="#584951" stroke-width="6"/>
+  <path d="M600 121v67m330-67v67M600 145h330M600 166h330" stroke="#5c4b50" stroke-width="4" opacity=".8"/>
+
+  <!-- distant low stone arch, faded runes, chained iron door -->
+  <path d="M486 682V487q0-305 282-305t282 305v195" fill="#100e15" stroke="#6c5963" stroke-width="33"/>
+  <path d="M523 678V492q0-269 245-269t245 269v186" fill="#121119" stroke="#aa8970" stroke-width="7" opacity=".77"/>
+  <path d="M570 674V504q0-221 198-221t198 221v170Z" fill="url(#door)" stroke="#98806e" stroke-width="10"/>
+  <path d="M604 666V507q0-185 164-185t164 185v159Z" fill="#252129" stroke="#4d4248" stroke-width="6"/>
+  <path d="M768 326v337M622 407l-25-21m318 21 25-21m-327 81-31 2m346-2 31 2m-331 103-28 18m310-18 28 18" stroke="#927e71" stroke-width="4" opacity=".62"/>
+  <g fill="none" stroke="#d2b588" stroke-width="5" opacity=".38">
+    <path d="M532 360l15 19-15 19-15-19zM568 340v40m-10-12 10-11 10 11M1004 360l15 19-15 19-15-19zM968 340v40m-10-12 10-11 10 11"/>
+  </g>
+  <path d="M624 460c78 31 102 78 144 98s65 26 108-5m-260 44c74-12 89 9 147 20s91-1 121-28m-223 72q43-39 81-4t80 10" fill="none" stroke="#6b5e5a" stroke-width="11"/>
+  <path d="M760 478v155m8-83c-39 9-55 31-47 55s31 21 42 1m14-81c38 10 53 31 44 53s-30 17-42 0" fill="none" stroke="#898078" stroke-width="10"/>
+  <circle cx="916" cy="526" r="16" fill="#bd9458" stroke="#ead29b" stroke-width="5"/>
+  <g fill="none" stroke="#aa9c88" stroke-width="10" opacity=".94">
+    <path d="M634 444l84 57m-80-25 83 57m-81-25 81 58m-79-24 77 58m30-182-79 57m78-26-78 58m77-25-76 58m74-24-72 55"/>
+  </g>
+  <path d="M758 517h21v31h-21z" fill="#c8904d" stroke="#f4d28b" stroke-width="5"/>
+  <circle cx="768" cy="534" r="29" fill="#e4af5b" opacity=".3" filter="url(#glow)"/>
+
+  <!-- small barefoot prints stop abruptly among the barrels -->
+  <g fill="#b9a9a0" opacity=".39" transform="rotate(-8 467 723)">
+    <ellipse cx="463" cy="724" rx="14" ry="24"/><circle cx="447" cy="699" r="7"/><circle cx="457" cy="692" r="7"/><circle cx="468" cy="691" r="6"/><circle cx="479" cy="696" r="5"/>
+    <ellipse cx="520" cy="750" rx="12" ry="21"/><circle cx="507" cy="726" r="6"/><circle cx="516" cy="719" r="6"/><circle cx="526" cy="719" r="5"/><circle cx="535" cy="724" r="4"/>
+    <ellipse cx="589" cy="778" rx="10" ry="18"/><circle cx="579" cy="757" r="5"/><circle cx="587" cy="751" r="5"/><circle cx="596" cy="751" r="4"/>
+    <ellipse cx="674" cy="803" rx="8" ry="15"/><circle cx="666" cy="784" r="4"/><circle cx="673" cy="779" r="4"/><circle cx="681" cy="780" r="3"/>
+  </g>
+
+  <!-- thirteen broadening stone steps carry the eye from the iron door to the viewer -->
+  <path d="M742 578h52l470 446H272Z" fill="#0a0910" opacity=".88"/>
+  <g stroke="#95847c" stroke-width="5" fill="url(#stone)">
+    <path d="M726 585h84v22h-84z"/><path d="M715 608h106v23H715z"/><path d="M702 633h132v25H702z"/>
+    <path d="M687 660h162v27H687z"/><path d="M667 689h202v28H667z"/><path d="M645 719h246v30H645z"/>
+    <path d="M618 751h300v31H618z"/><path d="M584 784h368v33H584z"/><path d="M544 819h448v36H544z"/>
+    <path d="M496 857h544v38H496z"/><path d="M438 897h660v40H438z"/><path d="M370 939h796v42H370z"/>
+    <path d="M286 983h964v41H286z"/>
+  </g>
+  <g fill="none" stroke="#30272c" stroke-width="4" opacity=".78">
+    <path d="M726 597h84m-95 23h106m-119 26h132m-147 27h162m-182 29h202m-224 30h246m-273 32h300m-334 33h368m-408 36h448m-496 38h544m-602 40h660m-728 42h796m-880 42h964"/>
+  </g>
+
+  <!-- lanterns sway, every flame bent by the same unseen breath -->
+  <g>
+    <g transform="translate(375 351) rotate(-9)"><path d="M-25 0h50l-5 79h-40zM-28 0h56m-50 12h44m-44 55h44M-14-1v-22q14-19 28 0v22" fill="#18161c" stroke="#b39169" stroke-width="5"/><path d="M7 59q-18-14 1-39 4 17 15 22 1 16-16 17Z" fill="url(#amber)"/><path d="M9 52q-6-12 1-19 8 12 7 17" fill="#fff1c1"/></g>
+    <g transform="translate(1164 365) rotate(9)"><path d="M-25 0h50l-5 79h-40zM-28 0h56m-50 12h44m-44 55h44M-14-1v-22q14-19 28 0v22" fill="#18161c" stroke="#b39169" stroke-width="5"/><path d="M7 59q-18-14 1-39 4 17 15 22 1 16-16 17Z" fill="url(#amber)"/><path d="M9 52q-6-12 1-19 8 12 7 17" fill="#fff1c1"/></g>
+    <path d="M419 410q103-50 198-55m470 12q-107-39-198-42" fill="none" stroke="#d0b77b" stroke-opacity=".24" stroke-width="6" stroke-dasharray="7 17"/>
+  </g>
+
+  <!-- one suspended drop and a ripple that fades into silence -->
+  <path d="M1278 288c-18 26-27 41-27 57a27 27 0 0 0 54 0c0-16-9-31-27-57Z" fill="#98aeb0" fill-opacity=".7" stroke="#d7dfd4" stroke-width="4"/>
+  <path d="M1259 343q11-12 22-5" fill="none" stroke="#fff1ce" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+  <ellipse cx="1278" cy="759" rx="173" ry="32" fill="url(#damp)"/>
+  <g fill="none" stroke="#8ea8ad" opacity=".4"><ellipse cx="1278" cy="760" rx="41" ry="8" stroke-width="4"/><ellipse cx="1278" cy="760" rx="89" ry="16" stroke-width="3"/><ellipse cx="1278" cy="760" rx="136" ry="24" stroke-width="2"/></g>
+  <path d="M1278 347v397" stroke="#c0d2cd" stroke-width="2" opacity=".18" stroke-dasharray="5 16"/>
+
+  <!-- dusty converging floor and deep shadow -->
+  <path d="M0 734q238-93 471-28 186 51 297 37 202-27 768-13v294H0Z" fill="url(#floor)"/>
+  <path d="M0 899q299-114 615-56 207 41 360 14 210-37 561-4v171H0Z" fill="#0a090f" opacity=".55"/>
+  <path d="M10 785q286-53 480-17m-403 77q263-42 404-20m501-38q161-42 377-27m-248 83q168-34 359-12" fill="none" stroke="#9e8a78" stroke-opacity=".2" stroke-width="4"/>
+  <g fill="#b8a797" opacity=".22"><circle cx="322" cy="846" r="3"/><circle cx="378" cy="901" r="2"/><circle cx="1090" cy="846" r="3"/><circle cx="1356" cy="869" r="2"/><circle cx="758" cy="880" r="2"/></g>
+  <!-- foreground pass keeps all thirteen descending risers visible above the dusty floor -->
+  <path d="M742 578h52l470 446H272Z" fill="#0a0910" opacity=".95"/>
+  <g stroke="#95847c" stroke-width="5" fill="url(#stone)">
+    <path d="M726 585h84v22h-84z"/><path d="M715 608h106v23H715z"/><path d="M702 633h132v25H702z"/>
+    <path d="M687 660h162v27H687z"/><path d="M667 689h202v28H667z"/><path d="M645 719h246v30H645z"/>
+    <path d="M618 751h300v31H618z"/><path d="M584 784h368v33H584z"/><path d="M544 819h448v36H544z"/>
+    <path d="M496 857h544v38H496z"/><path d="M438 897h660v40H438z"/><path d="M370 939h796v42H370z"/>
+    <path d="M286 983h964v41H286z"/>
+  </g>
+  <g fill="none" stroke="#30272c" stroke-width="4" opacity=".78">
+    <path d="M726 597h84m-95 23h106m-119 26h132m-147 27h162m-182 29h202m-224 30h246m-273 32h300m-334 33h368m-408 36h448m-496 38h544m-602 40h660m-728 42h796m-880 42h964"/>
+  </g>
+  <rect width="1536" height="1024" fill="url(#grain)"/>
+  <rect width="1536" height="1024" fill="none" stroke="#100b14" stroke-width="46"/>
+</svg>

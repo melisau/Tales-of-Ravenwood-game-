@@ -1,0 +1,156 @@
+[
+  {
+    "source": "images-e (22).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "scene.webp",
+    "label": "Karanlık Mahzen — ana sahne",
+    "bytes": 183564
+  },
+  {
+    "source": "images-e (21).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "dedektif_tuzagi_etkisizlestir_success.webp",
+    "label": "Dedektif tuzağı — başarı",
+    "bytes": 159048
+  },
+  {
+    "source": "images-e (20).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "dedektif_tuzagi_etkisizlestir_fail.webp",
+    "label": "Dedektif tuzağı — başarısızlık",
+    "bytes": 162736
+  },
+  {
+    "source": "images-e (19).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "medyum_elspeth_ile_konus_success.webp",
+    "label": "Medyum Elspeth ile konuşma — başarı",
+    "bytes": 150580
+  },
+  {
+    "source": "images-e (18).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "medyum_elspeth_ile_konus_fail.webp",
+    "label": "Medyum Elspeth ile konuşma — başarısızlık",
+    "bytes": 143388
+  },
+  {
+    "source": "images-e (17).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "bilgin_muhru_coz_success.webp",
+    "label": "Bilgin kan mührü — başarı",
+    "bytes": 189332
+  },
+  {
+    "source": "images-e (14).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "bilgin_muhru_coz_fail.webp",
+    "label": "Bilgin kan mührü — başarısızlık",
+    "bytes": 163864
+  },
+  {
+    "source": "images-e (15).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "izci_gizli_gecidi_bul_success.webp",
+    "label": "İzci gizli geçit — başarı",
+    "bytes": 165278
+  },
+  {
+    "source": "images-e (16).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "izci_gizli_gecidi_bul_fail.webp",
+    "label": "İzci gizli geçit — başarısızlık",
+    "bytes": 195214
+  },
+  {
+    "source": "images-e (13).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "fenerleri_yak_ve_ilerle_success.webp",
+    "label": "Fenerleri yakıp ilerle — başarı",
+    "bytes": 183454
+  },
+  {
+    "source": "images-e (12).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "fenerleri_yak_ve_ilerle_fail.webp",
+    "label": "Fenerleri yakıp ilerle — başarısızlık",
+    "bytes": 202418
+  },
+  {
+    "source": "images-e (11).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "merdivenden_geri_cekil_success.webp",
+    "label": "Mutfak kapağına dönme — başarı",
+    "bytes": 195504
+  },
+  {
+    "source": "images-e (7).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "merdivenden_geri_cekil_fail.webp",
+    "label": "Mutfak kapağına dönme — başarısızlık",
+    "bytes": 180684
+  },
+  {
+    "source": "images-e (2).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "mahzen_taca_fener_success.webp",
+    "label": "Feneri taçlı oyuğa koyma — başarı",
+    "bytes": 162510
+  },
+  {
+    "source": "images-e (8).jpg",
+    "nodeId": "mahzen_01_karanlik_mahzen",
+    "asset": "mahzen_taca_fener_fail.webp",
+    "label": "Feneri taçlı oyuğa koyma — başarısızlık",
+    "bytes": 237434
+  },
+  {
+    "source": "images-e (6).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "scene.webp",
+    "label": "Mühürlü Kapı — ana sahne",
+    "bytes": 165744
+  },
+  {
+    "source": "images-e (5).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "tamirci_mandali_kaldir_success.webp",
+    "label": "Tamirci mandalı kaldırma — başarı",
+    "bytes": 178030
+  },
+  {
+    "source": "images-e (4).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "tamirci_mandali_kaldir_fail.webp",
+    "label": "Tamirci mandalı kaldırma — başarısızlık",
+    "bytes": 175650
+  },
+  {
+    "source": "images-e (3).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "dedektif_anahtari_bul_success.webp",
+    "label": "Dedektif anahtar bulma — başarı",
+    "bytes": 165446
+  },
+  {
+    "source": "images-e (9).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "dedektif_anahtari_bul_fail.webp",
+    "label": "Dedektif anahtar bulma — başarısızlık",
+    "bytes": 186796
+  },
+  {
+    "source": "images-e (1).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "avci_tuz_cizgisi_success.webp",
+    "label": "Avcı tuz çizgisi — başarı",
+    "bytes": 152146
+  },
+  {
+    "source": "images-e (10).jpg",
+    "nodeId": "mahzen_02_muhurlu_kapi",
+    "asset": "avci_tuz_cizgisi_fail.webp",
+    "label": "Avcı tuz çizgisi — başarısızlık",
+    "bytes": 187866
+  }
+]

@@ -30,10 +30,35 @@ const ART: Record<string, SceneArt> = {
 
 const SCENES = Object.values(ART);
 
+const PROVIDED_ART: Record<string, string> = {
+  'mahzen_01_karanlik_mahzen:scene': '/story-art/mahzen/mahzen_01_karanlik_mahzen/scene.webp',
+  'mahzen_01_karanlik_mahzen:dedektif_tuzagi_etkisizlestir:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/dedektif_tuzagi_etkisizlestir_success.webp',
+  'mahzen_01_karanlik_mahzen:dedektif_tuzagi_etkisizlestir:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/dedektif_tuzagi_etkisizlestir_fail.webp',
+  'mahzen_01_karanlik_mahzen:medyum_elspeth_ile_konus:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/medyum_elspeth_ile_konus_success.webp',
+  'mahzen_01_karanlik_mahzen:medyum_elspeth_ile_konus:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/medyum_elspeth_ile_konus_fail.webp',
+  'mahzen_01_karanlik_mahzen:bilgin_muhru_coz:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/bilgin_muhru_coz_success.webp',
+  'mahzen_01_karanlik_mahzen:bilgin_muhru_coz:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/bilgin_muhru_coz_fail.webp',
+  'mahzen_01_karanlik_mahzen:izci_gizli_gecidi_bul:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/izci_gizli_gecidi_bul_success.webp',
+  'mahzen_01_karanlik_mahzen:izci_gizli_gecidi_bul:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/izci_gizli_gecidi_bul_fail.webp',
+  'mahzen_01_karanlik_mahzen:fenerleri_yak_ve_ilerle:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/fenerleri_yak_ve_ilerle_success.webp',
+  'mahzen_01_karanlik_mahzen:fenerleri_yak_ve_ilerle:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/fenerleri_yak_ve_ilerle_fail.webp',
+  'mahzen_01_karanlik_mahzen:merdivenden_geri_cekil:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/merdivenden_geri_cekil_success.webp',
+  'mahzen_01_karanlik_mahzen:merdivenden_geri_cekil:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/merdivenden_geri_cekil_fail.webp',
+  'mahzen_01_karanlik_mahzen:mahzen_taca_fener:success': '/story-art/mahzen/mahzen_01_karanlik_mahzen/mahzen_taca_fener_success.webp',
+  'mahzen_01_karanlik_mahzen:mahzen_taca_fener:fail': '/story-art/mahzen/mahzen_01_karanlik_mahzen/mahzen_taca_fener_fail.webp',
+  'mahzen_02_muhurlu_kapi:scene': '/story-art/mahzen/mahzen_02_muhurlu_kapi/scene.webp',
+  'mahzen_02_muhurlu_kapi:tamirci_mandali_kaldir:success': '/story-art/mahzen/mahzen_02_muhurlu_kapi/tamirci_mandali_kaldir_success.webp',
+  'mahzen_02_muhurlu_kapi:tamirci_mandali_kaldir:fail': '/story-art/mahzen/mahzen_02_muhurlu_kapi/tamirci_mandali_kaldir_fail.webp',
+  'mahzen_02_muhurlu_kapi:dedektif_anahtari_bul:success': '/story-art/mahzen/mahzen_02_muhurlu_kapi/dedektif_anahtari_bul_success.webp',
+  'mahzen_02_muhurlu_kapi:dedektif_anahtari_bul:fail': '/story-art/mahzen/mahzen_02_muhurlu_kapi/dedektif_anahtari_bul_fail.webp',
+  'mahzen_02_muhurlu_kapi:avci_tuz_cizgisi:success': '/story-art/mahzen/mahzen_02_muhurlu_kapi/avci_tuz_cizgisi_success.webp',
+  'mahzen_02_muhurlu_kapi:avci_tuz_cizgisi:fail': '/story-art/mahzen/mahzen_02_muhurlu_kapi/avci_tuz_cizgisi_fail.webp',
+};
+
 /** Storybook-like, original scene art drawn in SVG; no image service or font dependency. */
-export function SceneIllustration({ sceneId, title, ambience, action, result, success }: {
+export function SceneIllustration({ sceneId, title, ambience, action, actionId, result, success }: {
   sceneId: string; title: string; ambience: AudioCue | null;
-  action?: string; result?: string; success?: boolean;
+  action?: string; actionId?: string; result?: string; success?: boolean;
 }) {
   const art = ART[sceneId] ?? SCENES[hash(sceneId) % SCENES.length];
   const hasResult = Boolean(result);
@@ -41,9 +66,11 @@ export function SceneIllustration({ sceneId, title, ambience, action, result, su
   const glint = cold ? '#ee7874' : '#e9c86f';
   const actionMotif = hasResult ? chooseMotif(`${action} ${result}`) : null;
   const resourceId = `rw-${hash(`${sceneId}:${action ?? ''}:${result ?? ''}`)}`;
+  const resultArtKey = hasResult && actionId ? `${sceneId}:${actionId}:${success ? 'success' : 'fail'}` : null;
+  const illustrationUrl = (resultArtKey && PROVIDED_ART[resultArtKey]) || PROVIDED_ART[`${sceneId}:scene`];
   return (
     <figure className="rw-scene-art m-0 overflow-hidden rounded-xl border border-[#c9a24a]/35 bg-[#100a17]" aria-label={`${title} sahne çizimi${hasResult ? `: ${action}, ${success ? 'başarılı' : 'başarısız'}` : ''}`}>
-      <svg viewBox="0 0 720 300" role="img" aria-hidden="true" className="block h-auto max-h-[300px] w-full">
+      {illustrationUrl ? <img src={illustrationUrl} alt={`${title}${hasResult ? ` — ${action}, ${success ? 'başarı' : 'başarısızlık'}` : ''}`} className="block max-h-[420px] w-full object-cover" loading="lazy" /> : <svg viewBox="0 0 720 300" role="img" aria-hidden="true" className="block h-auto max-h-[300px] w-full">
         <defs>
           <linearGradient id={`${resourceId}-sky`} x2="0" y2="1"><stop stopColor={cold ? '#170f20' : '#251834'} /><stop offset="1" stopColor={art.place === 'nursery' || art.place === 'hall' ? '#392238' : '#101b20'} /></linearGradient>
           <linearGradient id={`${resourceId}-light`} x2="1" y2="1"><stop stopColor={glint} stopOpacity=".4" /><stop offset="1" stopColor={glint} stopOpacity="0" /></linearGradient>
@@ -61,7 +88,7 @@ export function SceneIllustration({ sceneId, title, ambience, action, result, su
         {hasResult && <OutcomeMoment success={success !== false} motif={actionMotif ?? art.motif} color={glint} resourceId={resourceId} />}
         <rect width="720" height="300" fill={`url(#${resourceId}-grain)`} />
         <path d="M0 227 Q90 202 173 230 T330 226 T496 229 T720 213" fill="none" stroke="#d3bd99" strokeOpacity=".13" strokeWidth="2" />
-      </svg>
+      </svg>}
       <figcaption className="flex min-h-9 items-center justify-between gap-3 border-t border-white/5 bg-[#120b18] px-3 py-2 text-xs text-[#d7c6a6]">
         <span className="truncate font-semibold">{title}</span>
         <span className={`shrink-0 rounded-full border px-2 py-0.5 ${hasResult ? success ? 'border-[#9be29b]/40 text-[#b9ebac]' : 'border-[#ef7877]/40 text-[#ffb1ac]' : 'border-[#c9a24a]/35 text-[#e8c66a]'}`}>

@@ -308,7 +308,7 @@ function ResultCard({ result, room }: { result: SceneResult; room: PublicRoomSta
       </div>
       <div className="mt-4 space-y-2">
         <SceneIllustration sceneId={scene.node_id} title={scene.title} ambience={scene.ambience}
-          action={selectedAction?.button_text ?? result.action_id} result={result.text} success={result.success} />
+          action={selectedAction?.button_text ?? result.action_id} actionId={result.action_id} result={result.text} success={result.success} />
         <p className="text-sm text-[#c9b48a]">Seçilen eylem: <span className="text-[#f3dfa6]">{selectedAction?.button_text ?? result.action_id}</span></p>
       </div>
       <p className="rw-copy mt-4 text-[#f1e7d6]">{result.text}</p>
