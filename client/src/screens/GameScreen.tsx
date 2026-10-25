@@ -3,6 +3,7 @@ import { ANY_CLASS, GamePhase, type PublicActionView, type PublicPlayer, type Pu
 import SecretCharacterScreen from '../components/SecretCharacterScreen';
 import { SecretRoleCard } from '../components/SecretRoleCard';
 import { ClassEmblem } from '../components/ClassEmblem';
+import { SceneIllustration } from '../components/SceneIllustration';
 import type { Game } from '../state/useGame';
 import { Button, FONT_DISPLAY, HelpButton, HpBar, Label } from '../ui/kit';
 
@@ -178,6 +179,9 @@ function SceneCard({ room, collapsed }: { room: PublicRoomState; collapsed: bool
       <h2 className="mt-1 text-2xl font-bold text-[#f3dfa6]" style={FONT_DISPLAY}>
         {scene.title}
       </h2>
+      <div className="mt-4">
+        <SceneIllustration sceneId={scene.node_id} title={scene.title} ambience={scene.ambience} />
+      </div>
       <p className={`rw-copy mt-4 whitespace-pre-line text-[#f1e7d6] ${open ? '' : 'line-clamp-3'}`}>{scene.public_text}</p>
       {collapsed && (
         <button type="button" onClick={() => setOpen(!open)} className="mt-2 text-[14px] text-[#c9a24a] underline underline-offset-4">
@@ -272,6 +276,8 @@ function ChoiceList({
 }
 
 function ResultCard({ result, room }: { result: SceneResult; room: PublicRoomState }) {
+  const scene = room.scene!;
+  const selectedAction = scene.actions.find((action) => action.action_id === result.action_id);
   const deltas = Object.entries(result.hpDeltaByPlayer).map(([id, d]) => ({ p: room.players.find((x) => x.id === id), d }));
   const tone = result.critical === 'NAT20' ? 'gold' : result.critical === 'NAT1' ? 'doom' : result.success ? 'win' : 'lose';
   const head = {
@@ -291,6 +297,11 @@ function ResultCard({ result, room }: { result: SceneResult; room: PublicRoomSta
           {result.roll}
           {result.bonus > 0 && ` + ${result.bonus}`} = {result.total} / {result.dc}
         </p>
+      </div>
+      <div className="mt-4 space-y-2">
+        <SceneIllustration sceneId={scene.node_id} title={scene.title} ambience={scene.ambience}
+          action={selectedAction?.button_text ?? result.action_id} result={result.text} success={result.success} />
+        <p className="text-sm text-[#c9b48a]">Seçilen eylem: <span className="text-[#f3dfa6]">{selectedAction?.button_text ?? result.action_id}</span></p>
       </div>
       <p className="rw-copy mt-4 text-[#f1e7d6]">{result.text}</p>
       {deltas.length > 0 && (
