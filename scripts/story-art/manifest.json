@@ -902,15 +902,6 @@
   "outcome": "fail"
  },
  {
-  "id": "mahzen_07_ac_olan/scene",
-  "adventure": "mahzen",
-  "node_id": "mahzen_07_ac_olan",
-  "output": "mahzen/mahzen_07_ac_olan/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Aç Olan\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Sunağın önündesiniz. Mumlar bir anda yükseliyor ve aynı anda sönüyor. Karanlıkta bir şey doğruluyor: tavana değecek kadar uzun, siyah dantelden bir kadın silueti. Yüzü Agatha'nın yüzü, ama ağzı kulaklarına kadar yırtık ve içi bomboş. Elspeth'in ninnisini söylüyor, onun sesiyle. Sunağa bağlı gümüş bir zincir, kadının elinden Elspeth'in bileğine uzanıyor; kız yerde, neredeyse saydam. 'Yüz otuz dört yıl,' diyor şey. 'Ve hâlâ açım.' Başını size çeviriyor. 'Biriniz kalırsa diğerleri gidebilir.' Kimse kıpırdamıyor. Seçim anı geldi.\n\nSunağın üstünde ters taç altında bir fısıltı ritüeli, kenarında söndürülmemiş tek bir kandil var.\""
- },
- {
   "id": "mahzen_07_ac_olan/medyum_adini_soyle_success",
   "adventure": "mahzen",
   "node_id": "mahzen_07_ac_olan",
@@ -1439,15 +1430,6 @@
   "outcome": "fail"
  },
  {
-  "id": "nota_03_portreler/scene",
-  "adventure": "nota",
-  "node_id": "nota_03_portreler",
-  "output": "nota/nota_03_portreler/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"İsim İsteyen Çerçeveler\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Portreler galerisinde müzik duyulmuyor; yalnızca konağın eski çanları ağır ağır vuruyor. Her çerçeve sizin yüzünüzü taşımaya başlıyor. Ortadaki boş tabloda bir taç var; altında “Ada’ya bir yüz ver” yazıyor. Çerçevenin içindeki karanlık elini uzatıyor. Yerdeki ayak izleri aynaya gidiyor, tavandan sızan su ise alt kata açılan bir kapağı gösteriyor. Kendi adınızı söylemek, resme bir yüz çizmek ya da hiçbirini kabul etmemek mümkün. Çanlar sizi acele ettirmeye çalışsa da karar size ait.\""
- },
- {
   "id": "nota_03_portreler/nota_cerceveyi_ort_success",
   "adventure": "nota",
   "node_id": "nota_03_portreler",
@@ -1556,15 +1538,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"İsim İsteyen Çerçeveler\". Sahne özeti: \"Portreler galerisinde müzik duyulmuyor; yalnızca konağın eski çanları ağır ağır vuruyor. Her çerçeve sizin yüzünüzü taşımaya başlıyor. Ortadaki boş tabloda bir taç var; altında “Ada’ya bir yüz ver” yazıyor. Çerçevenin içindeki karanlık elini uzatıyor. Yerdeki ayak izleri aynaya gidiyor, tavandan sızan su ise alt kata açılan bir kapağı gösteriyor. Kendi adınızı söylemek, resme bir yüz çizmek ya da hiçbirini kabul etmemek mümkün. Çanlar sizi acele ettirmeye çalışsa da karar size ait.\"\nEylem: \"Taklitçinin uzvunu tuz çizgisiyle sınırla\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: yıkıcı.\nSonuç metni: \"Çizgi yarım kalıyor; uzuv kolunu sıyırıyor. Mahzene iniyorsunuz.\"\nHP değişimi: -2. Sonraki: Damlaların Tuttuğu Ritim.",
   "action_id": "nota_taklidi_tuzla",
   "outcome": "fail"
- },
- {
-  "id": "nota_04_ayna/scene",
-  "adventure": "nota",
-  "node_id": "nota_04_ayna",
-  "output": "nota/nota_04_ayna/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Ada’nın Hatırladığı Şey\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Aynanın içinde bir çocuk oturuyor; elinde anahtarsız bir müzik kutusu var. “Ben ezgiyi hatırlamıyorum,” diyor Ada. “Annemin beni çağırırken söylediği adı hatırlıyorum.” Aynanın altına üç işaret kazınmış: açık güneş, kapalı göz ve ters taç. Güneşin altında porselen isim levhası için bir oyuk var. Tacın altındaki oyukta parlak bir kurma anahtarı duruyor. Ada size bakmıyor; sizin arkanızdaki, sizin şeklinizi alan bir yansıma ona gülümsüyor. Kutunun asıl kaynağı çatıdaki saat odasında, aynanın arkasındaki merdivenden erişiliyor. Aynanın dibinde, yolu nereden gelmiş olursanız olun erişebileceğiniz, üzerinde Ada yazan bir porselen isim levhası duruyor.\""
  },
  {
   "id": "nota_04_ayna/nota_gunese_adi_koy_success",
@@ -1677,15 +1650,6 @@
   "outcome": "fail"
  },
  {
-  "id": "nota_05_damla_mahzeni/scene",
-  "adventure": "nota",
-  "node_id": "nota_05_damla_mahzeni",
-  "output": "nota/nota_05_damla_mahzeni/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"Damlaların Tuttuğu Ritim\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Saat kulesinin altı doğal bir taş oyuğa açılıyor. Damlalar paslı borulara düşüp müzik kutusunun on iki notasını tekrar ediyor. On üçüncü boru kuru; üstünde ters taç var. Yanındaki duvarda “Suyu eksik yere ver, ezgi tamam olsun” yazıyor. Açık güneşli giderin üstüne eski bir oyuncak sıkışmış. Oyuncağın cebinde Ada’nın kendi çizdiği bir ev resmi duruyor. Boruların arasındaki servis merdiveni saat odasına, giderin arkasındaki alçak geçit bahçeye çıkıyor.\""
- },
- {
   "id": "nota_05_damla_mahzeni/nota_gideri_ac_success",
   "adventure": "nota",
   "node_id": "nota_05_damla_mahzeni",
@@ -1794,15 +1758,6 @@
   "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Damlaların Tuttuğu Ritim\". Sahne özeti: \"Saat kulesinin altı doğal bir taş oyuğa açılıyor. Damlalar paslı borulara düşüp müzik kutusunun on iki notasını tekrar ediyor. On üçüncü boru kuru; üstünde ters taç var. Yanındaki duvarda “Suyu eksik yere ver, ezgi tamam olsun” yazıyor. Açık güneşli giderin üstüne eski bir oyuncak sıkışmış. Oyuncağın cebinde Ada’nın kendi çizdiği bir ev resmi duruyor. Boruların arasındaki servis merdiveni saat odasına, giderin arkasındaki alçak geçit bahçeye çıkıyor.\"\nEylem: \"Sonradan yazılan çağrıyı kazıyıp eski işareti ortaya çıkar\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: ürkütücü, tehlikeli.\nSonuç metni: \"Duvar dökülüyor; taşlar kolunu yaralıyor. Yukarı çıkıyorsunuz.\"\nHP değişimi: -1. Sonraki: On Üçüncü Nota.",
   "action_id": "nota_sahte_yaziyi_kaz",
   "outcome": "fail"
- },
- {
-  "id": "nota_06_son_nota/scene",
-  "adventure": "nota",
-  "node_id": "nota_06_son_nota",
-  "output": "nota/nota_06_son_nota/scene.webp",
-  "reference": null,
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nSahne: \"On Üçüncü Nota\". An: SAHNENİN AÇILIŞI, oyuncular mekâna yeni girdi. Kaynak sahne metni: \"Saat odasının pencereleri gecenin aynı anına bakıyor. Dev müzik kutusu bütün odayı dolduruyor. Önünüzde üç kol var: açık güneşli durdurucu, ters taçlı tamamlayıcı ve kapalı gözlü unutma kolu. Ada’nın sesi aynanın bir kırığından geliyor: “Beni ezgi olarak değil, adımla hatırlayın.” Başka bir ses tam aynı tonda, “Eksik notayı çalarsanız hepimiz dışarı çıkarız,” diyor. Dışarı çıkacak şeyin kim olduğunu hiçbir kol açıklamıyor. Kutuya dokunmadan da ana yayı kırmayı deneyebilirsiniz.\""
  },
  {
   "id": "nota_06_son_nota/nota_guneste_durdur_success",
