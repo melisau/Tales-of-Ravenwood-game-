@@ -102,6 +102,7 @@ try { done = new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch (e)
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch (e) {} };
 let view = 'scene';
 try { view = localStorage.getItem('rw-prompt-view') || 'scene'; } catch (e) {}
+if (!DATA.items.some((it) => it.kind === 'scene')) view = 'result';
 
 const $ = (s) => document.querySelector(s);
 const el = (tag, attrs = {}, ...kids) => {
