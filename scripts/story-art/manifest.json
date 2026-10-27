@@ -1,38 +1,5 @@
 [
  {
-  "id": "mahzen_03b_sahte_ses/muhafiz_koridoru_tut_success",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03b_sahte_ses",
-  "output": "mahzen/mahzen_03b_sahte_ses/muhafiz_koridoru_tut_success.webp",
-  "reference": "mahzen/mahzen_03b_sahte_ses/scene.webp",
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Sahte Ses\". Sahne özeti: \"Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.\n\nSesin geldiği rafta ters taç oyulmuş; altında bir ninninin son dizesi yarım bırakılmış.\"\nEylem: \"Dar koridoru tek başına tut\". Zar sonucu: BAŞARI. Sonuç tonu: umutlu ama tekinsiz.\nSonuç metni: \"Kalkanını iki fıçının arasına sıkıştırıp bekliyorsun. Ghoul üç kez çarpar, üçünde de geri savrulur ve sonunda karanlığa çekilir. Grup demir kapıya ulaşır.\"\nHP değişimi: 0. Sonraki: Mühürlü Kapı.",
-  "action_id": "muhafiz_koridoru_tut",
-  "outcome": "success"
- },
- {
-  "id": "mahzen_03b_sahte_ses/mahzen_ninniyi_tamamla_success",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03b_sahte_ses",
-  "output": "mahzen/mahzen_03b_sahte_ses/mahzen_ninniyi_tamamla_success.webp",
-  "reference": "mahzen/mahzen_03b_sahte_ses/scene.webp",
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Sahte Ses\". Sahne özeti: \"Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.\n\nSesin geldiği rafta ters taç oyulmuş; altında bir ninninin son dizesi yarım bırakılmış.\"\nEylem: \"Çocuğa güven vermek için ninninin sonunu söyle\". Zar sonucu: BAŞARI. Sonuç tonu: tekinsiz: başarılı ama bedeli var.\nSonuç metni: \"Sesin ağzı birden çoğalıyor. Ghoul sizi duyar; fener devrilir ve mahzen alev alır.\"\nHP değişimi: -3. Sonraki: Yanan Mahzen.",
-  "action_id": "mahzen_ninniyi_tamamla",
-  "outcome": "success"
- },
- {
-  "id": "mahzen_03b_sahte_ses/mahzen_ninniyi_tamamla_fail",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03b_sahte_ses",
-  "output": "mahzen/mahzen_03b_sahte_ses/mahzen_ninniyi_tamamla_fail.webp",
-  "reference": "mahzen/mahzen_03b_sahte_ses/scene.webp",
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Sahte Ses\". Sahne özeti: \"Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.\n\nSesin geldiği rafta ters taç oyulmuş; altında bir ninninin son dizesi yarım bırakılmış.\"\nEylem: \"Çocuğa güven vermek için ninninin sonunu söyle\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: yıkıcı.\nSonuç metni: \"Dize boğazınızda düğümleniyor. Gölgeler sizi mühürlü kapıya sürüklüyor.\"\nHP değişimi: -2. Sonraki: Mühürlü Kapı.",
-  "action_id": "mahzen_ninniyi_tamamla",
-  "outcome": "fail"
- },
- {
   "id": "mahzen_04_kan_muhru/gunlukcu_defteri_oku_success",
   "adventure": "mahzen",
   "node_id": "mahzen_04_kan_muhru",
