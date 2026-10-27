@@ -11,28 +11,6 @@
   "outcome": "success"
  },
  {
-  "id": "mahzen_03b_sahte_ses/avci_bogazina_vur_success",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03b_sahte_ses",
-  "output": "mahzen/mahzen_03b_sahte_ses/avci_bogazina_vur_success.webp",
-  "reference": "mahzen/mahzen_03b_sahte_ses/scene.webp",
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Sahte Ses\". Sahne özeti: \"Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.\n\nSesin geldiği rafta ters taç oyulmuş; altında bir ninninin son dizesi yarım bırakılmış.\"\nEylem: \"Sessizce yaklaş ve boğazına gümüşle vur\". Zar sonucu: BAŞARI. Sonuç tonu: umutlu ama tekinsiz.\nSonuç metni: \"Nefesini tutup üç adım atıyorsun; dördüncüde gümüş bıçak boğazına gömülür. Ghoul Elspeth'in sesiyle değil, kendi gerçek sesiyle, korkunç bir hırıltıyla yığılır. Arkasında, rafın ardında bir geçit görünüyor.\"\nHP değişimi: 0. Sonraki: Gizli Geçit.",
-  "action_id": "avci_bogazina_vur",
-  "outcome": "success"
- },
- {
-  "id": "mahzen_03b_sahte_ses/avci_bogazina_vur_fail",
-  "adventure": "mahzen",
-  "node_id": "mahzen_03b_sahte_ses",
-  "output": "mahzen/mahzen_03b_sahte_ses/avci_bogazina_vur_fail.webp",
-  "reference": "mahzen/mahzen_03b_sahte_ses/scene.webp",
-  "redo": false,
-  "prompt": "Tales of Ravenwood için tek karelik sahne illüstrasyonu. Gotik orta çağ karanlık-fantezi hikâye kitabı estetiği, dokulu el boyaması, sinematik ışık, katmanlı derinlik (ön/orta/arka plan), net odak. Palet: koyu erik, isli siyah, taş grisi, yosun yeşili, kirli fildişi; fener ve mumda az miktarda kehribar. Karanlığın etkisinde soğuk mor/kızıl vurgular, güvenli anlarda küçük altın ışık; neon yok. Ürkütücü ve gizemli ama kanlı/grafik değil; çocuk ruhlar (Elspeth, Ada) masum ve savunmasız, şiddetsiz. Oyuncular çoğunlukla omuz üstü siluet, el ya da ayak; isim yok. Blackthorne Konağı: dar, nemli taş duvarlar, gotik kemerler; fener tasarımı ve ters taç motifi her karede aynı. YATAY 16:9 KOMPOZİSYON. Tek an; çizgi roman paneli, kolaj, yazı, harf, altyazı, logo, filigran, arayüz YOK. Mühür ve levhalarda yalnızca okunamayan dekoratif işaretler. Kaynak metne sadık kal, yeni karakter/olay/nesne ekleme.\n\nBu, aynı sahne ana görselinin devamlılık karesidir: mekân mimarisi, fenerler, nesne yerleşimi ve palet referans görseldeki gibi kalsın. Yalnızca aşağıdaki zar sonucunun gerçekleştiği tek anı göster; sonucu yazıyla belirtme. Başarı ve başarısızlık kareleri birbirinden açıkça ayırt edilebilsin.\nSahne: \"Sahte Ses\". Sahne özeti: \"Ninni artık arkanızda değil, önünüzde. Fıçıların arasındaki dar koridordan uzun, eğik bir gövde çıkıyor: deri kemiklerine yapışmış, kolları dizlerine kadar inen bir ghoul. Ağzından çıkan ses bir çocuğun sesi; Elspeth'in sesi. 'Benimle oynayın,' diyor ve başını imkânsız bir açıyla yana yatırıyor. Fenerinizin ışığında gözleri parlamıyor; görmüyor. Burnunu havaya kaldırıp sizi dinliyor. Bir adım atıyor. Bir adım daha.\n\nSesin geldiği rafta ters taç oyulmuş; altında bir ninninin son dizesi yarım bırakılmış.\"\nEylem: \"Sessizce yaklaş ve boğazına gümüşle vur\". Zar sonucu: BAŞARISIZLIK. Sonuç tonu: yıkıcı.\nSonuç metni: \"Bir kemik ayağının altında çatırdar. Ghoul sana döner; pençesi yanından geçerken fenerini devirir. Yağ alev alır.\"\nHP değişimi: -2. Sonraki: Yanan Mahzen.",
-  "action_id": "avci_bogazina_vur",
-  "outcome": "fail"
- },
- {
   "id": "mahzen_03b_sahte_ses/dedektif_kirisi_dusur_success",
   "adventure": "mahzen",
   "node_id": "mahzen_03b_sahte_ses",
